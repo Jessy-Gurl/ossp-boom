@@ -1,0 +1,335 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OSSP B.O.O.M</title>
+
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container" id="container">
+
+    <!-- =========================
+         SIGN UP
+    ========================== -->
+    <div class="form-container sign-up-container">
+
+        <form action="#" method="POST">
+
+            {% csrf_token %}
+
+            <div class="logo">
+                <img src="{% static 'image/osspboomlogo.png' %}"
+                     alt="OSSP Logo"
+                     class="logo-img">
+            </div>
+
+            <h1>Create Account</h1>
+
+            <p class="system-title">
+                OSSP-B.O.O.M
+            </p>
+
+            <span>Register your account</span>
+
+            <div class="input-wrapper">
+                <i class="fa-solid fa-user"></i>
+                <input
+                    type="text"
+                    name="firstname"
+                    placeholder="Enter First Name"
+                    required>
+            </div>
+
+             <div class="input-wrapper">
+                <i class="fa-solid fa-user"></i>
+                <input
+                    type="text"
+                    name="middlename"
+                    placeholder="Enter Middle Name"
+                    required>
+            </div>
+
+            <div class="input-wrapper">
+                <i class="fa-solid fa-user"></i>
+                <input
+                    type="text"
+                    name="lasttname"
+                    placeholder="Enter Last Name"
+                    required>
+            </div>
+
+            <div class="input-wrapper">
+                <i class="fa-solid fa-envelope"></i>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    required>
+            </div>
+
+            <div class="input-wrapper">
+                <i class="fa-solid fa-lock"></i>
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    required>
+            </div>
+
+            <button type="submit">
+                <i class="fa-solid fa-user-plus"></i>
+                Sign Up
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- =========================
+         SIGN IN
+    ========================== -->
+    <div class="form-container sign-in-container">
+
+        <form action="#" method="POST">
+
+            {% csrf_token %}
+
+            <div class="logo">
+                <img src="{% static 'image/osspboomlogo.png' %}"
+                     alt="OSSP Logo"
+                     class="logo-img">
+            </div>
+
+            <h1>Sign In</h1>
+
+            <p class="system-title">
+                OSSP-B.O.O.M
+            </p>
+
+            <span>Biometric Office Operations and Monitoring</span>
+
+            <!-- Username -->
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-user"></i>
+
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Enter Your Email"
+                    required>
+
+            </div>
+
+
+            <!-- Password -->
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter Your Password"
+                    required>
+
+                <i
+                    class="fa-solid fa-eye password-toggle"
+                    id="togglePassword">
+                </i>
+
+            </div>
+
+
+            <a href="#" class="forgot-password">
+                Forgot your password?
+            </a>
+
+
+            <button type="button" onclick="window.location.href='{% url 'admin_dashboard' %}'">
+
+    <i class="fa-solid fa-right-to-bracket"></i>
+
+    Sign In
+
+</button>
+
+        </form>
+
+    </div>
+
+
+    <!-- =========================
+         OVERLAY
+    ========================== -->
+    <div class="overlay-container">
+
+        <div class="overlay">
+
+
+            <!-- LEFT PANEL -->
+            <div class="overlay-panel overlay-left">
+
+                <img
+                    src="{% static 'image/ossp_logo.png' %}"
+                    alt="OSSP Logo"
+                    class="overlay-logo">
+
+                <h1>Welcome Back!</h1>
+
+                <p>
+                    Sign in to access the
+                    <strong>OSSP-B.O.O.M</strong>
+                    system and continue managing
+                    office operations.
+                </p>
+
+                <button
+                    class="ghost"
+                    id="signIn">
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    Sign In
+
+                </button>
+
+            </div>
+
+
+            <!-- RIGHT PANEL -->
+            <div class="overlay-panel overlay-right">
+
+                <img
+                    src="{% static 'image/ossp_logo.png' %}"
+                    alt="OSSP Logo"
+                    class="overlay-logo">
+
+                <h1>Hello, User!</h1>
+
+                <p>
+                    Don't have an account yet?
+                    Create your account and start using
+                    <strong>OSSP-B.O.O.M</strong>.
+                </p>
+
+                <button
+                    class="ghost"
+                    id="signUp">
+
+                    <i class="fa-solid fa-user-plus"></i>
+                    Sign Up
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% load static %}
+
+<footer class="login-footer">
+
+    <div class="footer-content">
+
+        <span class="footer-brand">
+            Developed by. 
+            <img src="{% static 'image/footer2.png' %}" alt="OSSP" class="footer-icon">
+            IT.26
+        </span>
+
+        <span class="footer-divider">|</span>
+
+        <span>
+            ALWAYS AH<em>EA</em>D OF TIME
+        </span>
+
+        <span class="footer-divider">|</span>
+
+        <span>
+           B.O.O.M ver 1.0
+        </span>
+
+    </div>
+
+</footer>
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script>
+
+const container = document.getElementById("container");
+
+const signUpButton = document.getElementById("signUp");
+const signInButton = document.getElementById("signIn");
+
+const togglePassword =
+    document.getElementById("togglePassword");
+
+const password =
+    document.getElementById("password");
+
+
+// SIGN UP
+signUpButton.addEventListener("click", () => {
+
+    container.classList.add("right-panel-active");
+
+});
+
+
+// SIGN IN
+signInButton.addEventListener("click", () => {
+
+    container.classList.remove("right-panel-active");
+
+});
+
+
+// PASSWORD TOGGLE
+togglePassword.addEventListener("click", () => {
+
+    if (password.type === "password") {
+
+        password.type = "text";
+
+        togglePassword.classList.replace(
+            "fa-eye",
+            "fa-eye-slash"
+        );
+
+    } else {
+
+        password.type = "password";
+
+        togglePassword.classList.replace(
+            "fa-eye-slash",
+            "fa-eye"
+        );
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>

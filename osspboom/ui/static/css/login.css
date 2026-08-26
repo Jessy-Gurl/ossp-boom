@@ -1,0 +1,919 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800');
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(6, 59, 115, 0.70) 0%,
+            rgba(7, 92, 168, 0.55) 50%,
+            rgba(201, 33, 39, 0.65) 100%
+        ),
+        url("../image/legis.jpg");
+
+    background-size: cover;
+
+    background-position: center center;
+
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Montserrat', sans-serif;
+
+    min-height: 100vh;
+
+    margin: 0;
+}
+
+
+/* =========================================
+   TYPOGRAPHY
+========================================= */
+
+h1 {
+    font-weight: 800;
+    margin: 10px 0;
+    color: #123b6d;
+}
+
+p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.3px;
+    margin: 15px 0 25px;
+}
+
+span {
+    font-size: 12px;
+    color: #777;
+}
+
+a {
+    color: #174f8c;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 12px 0;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.container {
+    background-color: #ffffff;
+    border-radius: 14px;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.15),
+        0 5px 15px rgba(0, 0, 0, 0.08);
+
+    position: relative;
+    overflow: hidden;
+
+    width: 900px;
+    max-width: 95%;
+    min-height: 560px;
+}
+
+
+/* =========================================
+   FORM CONTAINER
+========================================= */
+
+.form-container {
+    position: absolute;
+    top: 0;
+
+    height: 100%;
+
+    transition: all 0.6s ease-in-out;
+}
+
+
+/* =========================================
+   SIGN IN
+========================================= */
+
+.sign-in-container {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+
+/* =========================================
+   SIGN UP
+========================================= */
+
+.sign-up-container {
+    left: 0;
+    width: 50%;
+
+    opacity: 0;
+    z-index: 1;
+}
+
+
+/* =========================================
+   ACTIVE SIGN UP
+========================================= */
+
+.container.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+}
+
+.container.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+
+    opacity: 1;
+    z-index: 5;
+
+    animation: show 0.6s;
+}
+
+
+/* =========================================
+   FORM ANIMATION
+========================================= */
+
+@keyframes show {
+
+    0%,
+    49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+form {
+    background-color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    padding: 35px 55px;
+
+    height: 100%;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 8px;
+}
+
+.logo-img {
+    width: 75px;
+    height: 75px;
+
+    object-fit: contain;
+}
+
+
+/* =========================================
+   SYSTEM TITLE
+========================================= */
+
+.system-title {
+    color: #d62828;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    margin: 2px 0 8px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.input-wrapper {
+    position: relative;
+
+    width: 100%;
+
+    margin: 7px 0;
+}
+
+
+/* Input icons */
+
+.input-wrapper > i:first-child {
+    position: absolute;
+
+    left: 15px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #175a9c;
+
+    font-size: 14px;
+
+    z-index: 2;
+}
+
+
+/* Input fields */
+
+.input-wrapper input {
+    background-color: #f1f4f8;
+
+    border: 1px solid transparent;
+    border-radius: 7px;
+
+    padding: 13px 42px;
+
+    margin: 0;
+
+    width: 100%;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+/* Input focus */
+
+.input-wrapper input:focus {
+    background-color: #ffffff;
+
+    border-color: #1769aa;
+
+    box-shadow:
+        0 0 0 3px rgba(23, 105, 170, 0.10);
+}
+
+
+/* Placeholder */
+
+.input-wrapper input::placeholder {
+    color: #999;
+}
+
+
+/* =========================================
+   PASSWORD TOGGLE
+========================================= */
+
+.password-toggle {
+    position: absolute;
+
+    right: 15px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #777;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: color 0.2s ease;
+}
+
+.password-toggle:hover {
+    color: #d62828;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+button {
+    border-radius: 25px;
+
+    border: none;
+
+    background: #d62828;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    padding: 13px 42px;
+
+    margin-top: 15px;
+
+    letter-spacing: 0.8px;
+
+    text-transform: uppercase;
+
+    transition:
+        transform 0.15s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Button hover */
+
+button:hover {
+    background: #b91f1f;
+
+    box-shadow:
+        0 5px 15px rgba(214, 40, 40, 0.30);
+
+    transform: translateY(-1px);
+}
+
+
+/* Button active */
+
+button:active {
+    transform: scale(0.96);
+}
+
+
+/* Button focus */
+
+button:focus {
+    outline: none;
+}
+
+
+/* =========================================
+   BUTTON ICON
+========================================= */
+
+button i {
+    margin-right: 7px;
+}
+
+
+/* =========================================
+   FORGOT PASSWORD
+========================================= */
+
+.forgot-password {
+    color: #666;
+
+    font-size: 12px;
+
+    margin: 8px 0 3px;
+}
+
+.forgot-password:hover {
+    color: #d62828;
+}
+
+
+/* =========================================
+   OVERLAY CONTAINER
+========================================= */
+
+.overlay-container {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 50%;
+    height: 100%;
+
+    overflow: hidden;
+
+    transition: transform 0.6s ease-in-out;
+
+    z-index: 100;
+}
+
+
+/* Move overlay when active */
+
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+
+/* =========================================
+   OVERLAY
+========================================= */
+
+.overlay {
+
+    /*
+        BLUE → RED
+        instead of the original
+        orange → pink
+    */
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 255, 255, 0.15),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #063b73 0%,
+            #075ca8 45%,
+            #c92127 100%
+        );
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    background-position: center;
+
+    color: #ffffff;
+
+    position: relative;
+
+    left: -100%;
+
+    height: 100%;
+
+    width: 200%;
+
+    transform: translateX(0);
+
+    transition: transform 0.6s ease-in-out;
+}
+
+
+/* Move overlay */
+
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+
+/* =========================================
+   OVERLAY PANEL
+========================================= */
+
+.overlay-panel {
+
+    position: absolute;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    padding: 0 45px;
+
+    text-align: center;
+
+    top: 0;
+
+    height: 100%;
+
+    width: 50%;
+
+    transform: translateX(0);
+
+    transition: transform 0.6s ease-in-out;
+}
+
+
+/* =========================================
+   OVERLAY LEFT
+========================================= */
+
+.overlay-left {
+    transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+    transform: translateX(0);
+}
+
+
+/* =========================================
+   OVERLAY RIGHT
+========================================= */
+
+.overlay-right {
+    right: 0;
+
+    transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
+
+
+/* =========================================
+   OVERLAY LOGO
+========================================= */
+
+.overlay-logo {
+    width: 100px;
+    height: 100px;
+
+    object-fit: contain;
+
+    margin-bottom: 15px;
+
+    /*
+        White background behind logo
+        in case your logo has white elements.
+    */
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    padding: 8px;
+}
+
+
+/* =========================================
+   OVERLAY TITLE
+========================================= */
+
+.overlay-panel h1 {
+    color: #ffffff;
+
+    font-size: 28px;
+
+    margin: 10px 0;
+}
+
+
+/* =========================================
+   OVERLAY TEXT
+========================================= */
+
+.overlay-panel p {
+    color: #ffffff;
+
+    font-size: 13px;
+
+    line-height: 21px;
+
+    max-width: 330px;
+
+    margin: 10px 0 25px;
+}
+
+
+/* =========================================
+   GHOST BUTTON
+========================================= */
+
+button.ghost {
+
+    background-color: transparent;
+
+    border: 1px solid #ffffff;
+
+    color: #ffffff;
+
+    padding: 12px 35px;
+}
+
+button.ghost:hover {
+
+    background-color: #ffffff;
+
+    color: #c92127;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media screen and (max-width: 768px) {
+
+    body {
+        height: auto;
+        min-height: 100vh;
+
+        padding: 20px 0;
+    }
+
+
+    .container {
+
+        width: 95%;
+
+        min-height: 650px;
+
+        border-radius: 12px;
+    }
+
+
+    .form-container {
+
+        width: 100%;
+    }
+
+
+    .sign-in-container {
+
+        width: 100%;
+    }
+
+
+    .sign-up-container {
+
+        width: 100%;
+    }
+
+
+    /*
+        Hide sliding overlay on small screens.
+    */
+
+    .overlay-container {
+        display: none;
+    }
+
+
+    .container.right-panel-active .sign-in-container {
+        transform: translateX(100%);
+    }
+
+
+    .container.right-panel-active .sign-up-container {
+        transform: translateX(0);
+
+        opacity: 1;
+
+        z-index: 5;
+    }
+
+
+    form {
+        padding: 30px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media screen and (max-width: 480px) {
+
+    .container {
+        min-height: 620px;
+    }
+
+
+    form {
+        padding: 25px 22px;
+    }
+
+
+    h1 {
+        font-size: 24px;
+    }
+
+
+    .logo-img {
+        width: 65px;
+        height: 65px;
+    }
+
+
+    .input-wrapper input {
+        padding: 12px 40px;
+    }
+
+
+    button {
+        padding: 12px 32px;
+    }
+
+}
+
+ /* =========================================
+    LOGIN FOOTER
+ ========================================= */
+
+.login-footer {
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding: 15px 20px;
+
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.90);
+
+    font-size: 11px;
+
+    z-index: 10;
+}
+
+
+/* =========================================
+   LOGIN FOOTER
+========================================= */
+
+.login-footer {
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 8px 20px;
+
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.90);
+
+    font-size: 11px;
+
+    z-index: 100;
+
+    /* Prevent footer from affecting page layout */
+    pointer-events: none;
+}
+
+
+/* =========================================
+   FOOTER CONTENT
+========================================= */
+
+.footer-content {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: nowrap;
+
+    gap: 10px;
+
+    width: 100%;
+
+    min-height: 80px;
+
+    box-sizing: border-box;
+
+    letter-spacing: 0.3px;
+}
+
+.footer-content span {
+    display: flex;
+
+    align-items: center;
+
+    color: rgba(255, 255, 255, 0.90);
+
+    font-size: 11px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   SPONSORED / BRAND IMAGE
+========================================= */
+
+.footer-brand {
+    display: flex;
+
+    align-items: center;
+
+    flex-shrink: 0;
+}
+
+.footer-icon {
+    width: 80px;
+    height: 80px;
+
+    object-fit: contain;
+
+    margin-right: 10px;
+
+    flex-shrink: 0;
+
+    /* Gray version matching footer text */
+    filter: grayscale(100%) brightness(0) invert(90%);
+
+    opacity: 0.9;
+}
+
+
+/* =========================================
+   ITALIC "EA"
+========================================= */
+
+.footer-content em {
+    font-style: italic;
+}
+
+
+/* =========================================
+   FOOTER DIVIDER
+========================================= */
+
+.footer-divider {
+    opacity: 0.5;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================
+   MOBILE FOOTER
+========================================= */
+
+@media screen and (max-width: 600px) {
+
+    .login-footer {
+        padding: 5px 10px;
+    }
+
+    .footer-content {
+        gap: 5px;
+
+        min-height: 55px;
+    }
+
+    .footer-content span {
+        font-size: 9px;
+    }
+
+    .footer-icon {
+        width: 55px;
+        height: 55px;
+
+        margin-right: 6px;
+    }
+
+    .footer-divider {
+        display: none;
+    }
+
+}

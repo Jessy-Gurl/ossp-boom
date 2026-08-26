@@ -1,0 +1,602 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employee Details</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/view_details.css' %}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+
+<!-- =========================================
+     ADMIN NAVBAR
+========================================= -->
+
+<nav class="admin-navbar">
+
+    <!-- SYSTEM NAME -->
+
+    <div class="navbar-brand">
+
+        OSSP BIOMETRICS MANAGEMENT SYSTEM
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+
+    <div class="navbar-right">
+
+
+        <!-- WELCOME USER -->
+
+        <div class="navbar-welcome">
+
+            Welcome, Super Admin <strong>John</strong>
+
+        </div>
+
+
+        <!-- DATE & TIME -->
+
+        <div class="navbar-datetime">
+
+            <div id="current-day">
+                Tuesday
+            </div>
+
+            <div id="current-date-time">
+                August 25, 2026 | 10:03 AM
+            </div>
+
+        </div>
+
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================
+     MAIN CONTENT
+========================================= -->
+
+<main class="main">
+
+
+    <!-- =========================================
+         EMPLOYEE DETAILS
+    ========================================= -->
+
+    <section class="employee-section">
+
+
+        <!-- TOP BAR -->
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>
+                    Employee Details
+                </h1>
+
+                <p>
+                    View employee information and records.
+                </p>
+
+            </div>
+
+
+            <!-- BACK BUTTON -->
+
+            <a href="{% url 'admin_dashboard' %}" class="add-btn">
+
+    <i class="fa-solid fa-arrow-left"></i>
+
+    Back
+
+</a>
+
+        </div>
+
+
+
+        <!-- =========================================
+             EMPLOYEE INFORMATION CARD
+        ========================================= -->
+
+        <div class="form-container">
+
+
+            <!-- EMPLOYEE HEADER -->
+
+            <div class="employee-header">
+
+
+                <!-- AVATAR -->
+
+                <div class="employee-avatar">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+
+                <!-- EMPLOYEE NAME -->
+
+                <div class="employee-heading">
+
+                    <h2>
+                        ANGELO AQUINO DE LEON
+                    </h2>
+
+                    <p>
+
+                        Employee ID:
+
+                        <strong>
+                            OSSP-001
+                        </strong>
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =========================================
+                 EMPLOYEE INFORMATION GRID
+            ========================================= -->
+
+            <div class="employee-info-grid">
+
+
+                <!-- CONTACT -->
+
+                <div class="info-box">
+
+                    <h4>
+                        <i class="fa-solid fa-address-book"></i>
+                        Contact
+                    </h4>
+
+                    <p>
+                        12345678909
+                    </p>
+
+                    <p>
+                        user@example.com
+                    </p>
+
+                </div>
+
+
+
+                <!-- BIRTHDATE -->
+
+                <div class="info-box">
+
+                    <h4>
+                        <i class="fa-solid fa-cake-candles"></i>
+                        Birthdate
+                    </h4>
+
+                    <p>
+                        January 1, 1990
+                    </p>
+
+                </div>
+
+
+
+                <!-- ADDRESS -->
+
+                <div class="info-box">
+
+                    <h4>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Address
+                    </h4>
+
+                    <p>
+                        123 Main Street, City, Country
+                    </p>
+
+                </div>
+
+
+
+                <!-- SECTION -->
+
+                <div class="info-box">
+
+                    <h4>
+                        <i class="fa-solid fa-building"></i>
+                        Section
+                    </h4>
+
+                    <p>
+                        OSSP
+                    </p>
+
+                </div>
+
+
+
+                <!-- POSITION -->
+
+                <div class="info-box">
+
+                    <h4>
+                        <i class="fa-solid fa-briefcase"></i>
+                        Position
+                    </h4>
+
+                    <p>
+                        EXECUTIVE ASSISTANT
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         ATTENDANCE RECORDS
+    ========================================= -->
+
+    <section class="attendance-section">
+
+
+        <!-- ATTENDANCE HEADER -->
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>
+                    Attendance Records
+                </h1>
+
+                <p>
+                    View the employee's attendance history.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================================
+             ATTENDANCE TABLE CONTAINER
+        ========================================= -->
+
+        <div class="table-container">
+
+
+            <!-- ATTENDANCE TOOLS -->
+
+            <div class="attendance-tools">
+
+
+                <!-- MONTH FILTER -->
+
+                <div class="month-filter">
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+                    <input
+                        type="month"
+                        id="monthFilter">
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =========================================
+                 ATTENDANCE TABLE
+            ========================================= -->
+
+            <div class="table-wrapper">
+
+                <table id="attendanceTable">
+
+
+                    <!-- TABLE HEADER -->
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Employee</th>
+
+                            <th>Date</th>
+
+                            <th>Time In</th>
+
+                            <th>Break Out</th>
+
+                            <th>Break In</th>
+
+                            <th>Time Out</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+
+
+                    <!-- TABLE BODY -->
+
+                    <tbody>
+
+
+                        <!-- RECORD 1 -->
+
+                        <tr>
+
+                            <td>
+                                ANGELO AQUINO DE LEON
+                            </td>
+
+                            <td>
+                                2024-06-01
+                            </td>
+
+                            <td>
+                                08:00 AM
+                            </td>
+
+                            <td>
+                                12:00 PM
+                            </td>
+
+                            <td>
+                                01:00 PM
+                            </td>
+
+                            <td>
+                                05:00 PM
+                            </td>
+
+                            <td>
+
+                                <span class="status present">
+                                    Present
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- RECORD 2 -->
+
+                        <tr>
+
+                            <td>
+                                ANGELO AQUINO DE LEON
+                            </td>
+
+                            <td>
+                                2024-06-02
+                            </td>
+
+                            <td>
+                                08:15 AM
+                            </td>
+
+                            <td>
+                                12:05 PM
+                            </td>
+
+                            <td>
+                                01:10 PM
+                            </td>
+
+                            <td>
+                                05:05 PM
+                            </td>
+
+                            <td>
+
+                                <span class="status present">
+                                    Present
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+
+/* =========================================
+   LIVE DATE & TIME
+========================================= */
+
+function updateDateTime() {
+
+    const now = new Date();
+
+
+    const day =
+        now.toLocaleDateString('en-US', {
+
+            weekday: 'long'
+
+        });
+
+
+    const date =
+        now.toLocaleDateString('en-US', {
+
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric'
+
+        });
+
+
+    const time =
+        now.toLocaleTimeString('en-US', {
+
+            hour: 'numeric',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true
+
+        });
+
+
+    document.getElementById(
+        'current-day'
+    ).textContent = day;
+
+
+    document.getElementById(
+        'current-date-time'
+    ).textContent = `${date} | ${time}`;
+
+}
+
+
+updateDateTime();
+
+
+setInterval(
+    updateDateTime,
+    1000
+);
+
+
+
+/* =========================================
+   MONTH FILTER
+========================================= */
+
+document
+.getElementById("monthFilter")
+.addEventListener("change", function () {
+
+
+    const selectedMonth =
+        this.value;
+
+
+    const rows =
+        document.querySelectorAll(
+            "#attendanceTable tbody tr"
+        );
+
+
+    rows.forEach(function(row) {
+
+
+        const dateCell =
+            row.querySelector(
+                "td:nth-child(2)"
+            );
+
+
+        if (!dateCell) {
+            return;
+        }
+
+
+        const recordDate =
+            dateCell.textContent.trim();
+
+
+        /*
+            Show all records when
+            no month is selected.
+        */
+
+        if (!selectedMonth) {
+
+            row.style.display = "";
+
+            return;
+
+        }
+
+
+        /*
+            Compare YYYY-MM
+            with selected month.
+        */
+
+        const recordMonth =
+            recordDate.substring(
+                0,
+                7
+            );
+
+
+        row.style.display =
+            recordMonth === selectedMonth
+                ? ""
+                : "none";
+
+
+    });
+
+});
+
+
+</script>
+
+
+</body>
+</html>

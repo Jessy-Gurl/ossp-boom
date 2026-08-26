@@ -1,0 +1,1230 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800');
+
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family: 'Montserrat', sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #063b73 0%,
+            #075ca8 50%,
+            #c92127 100%
+        );
+
+    color: #1f2937;
+}
+
+
+/* =========================================
+   ADMIN NAVBAR
+========================================= */
+
+.admin-navbar {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 30px;
+
+    background: #123B68;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.18);
+
+    z-index: 1000;
+}
+
+
+/* =========================================
+   NAVBAR BRAND
+========================================= */
+
+.navbar-brand {
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   NAVBAR RIGHT
+========================================= */
+
+.navbar-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+}
+
+
+/* =========================================
+   WELCOME USER
+========================================= */
+
+.navbar-welcome {
+
+    font-size: 12px;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    white-space: nowrap;
+}
+
+.navbar-welcome strong {
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================
+   NAVBAR DATE & TIME
+========================================= */
+
+.navbar-datetime {
+
+    text-align: right;
+
+    line-height: 1.4;
+
+    white-space: nowrap;
+}
+
+#current-day {
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    color: #ffffff;
+
+}
+
+#current-date-time {
+
+    font-size: 10px;
+
+    color: rgba(255, 255, 255, 0.75);
+
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.main {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 105px 35px 50px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   BACKGROUND IMAGE
+========================================= */
+
+.main::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    background-image:
+        url("../image/bg.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    opacity: 0.20;
+
+    z-index: -2;
+
+}
+
+
+/* =========================================
+   BACKGROUND OVERLAY
+========================================= */
+
+.main::after {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(6, 59, 115, 0.92),
+            rgba(7, 92, 168, 0.82),
+            rgba(201, 33, 39, 0.82)
+        );
+
+    z-index: -1;
+
+}
+
+
+/* =========================================
+   EMPLOYEE SECTION
+========================================= */
+
+.employee-section {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: 0 auto 30px;
+
+}
+
+
+/* =========================================
+   ATTENDANCE SECTION
+========================================= */
+
+.attendance-section {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   TOP BAR
+========================================= */
+
+.topbar {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+
+    gap: 20px;
+}
+
+
+/* =========================================
+   TOP BAR TITLE
+========================================= */
+
+.topbar h1 {
+
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* =========================================
+   TOP BAR DESCRIPTION
+========================================= */
+
+.topbar p {
+
+    margin: 6px 0 0;
+
+    color: rgba(255, 255, 255, 0.78);
+
+    font-size: 12px;
+
+    font-weight: 400;
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.add-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 11px 20px;
+
+    border-radius: 7px;
+
+    background: #d62828;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+.add-btn:hover {
+
+    background: #b91f1f;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 16px rgba(0, 0, 0, 0.20);
+}
+
+
+.add-btn i {
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================
+   EMPLOYEE INFORMATION CARD
+========================================= */
+
+.form-container {
+
+    width: 100%;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-radius: 14px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.15);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.5);
+}
+
+
+/* =========================================
+   EMPLOYEE HEADER
+========================================= */
+
+.employee-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding-bottom: 25px;
+
+    margin-bottom: 25px;
+
+    border-bottom:
+        1px solid #e5e7eb;
+}
+
+
+/* =========================================
+   EMPLOYEE AVATAR
+========================================= */
+
+.employee-avatar {
+
+    width: 75px;
+
+    height: 75px;
+
+    min-width: 75px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #063b73,
+            #075ca8
+        );
+
+    color: #ffffff;
+
+    font-size: 28px;
+
+    box-shadow:
+        0 5px 15px rgba(6, 59, 115, 0.25);
+}
+
+
+/* =========================================
+   EMPLOYEE HEADING
+========================================= */
+
+.employee-heading h2 {
+
+    margin: 0 0 7px;
+
+    color: #123b6d;
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.2px;
+}
+
+
+.employee-heading p {
+
+    margin: 0;
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+.employee-heading strong {
+
+    color: #d62828;
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   EMPLOYEE INFORMATION GRID
+========================================= */
+
+.employee-info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+
+/* =========================================
+   INFORMATION BOX
+========================================= */
+
+.info-box {
+
+    min-height: 100px;
+
+    padding: 18px;
+
+    background: #f6f8fb;
+
+    border:
+        1px solid #e4e8ee;
+
+    border-radius: 9px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.info-box:hover {
+
+    transform: translateY(-2px);
+
+    border-color: #075ca8;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+
+/* =========================================
+   INFORMATION TITLE
+========================================= */
+
+.info-box h4 {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin: 0 0 10px;
+
+    color: #063b73;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.6px;
+}
+
+
+.info-box h4 i {
+
+    color: #d62828;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   INFORMATION TEXT
+========================================= */
+
+.info-box p {
+
+    margin: 4px 0;
+
+    color: #444;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    line-height: 1.5;
+
+    word-break: break-word;
+}
+
+
+/* =========================================
+   TABLE CONTAINER
+========================================= */
+
+.table-container {
+
+    width: 100%;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-radius: 14px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.15);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   ATTENDANCE TOOLS
+========================================= */
+
+.attendance-tools {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================
+   MONTH FILTER
+========================================= */
+
+.month-filter {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 0 12px;
+
+    height: 38px;
+
+    background: #f1f4f8;
+
+    border:
+        1px solid #dfe4ea;
+
+    border-radius: 7px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.month-filter:focus-within {
+
+    border-color: #075ca8;
+
+    box-shadow:
+        0 0 0 3px rgba(7, 92, 168, 0.10);
+}
+
+
+.month-filter i {
+
+    color: #075ca8;
+
+    font-size: 13px;
+}
+
+
+.month-filter input {
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #333;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   TABLE WRAPPER
+========================================= */
+
+.table-wrapper {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    border:
+        1px solid #e1e5ea;
+
+    border-radius: 8px;
+}
+
+
+/* =========================================
+   ATTENDANCE TABLE
+========================================= */
+
+#attendanceTable {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    table-layout: fixed;
+
+    min-width: 850px;
+
+    background: #ffffff;
+}
+
+
+/* =========================================
+   TABLE HEADER
+========================================= */
+
+#attendanceTable thead {
+
+    background:
+        linear-gradient(
+            90deg,
+            #063b73,
+            #075ca8
+        );
+}
+
+
+#attendanceTable th {
+
+    height: 50px;
+
+    padding: 12px 14px;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    text-align: left;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    border: none;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================
+   EXACT COLUMN WIDTHS
+========================================= */
+
+#attendanceTable th:nth-child(1),
+#attendanceTable td:nth-child(1) {
+
+    width: 25%;
+
+}
+
+
+#attendanceTable th:nth-child(2),
+#attendanceTable td:nth-child(2) {
+
+    width: 13%;
+
+}
+
+
+#attendanceTable th:nth-child(3),
+#attendanceTable td:nth-child(3) {
+
+    width: 12%;
+
+}
+
+
+#attendanceTable th:nth-child(4),
+#attendanceTable td:nth-child(4) {
+
+    width: 12%;
+
+}
+
+
+#attendanceTable th:nth-child(5),
+#attendanceTable td:nth-child(5) {
+
+    width: 12%;
+
+}
+
+
+#attendanceTable th:nth-child(6),
+#attendanceTable td:nth-child(6) {
+
+    width: 12%;
+
+}
+
+
+#attendanceTable th:nth-child(7),
+#attendanceTable td:nth-child(7) {
+
+    width: 14%;
+
+}
+
+
+/* =========================================
+   TABLE DATA
+========================================= */
+
+#attendanceTable td {
+
+    height: 52px;
+
+    padding: 12px 14px;
+
+    color: #444;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    text-align: left;
+
+    vertical-align: middle;
+
+    border-bottom:
+        1px solid #e9edf2;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   TABLE ROW
+========================================= */
+
+#attendanceTable tbody tr {
+
+    transition:
+        background-color 0.15s ease;
+}
+
+
+#attendanceTable tbody tr:hover {
+
+    background-color: #f5f8fc;
+}
+
+
+#attendanceTable tbody tr:last-child td {
+
+    border-bottom: none;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 65px;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* PRESENT */
+
+.status.present {
+
+    background: #e7f6ec;
+
+    color: #218838;
+}
+
+
+/* =========================================
+   EMPTY TABLE MESSAGE
+========================================= */
+
+#attendanceTable tbody:empty::after {
+
+    content: "No attendance records found.";
+
+    display: block;
+
+    padding: 30px;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+.table-wrapper::-webkit-scrollbar {
+
+    height: 7px;
+}
+
+
+.table-wrapper::-webkit-scrollbar-track {
+
+    background: #f1f1f1;
+
+}
+
+
+.table-wrapper::-webkit-scrollbar-thumb {
+
+    background: #075ca8;
+
+    border-radius: 10px;
+
+}
+
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+
+    background: #063b73;
+
+}
+
+
+/* =========================================
+   RESPONSIVE — TABLET
+========================================= */
+
+@media screen and (max-width: 900px) {
+
+
+    .admin-navbar {
+
+        padding: 0 20px;
+
+    }
+
+
+    .navbar-brand {
+
+        font-size: 12px;
+
+    }
+
+
+    .navbar-right {
+
+        gap: 15px;
+
+    }
+
+
+    .navbar-welcome {
+
+        display: none;
+
+    }
+
+
+    .main {
+
+        padding:
+            95px 20px 40px;
+
+    }
+
+
+    .employee-info-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+}
+
+
+/* =========================================
+   RESPONSIVE — MOBILE
+========================================= */
+
+@media screen and (max-width: 600px) {
+
+
+    .admin-navbar {
+
+        height: 65px;
+
+        padding:
+            0 15px;
+
+    }
+
+
+    .navbar-brand {
+
+        font-size: 10px;
+
+        max-width: 190px;
+
+        white-space: normal;
+
+        line-height: 1.3;
+
+    }
+
+
+    .navbar-datetime {
+
+        display: none;
+
+    }
+
+
+    .main {
+
+        padding:
+            85px 12px 30px;
+
+    }
+
+
+    .topbar {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+    }
+
+
+    .topbar h1 {
+
+        font-size: 20px;
+
+    }
+
+
+    .topbar p {
+
+        font-size: 10px;
+
+    }
+
+
+    .add-btn {
+
+        padding:
+            9px 15px;
+
+        font-size: 10px;
+
+    }
+
+
+    .form-container {
+
+        padding: 20px;
+
+    }
+
+
+    .employee-header {
+
+        align-items: flex-start;
+
+        gap: 14px;
+
+    }
+
+
+    .employee-avatar {
+
+        width: 60px;
+
+        height: 60px;
+
+        min-width: 60px;
+
+        font-size: 22px;
+
+    }
+
+
+    .employee-heading h2 {
+
+        font-size: 16px;
+
+        line-height: 1.4;
+
+    }
+
+
+    .employee-heading p {
+
+        font-size: 10px;
+
+    }
+
+
+    .employee-info-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 12px;
+
+    }
+
+
+    .info-box {
+
+        min-height: auto;
+
+        padding: 15px;
+
+    }
+
+
+    .table-container {
+
+        padding: 15px;
+
+    }
+
+
+    .attendance-tools {
+
+        justify-content: flex-start;
+
+    }
+
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media screen and (max-width: 400px) {
+
+
+    .navbar-brand {
+
+        max-width: 160px;
+
+        font-size: 9px;
+
+    }
+
+
+    .topbar h1 {
+
+        font-size: 18px;
+
+    }
+
+
+    .form-container {
+
+        padding: 15px;
+
+    }
+
+
+    .employee-header {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        text-align: center;
+
+    }
+
+
+    .employee-heading h2 {
+
+        font-size: 15px;
+
+    }
+
+
+    .table-container {
+
+        padding: 10px;
+
+    }
+
+
+}

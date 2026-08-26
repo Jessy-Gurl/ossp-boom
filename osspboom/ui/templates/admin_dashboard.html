@@ -1,0 +1,1659 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/admin_dashboard.css' %}">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>DASHBOARD</title>
+</head>
+<body>
+    <nav class="admin-navbar">
+
+    <!-- SYSTEM NAME -->
+    <div class="navbar-brand">
+        OSSP BIOMETRICS MANAGEMENT SYSTEM
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="navbar-right">
+
+        <!-- WELCOME USER -->
+        <div class="navbar-welcome">
+            Welcome, Admin <strong>Jessica</strong>
+        </div>
+
+        <!-- DATE & TIME -->
+        <div class="navbar-datetime">
+            <div id="current-day">Tuesday</div>
+            <div id="current-date-time">
+                August 25, 2026 | 10:03 AM
+            </div>
+        </div>
+
+        <!-- LOGOUT BUTTON -->
+        <button type="button"
+                class="navbar-logout"
+                onclick="openLogoutModal()">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+
+        </button>
+
+    </div>
+
+</nav>
+
+<!-- FLOATING LOGO -->
+<div class="floating-logo">
+    <img src="{% static 'image/osspboomlogo.png' %}" alt="OSSP Logo">
+    <img src="{% static 'image/footer2.png' %}" alt="OSSP Logo">
+</div>
+
+<!-- =========================================
+     ADMIN DASHBOARD BODY
+========================================= -->
+
+<main class="admin-dashboard">
+
+    <!-- =========================================
+         PAGE HEADER
+    ========================================= -->
+
+    <div class="dashboard-header">
+
+        <!-- PAGE TITLE -->
+        <div class="dashboard-title">
+
+            <h1>Employee Management</h1>
+
+            <p>
+                Manage OSSP biometric employee records.
+            </p>
+
+        </div>
+
+
+        <!-- =========================================
+             SEARCH BAR
+        ========================================= -->
+
+        <div class="employee-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="employeeSearch"
+                placeholder="Search employee..."
+                onkeyup="searchEmployees()"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         EMPLOYEE TABLE
+    ========================================= -->
+
+    <div class="employee-table-container">
+
+        <table class="employee-table" id="employeeTable">
+
+            <!-- =====================================
+                 TABLE HEADER
+            ====================================== -->
+
+            <thead>
+
+                <tr>
+
+                    <th>Employee No.</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th class="division-filter-header">
+
+    <div class="division-filter">
+
+        <span>Division / Section</span>
+
+        <button
+            type="button"
+            class="division-filter-btn"
+            onclick="toggleDivisionFilter(event)"
+            title="Filter by Division / Section">
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+        </button>
+
+        <div class="division-filter-menu">
+
+            <button type="button" onclick="filterDivision('ALL')">
+                All
+            </button>
+
+            <button type="button" onclick="filterDivision('OSSP')">
+                OSSP
+            </button>
+
+            <button type="button" onclick="filterDivision('LEGISLATIVE DIVISION')">
+                Legislative Division
+            </button>
+
+            <button type="button" onclick="filterDivision('ADMINISTRATIVE DIVISION')">
+                Administrative Division
+            </button>
+
+            <button type="button" onclick="filterDivision('JOURNAL & MINUTES DIVISION')">
+                Journal &amp; Minutes Division
+            </button>
+
+        </div>
+
+    </div>
+
+</th>
+                    <th>Position</th>
+                    <th class="action-column">Action</th>
+
+                </tr>
+
+            </thead>
+
+
+            <!-- =====================================
+                 TABLE BODY
+            ====================================== -->
+
+            <tbody>
+
+
+                <!-- =====================================
+                     EMPLOYEE 001
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-001</td>
+                    <td>Angelo</td>
+                    <td>Aquino</td>
+                    <td>De Leon</td>
+                    <td>OSSP</td>
+                    <td>Executive Assistant</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button
+                                type="button"
+                                class="action-btn"
+                                onclick="toggleActionMenu(this)"
+                                title="Employee Actions">
+
+                                <i class="fa-solid fa-ellipsis"></i>
+
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button
+                                    type="button"
+                                    onclick="window.location.href='{% url 'view_details' %}'">
+
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+
+                                </button>
+
+                                <button
+                                    type="button"
+                                    onclick="editEmployee('OSSP-001')">
+
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="delete-action"
+                                    onclick="deleteEmployee('OSSP-001')">
+
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 002
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-002</td>
+                    <td>Jessica</td>
+                    <td>Balindan</td>
+                    <td>De Austria</td>
+                    <td>OSSP</td>
+                    <td>COS</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button
+                                type="button"
+                                class="action-btn"
+                                onclick="toggleActionMenu(this)"
+                                title="Employee Actions">
+
+                                <i class="fa-solid fa-ellipsis"></i>
+
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button
+                                    type="button"
+                                    onclick="viewEmployee('OSSP-002')">
+
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+
+                                </button>
+
+                                <button
+                                    type="button"
+                                    onclick="editEmployee('OSSP-002')">
+
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="delete-action"
+                                    onclick="deleteEmployee('OSSP-002')">
+
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 003
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-003</td>
+                    <td>Michael</td>
+                    <td>N/A</td>
+                    <td>Santos</td>
+                    <td>Legislative Division</td>
+                    <td>Legislative Officer</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button
+                                type="button"
+                                class="action-btn"
+                                onclick="toggleActionMenu(this)"
+                                title="Employee Actions">
+
+                                <i class="fa-solid fa-ellipsis"></i>
+
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button
+                                    type="button"
+                                    onclick="viewEmployee('OSSP-003')">
+
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+
+                                </button>
+
+                                <button
+                                    type="button"
+                                    onclick="editEmployee('OSSP-003')">
+
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="delete-action"
+                                    onclick="deleteEmployee('OSSP-003')">
+
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 004
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-004</td>
+                    <td>María</td>
+                    <td>N/A</td>
+                    <td>Reyes</td>
+                    <td>Administrative Division</td>
+                    <td>Administrative Officer</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button
+                                type="button"
+                                class="action-btn"
+                                onclick="toggleActionMenu(this)"
+                                title="Employee Actions">
+
+                                <i class="fa-solid fa-ellipsis"></i>
+
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button
+                                    type="button"
+                                    onclick="viewEmployee('OSSP-004')">
+
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+
+                                </button>
+
+                                <button
+                                    type="button"
+                                    onclick="editEmployee('OSSP-004')">
+
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="delete-action"
+                                    onclick="deleteEmployee('OSSP-004')">
+
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 005
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-005</td>
+                    <td>Daniel</td>
+                    <td>N/A</td>
+                    <td>Garcia</td>
+                    <td>Journal &amp; Minutes Division</td>
+                    <td>Records Officer</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button
+                                type="button"
+                                class="action-btn"
+                                onclick="toggleActionMenu(this)"
+                                title="Employee Actions">
+
+                                <i class="fa-solid fa-ellipsis"></i>
+
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button
+                                    type="button"
+                                    onclick="viewEmployee('OSSP-005')">
+
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+
+                                </button>
+
+                                <button
+                                    type="button"
+                                    onclick="editEmployee('OSSP-005')">
+
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="delete-action"
+                                    onclick="deleteEmployee('OSSP-005')">
+
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 006
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-006</td>
+                    <td>Patricia</td>
+                    <td>N/A</td>
+                    <td>Ramos</td>
+                    <td>Administrative Division</td>
+                    <td>Administrative Assistant</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button
+                                type="button"
+                                class="action-btn"
+                                onclick="toggleActionMenu(this)"
+                                title="Employee Actions">
+
+                                <i class="fa-solid fa-ellipsis"></i>
+
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button
+                                    type="button"
+                                    onclick="viewEmployee('OSSP-006')">
+
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+
+                                </button>
+
+                                <button
+                                    type="button"
+                                    onclick="editEmployee('OSSP-006')">
+
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="delete-action"
+                                    onclick="deleteEmployee('OSSP-006')">
+
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 007
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-007</td>
+                    <td>Carlo</td>
+                    <td>N/A</td>
+                    <td>Mendoza</td>
+                    <td>Legislative Division</td>
+                    <td>Legislative Staff</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button
+                                type="button"
+                                class="action-btn"
+                                onclick="toggleActionMenu(this)"
+                                title="Employee Actions">
+
+                                <i class="fa-solid fa-ellipsis"></i>
+
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button type="button" onclick="viewEmployee('OSSP-007')">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+                                </button>
+
+                                <button type="button" onclick="editEmployee('OSSP-007')">
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+                                </button>
+
+                                <button type="button" class="delete-action" onclick="deleteEmployee('OSSP-007')">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 008
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-008</td>
+                    <td>Sophia</td>
+                    <td>N/A</td>
+                    <td>Navarro</td>
+                    <td>Journal &amp; Minutes Division</td>
+                    <td>Records Officer</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button type="button" class="action-btn"
+                                onclick="toggleActionMenu(this)">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button type="button" onclick="viewEmployee('OSSP-008')">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+                                </button>
+
+                                <button type="button" onclick="editEmployee('OSSP-008')">
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+                                </button>
+
+                                <button type="button" class="delete-action"
+                                    onclick="deleteEmployee('OSSP-008')">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 009
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-009</td>
+                    <td>Gabriel</td>
+                    <td>N/A</td>
+                    <td>Castillo</td>
+                    <td>Administrative Division</td>
+                    <td>Administrative Officer</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button type="button" class="action-btn"
+                                onclick="toggleActionMenu(this)">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button type="button" onclick="viewEmployee('OSSP-009')">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+                                </button>
+
+                                <button type="button" onclick="editEmployee('OSSP-009')">
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+                                </button>
+
+                                <button type="button" class="delete-action"
+                                    onclick="deleteEmployee('OSSP-009')">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 010
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-010</td>
+                    <td>Andrea</td>
+                    <td>N/A</td>
+                    <td>Fernandez</td>
+                    <td>Legislative Division</td>
+                    <td>Legislative Officer</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button type="button" class="action-btn"
+                                onclick="toggleActionMenu(this)">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button type="button" onclick="viewEmployee('OSSP-010')">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+                                </button>
+
+                                <button type="button" onclick="editEmployee('OSSP-010')">
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+                                </button>
+
+                                <button type="button" class="delete-action"
+                                    onclick="deleteEmployee('OSSP-010')">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 011
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-011</td>
+                    <td>Kevin</td>
+                    <td>N/A</td>
+                    <td>Villanueva</td>
+                    <td>OSSP</td>
+                    <td>Executive Assistant</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button type="button" class="action-btn"
+                                onclick="toggleActionMenu(this)">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button type="button" onclick="viewEmployee('OSSP-011')">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+                                </button>
+
+                                <button type="button" onclick="editEmployee('OSSP-011')">
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+                                </button>
+
+                                <button type="button" class="delete-action"
+                                    onclick="deleteEmployee('OSSP-011')">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 012
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-012</td>
+                    <td>Christine</td>
+                    <td>N/A</td>
+                    <td>Flores</td>
+                    <td>Journal &amp; Minutes Division</td>
+                    <td>Records Staff</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button type="button" class="action-btn"
+                                onclick="toggleActionMenu(this)">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button type="button" onclick="viewEmployee('OSSP-012')">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+                                </button>
+
+                                <button type="button" onclick="editEmployee('OSSP-012')">
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+                                </button>
+
+                                <button type="button" class="delete-action"
+                                    onclick="deleteEmployee('OSSP-012')">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 013
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-013</td>
+                    <td>Joshua</td>
+                    <td>N/A</td>
+                    <td>Torres</td>
+                    <td>Administrative Division</td>
+                    <td>Administrative Staff</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button type="button" class="action-btn"
+                                onclick="toggleActionMenu(this)">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button type="button" onclick="viewEmployee('OSSP-013')">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+                                </button>
+
+                                <button type="button" onclick="editEmployee('OSSP-013')">
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+                                </button>
+
+                                <button type="button" class="delete-action"
+                                    onclick="deleteEmployee('OSSP-013')">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 014
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-014</td>
+                    <td>Samantha</td>
+                    <td>N/A</td>
+                    <td>Diaz</td>
+                    <td>Legislative Division</td>
+                    <td>Legislative Staff</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button type="button" class="action-btn"
+                                onclick="toggleActionMenu(this)">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button type="button" onclick="viewEmployee('OSSP-014')">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+                                </button>
+
+                                <button type="button" onclick="editEmployee('OSSP-014')">
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+                                </button>
+
+                                <button type="button" class="delete-action"
+                                    onclick="deleteEmployee('OSSP-014')">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 015
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-015</td>
+                    <td>Mark</td>
+                    <td>N/A</td>
+                    <td>Gonzales</td>
+                    <td>Journal &amp; Minutes Division</td>
+                    <td>Records Officer</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button type="button" class="action-btn"
+                                onclick="toggleActionMenu(this)">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button type="button" onclick="viewEmployee('OSSP-015')">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+                                </button>
+
+                                <button type="button" onclick="editEmployee('OSSP-015')">
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+                                </button>
+
+                                <button type="button" class="delete-action"
+                                    onclick="deleteEmployee('OSSP-015')">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 016
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-016</td>
+                    <td>Nicole</td>
+                    <td>N/A</td>
+                    <td>Rivera</td>
+                    <td>Administrative Division</td>
+                    <td>Administrative Officer</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button type="button" class="action-btn"
+                                onclick="toggleActionMenu(this)">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button type="button" onclick="viewEmployee('OSSP-016')">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+                                </button>
+
+                                <button type="button" onclick="editEmployee('OSSP-016')">
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+                                </button>
+
+                                <button type="button" class="delete-action"
+                                    onclick="deleteEmployee('OSSP-016')">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 017
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-017</td>
+                    <td>Adrian</td>
+                    <td>N/A</td>
+                    <td>Morales</td>
+                    <td>Legislative Division</td>
+                    <td>Legislative Officer</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button type="button" class="action-btn"
+                                onclick="toggleActionMenu(this)">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button type="button" onclick="viewEmployee('OSSP-017')">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+                                </button>
+
+                                <button type="button" onclick="editEmployee('OSSP-017')">
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+                                </button>
+
+                                <button type="button" class="delete-action"
+                                    onclick="deleteEmployee('OSSP-017')">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 018
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-018</td>
+                    <td>Hannah</td>
+                    <td>N/A</td>
+                    <td>Lim</td>
+                    <td>Journal &amp; Minutes Division</td>
+                    <td>Records Staff</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button type="button" class="action-btn"
+                                onclick="toggleActionMenu(this)">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button type="button" onclick="viewEmployee('OSSP-018')">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+                                </button>
+
+                                <button type="button" onclick="editEmployee('OSSP-018')">
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+                                </button>
+
+                                <button type="button" class="delete-action"
+                                    onclick="deleteEmployee('OSSP-018')">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 019
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-019</td>
+                    <td>Francis</td>
+                    <td>N/A</td>
+                    <td>Cruz</td>
+                    <td>OSSP</td>
+                    <td>Executive Assistant</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button type="button" class="action-btn"
+                                onclick="toggleActionMenu(this)">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button type="button" onclick="viewEmployee('OSSP-019')">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+                                </button>
+
+                                <button type="button" onclick="editEmployee('OSSP-019')">
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+                                </button>
+
+                                <button type="button" class="delete-action"
+                                    onclick="deleteEmployee('OSSP-019')">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =====================================
+                     EMPLOYEE 020
+                ====================================== -->
+
+                <tr>
+
+                    <td>OSSP-020</td>
+                    <td>Bianca</td>
+                    <td>N/A</td>
+                    <td>Manalo</td>
+                    <td>Administrative Division</td>
+                    <td>Administrative Assistant</td>
+
+                    <td class="action-column">
+
+                        <div class="action-dropdown">
+
+                            <button type="button" class="action-btn"
+                                onclick="toggleActionMenu(this)">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                            <div class="action-menu">
+
+                                <button type="button" onclick="viewEmployee('OSSP-020')">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>View Details</span>
+                                </button>
+
+                                <button type="button" onclick="editEmployee('OSSP-020')">
+                                    <i class="fa-solid fa-pen"></i>
+                                    <span>Edit</span>
+                                </button>
+
+                                <button type="button" class="delete-action"
+                                    onclick="deleteEmployee('OSSP-020')">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>Delete</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+
+<!-- =========================================
+     EMPLOYEE ACTION FUNCTIONS
+========================================= -->
+
+<script>
+
+function toggleActionMenu(button) {
+
+    const currentDropdown =
+        button.closest(".action-dropdown");
+
+    // Close every other employee menu
+    document.querySelectorAll(".action-dropdown").forEach(function(dropdown) {
+
+        if (dropdown !== currentDropdown) {
+
+            dropdown.classList.remove("active");
+
+        }
+
+    });
+
+    // Open / close the selected employee menu
+    currentDropdown.classList.toggle("active");
+
+}
+
+
+/* =========================================
+   CLOSE ACTION MENU WHEN CLICKING OUTSIDE
+========================================= */
+
+document.addEventListener("click", function(event) {
+
+    if (!event.target.closest(".action-dropdown")) {
+
+        document.querySelectorAll(".action-dropdown")
+            .forEach(function(dropdown) {
+
+                dropdown.classList.remove("active");
+
+            });
+
+    }
+
+});
+
+
+/* =========================================
+   VIEW EMPLOYEE
+========================================= */
+
+function viewEmployee(employeeID) {
+
+    alert("View Details for " + employeeID);
+
+}
+
+
+/* =========================================
+   EDIT EMPLOYEE
+========================================= */
+
+function editEmployee(employeeID) {
+
+    alert("Edit employee: " + employeeID);
+
+}
+
+
+/* =========================================
+   DELETE EMPLOYEE
+========================================= */
+
+let employeeToDelete = null;
+
+function deleteEmployee(employeeID) {
+
+    employeeToDelete = employeeID;
+
+    // Put employee ID inside the modal
+    document.getElementById("deleteEmployeeID").textContent = employeeID;
+
+    // Close the action menu
+    document.querySelectorAll(".action-dropdown").forEach(function(dropdown) {
+
+        dropdown.classList.remove("active");
+
+    });
+
+    // Open delete confirmation modal
+    document.getElementById("deleteEmployeeModal").style.display = "flex";
+
+}
+
+
+/* =========================================
+   CLOSE DELETE MODAL
+========================================= */
+
+function closeDeleteEmployeeModal() {
+
+    document.getElementById("deleteEmployeeModal").style.display = "none";
+
+    employeeToDelete = null;
+
+}
+
+
+/* =========================================
+   CONFIRM DELETE
+========================================= */
+
+function confirmDeleteEmployee() {
+
+    if (employeeToDelete) {
+
+        alert(employeeToDelete + " has been deleted.");
+
+        // Reset selected employee
+        employeeToDelete = null;
+
+        // Close modal
+        closeDeleteEmployeeModal();
+
+    }
+
+}
+
+</script>
+
+
+<!-- =========================================
+     FLOATING ACTION BUTTON
+========================================= -->
+
+<div class="floating-actions">
+
+    <!-- ACTION BUTTONS -->
+
+    <div class="floating-menu">
+
+        <!-- ADD EMPLOYEE -->
+
+        <button
+            type="button"
+            class="floating-action add-action"
+            onclick="openAddEmployeeModal()">
+
+            <i class="fa-solid fa-user-plus"></i>
+
+            <span>Add Employee</span>
+
+        </button>
+
+
+        <!-- UPLOAD DTR -->
+
+        <button
+            type="button"
+            class="floating-action upload-action"
+            onclick="openUploadDTR()">
+
+            <i class="fa-solid fa-file-arrow-up"></i>
+
+            <span>Upload DTR</span>
+
+        </button>
+
+    </div>
+
+
+    <!-- MAIN FLOATING BUTTON -->
+
+    <button
+        type="button"
+        class="floating-main"
+        onclick="toggleFloatingMenu()"
+        aria-label="Open actions">
+
+        <i class="fa-solid fa-plus"></i>
+
+    </button>
+
+</div>
+
+<!-- =========================================
+     LOGOUT CONFIRMATION MODAL
+========================================= -->
+
+<div class="logout-modal" id="logoutModal">
+
+    <div class="logout-modal-box">
+
+        <div class="logout-modal-icon">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </div>
+
+        <h3>Logout</h3>
+
+        <p>
+            Are you sure you want to logout?
+        </p>
+
+        <div class="logout-modal-actions">
+
+            <button type="button"
+                    class="logout-cancel"
+                    onclick="closeLogoutModal()">
+                Cancel
+            </button>
+
+            <a href="#"
+               class="logout-confirm">
+                Yes, Logout
+            </a>
+
+        </div>
+
+    </div>
+<script>
+
+
+/* =========================================
+   LIVE DATE & TIME
+========================================= */
+
+function updateDateTime() {
+
+    const now = new Date();
+
+    const day = now.toLocaleDateString('en-US', {
+        weekday: 'long'
+    });
+
+    const date = now.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+    });
+
+    const time = now.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+    });
+
+    document.getElementById('current-day').textContent = day;
+
+    document.getElementById('current-date-time').textContent =
+        `${date} | ${time}`;
+}
+
+updateDateTime();
+
+setInterval(updateDateTime, 1000);
+
+
+/* =========================================
+   LOGOUT MODAL
+========================================= */
+
+function openLogoutModal() {
+
+    document.getElementById('logoutModal').style.display = 'flex';
+
+}
+
+function closeLogoutModal() {
+
+    document.getElementById('logoutModal').style.display = 'none';
+
+}
+
+
+/* Close modal when clicking outside */
+
+document.getElementById('logoutModal').addEventListener('click', function(event) {
+
+    if (event.target === this) {
+
+        closeLogoutModal();
+
+    }
+
+});
+
+
+/* Close modal with ESC */
+
+document.addEventListener('keydown', function(event) {
+
+    if (event.key === 'Escape') {
+
+        closeLogoutModal();
+
+    }
+
+});
+
+/* =========================================
+   FLOATING ACTION MENU
+========================================= */
+
+function toggleFloatingMenu() {
+
+    const floatingActions =
+        document.querySelector(".floating-actions");
+
+    floatingActions.classList.toggle("active");
+
+}
+
+
+/* =========================================
+   UPLOAD DTR
+========================================= */
+
+function openUploadDTR() {
+
+    // Temporary function
+    alert("Upload DTR feature coming soon.");
+
+}
+
+/* =========================================
+   DIVISION / SECTION FILTER
+========================================= */
+
+function toggleDivisionFilter(event) {
+
+    event.stopPropagation();
+
+    const filterHeader =
+        document.querySelector(".division-filter-header");
+
+    filterHeader.classList.toggle("active");
+
+}
+
+
+/* =========================================
+   FILTER EMPLOYEES BY DIVISION
+========================================= */
+
+function filterDivision(division) {
+
+    const rows =
+        document.querySelectorAll("#employeeTable tbody tr");
+
+    rows.forEach(function(row) {
+
+        const divisionCell = row.cells[4];
+
+        if (!divisionCell) return;
+
+        const employeeDivision =
+            divisionCell.textContent.trim().toUpperCase();
+
+        if (
+            division === "ALL" ||
+            employeeDivision === division
+        ) {
+
+            row.style.display = "";
+
+        } else {
+
+            row.style.display = "none";
+
+        }
+
+    });
+
+
+    // Close dropdown
+    document
+        .querySelector(".division-filter-header")
+        .classList.remove("active");
+
+}
+
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,1788 @@
+/* =========================================
+   RESET PAGE DEFAULT SPACING
+========================================= */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+/* =========================================
+   ADMIN NAVBAR
+========================================= */
+
+.admin-navbar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 70px;
+
+    padding: 0 25px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: #123B68;
+
+    color: #ffffff;
+
+    z-index: 1000;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =========================================
+   SYSTEM NAME
+========================================= */
+
+.navbar-brand {
+    font-size: 25px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   RIGHT SIDE
+========================================= */
+
+.navbar-right {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    height: 100%;
+}
+
+
+/* =========================================
+   WELCOME
+========================================= */
+
+.navbar-welcome {
+    font-size: 16px;
+
+    color: rgba(255, 255, 255, 0.90);
+
+    white-space: nowrap;
+}
+
+.navbar-welcome strong {
+    color: #ffffff;
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   DATE & TIME
+========================================= */
+
+.navbar-datetime {
+    text-align: right;
+
+    line-height: 1.3;
+
+    white-space: nowrap;
+}
+
+#current-day {
+    font-size: 15px;
+
+    font-weight: 700;
+
+    color: #ffffff;
+}
+
+#current-date-time {
+    font-size: 13px;
+
+    color: rgba(255, 255, 255, 0.75);
+}
+
+
+/* =========================================
+   LOGOUT BUTTON
+========================================= */
+
+.navbar-logout {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 9px 15px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #C62828;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.navbar-logout:hover {
+    background: #A91F1F;
+
+    transform: translateY(-1px);
+}
+
+.navbar-logout i {
+    font-size: 12px;
+}
+
+
+/* =========================================
+   LOGOUT MODAL OVERLAY
+========================================= */
+
+.logout-modal {
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    backdrop-filter: blur(3px);
+
+    z-index: 2000;
+}
+
+
+/* =========================================
+   MODAL BOX
+========================================= */
+
+.logout-modal-box {
+    width: 360px;
+
+    max-width: calc(100% - 40px);
+
+    padding: 30px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    border-radius: 12px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.30);
+
+    animation: logoutModalAppear 0.2s ease;
+}
+
+
+/* =========================================
+   MODAL ICON
+========================================= */
+
+.logout-modal-icon {
+    width: 55px;
+
+    height: 55px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(198, 40, 40, 0.10);
+
+    color: #C62828;
+
+    font-size: 22px;
+}
+
+
+/* =========================================
+   MODAL TEXT
+========================================= */
+
+.logout-modal-box h3 {
+    margin: 0 0 8px;
+
+    color: #123B68;
+
+    font-size: 20px;
+}
+
+.logout-modal-box p {
+    margin: 0 0 25px;
+
+    color: #666666;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   MODAL BUTTONS
+========================================= */
+
+.logout-modal-actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.logout-cancel,
+.logout-confirm {
+    min-width: 110px;
+
+    padding: 10px 16px;
+
+    border-radius: 6px;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    box-sizing: border-box;
+}
+
+
+/* CANCEL */
+
+.logout-cancel {
+    border: 1px solid #dddddd;
+
+    background: #f5f5f5;
+
+    color: #555555;
+}
+
+.logout-cancel:hover {
+    background: #e9e9e9;
+}
+
+
+/* CONFIRM */
+
+.logout-confirm {
+    border: none;
+
+    background: #C62828;
+
+    color: #ffffff;
+}
+
+.logout-confirm:hover {
+    background: #A91F1F;
+}
+
+
+/* =========================================
+   MODAL ANIMATION
+========================================= */
+
+@keyframes logoutModalAppear {
+
+    from {
+        opacity: 0;
+
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: scale(1);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media screen and (max-width: 900px) {
+
+    .admin-navbar {
+        height: auto;
+
+        min-height: 65px;
+
+        padding: 10px 15px;
+
+        flex-wrap: wrap;
+
+        gap: 10px;
+    }
+
+    .navbar-brand {
+        font-size: 14px;
+    }
+
+    .navbar-right {
+        gap: 12px;
+    }
+
+    .navbar-welcome {
+        font-size: 11px;
+    }
+
+    .navbar-datetime {
+        display: none;
+    }
+
+    .navbar-logout {
+        padding: 8px 11px;
+
+        font-size: 11px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media screen and (max-width: 600px) {
+
+    .admin-navbar {
+        justify-content: center;
+
+        padding: 10px;
+    }
+
+    .navbar-brand {
+        width: 100%;
+
+        text-align: center;
+
+        font-size: 13px;
+    }
+
+    .navbar-right {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .logout-modal-box {
+        padding: 25px 20px;
+    }
+
+}
+
+/* =========================================
+   ADMIN DASHBOARD BODY
+========================================= */
+
+.admin-dashboard {
+    position: relative;
+
+    margin-top: 70px;
+
+    min-height: calc(100vh - 70px);
+
+    padding: 30px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    /* Base Gradient */
+    background: linear-gradient(
+        135deg,
+        #063b73 0%,
+        #075ca8 50%,
+        #c92127 100%
+    );
+}
+
+
+/* =========================================
+   BACKGROUND PHOTO
+========================================= */
+
+.admin-dashboard::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -5px;
+
+    background-image: url("../image/bg.jpg");
+
+    background-size: cover;
+
+    background-position: center center;
+
+    background-repeat: no-repeat;
+
+    /* VERY SLIGHT BLUR */
+    filter: blur(1px);
+
+    transform: scale(1.01);
+
+    /* Photo visibility */
+    opacity: 0.50;
+
+    z-index: 0;
+}
+
+
+/* =========================================
+   BLUE → BLUE → RED GRADIENT
+========================================= */
+
+.admin-dashboard::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(
+        135deg,
+        rgba(6, 59, 115, 0.70) 0%,
+        rgba(7, 92, 168, 0.58) 50%,
+        rgba(201, 33, 39, 0.65) 100%
+    );
+
+    z-index: 1;
+}
+
+
+/* =========================================
+   CONTENT ABOVE BACKGROUND
+========================================= */
+
+.admin-dashboard > * {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   DASHBOARD HEADER
+========================================= */
+
+.dashboard-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   DASHBOARD TITLE
+========================================= */
+
+.dashboard-title {
+    flex-shrink: 0;
+}
+
+.dashboard-title h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 30px;
+
+    font-weight: 700;
+}
+
+.dashboard-title p {
+    margin: 6px 0 0;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   EMPLOYEE SEARCH BAR
+========================================= */
+
+.employee-search {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    width: 350px;
+
+    height: 44px;
+
+    margin-left: auto;
+
+    margin-right: 15px;
+}
+
+
+/* SEARCH ICON */
+
+.employee-search i {
+    position: absolute;
+
+    left: 15px;
+
+    color: #777777;
+
+    font-size: 15px;
+
+    pointer-events: none;
+}
+
+
+/* SEARCH INPUT */
+
+.employee-search input {
+    width: 100%;
+
+    height: 100%;
+
+    padding: 0 15px 0 42px;
+
+    box-sizing: border-box;
+
+    border: none;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    color: #333333;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+
+    transition: 0.2s ease;
+}
+
+
+/* PLACEHOLDER */
+
+.employee-search input::placeholder {
+    color: #888888;
+
+    font-size: 14px;
+}
+
+
+/* SEARCH FOCUS */
+
+.employee-search input:focus {
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 2px rgba(255, 255, 255, 0.40),
+        0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================
+   EMPLOYEE TABLE CONTAINER
+========================================= */
+
+.employee-table-container {
+    width: 100%;
+
+    /* Vertical scrolling */
+    max-height: calc(100vh - 210px);
+
+    /* Horizontal + vertical scrolling */
+    overflow-x: auto;
+
+    overflow-y: auto;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-radius: 10px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.18);
+
+    /* Firefox scrollbar */
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #075ca8
+        rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================
+   CUSTOM SCROLLBAR
+========================================= */
+
+.employee-table-container::-webkit-scrollbar {
+    width: 9px;
+
+    height: 9px;
+}
+
+.employee-table-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.06);
+
+    border-radius: 10px;
+}
+
+.employee-table-container::-webkit-scrollbar-thumb {
+    background: #075ca8;
+
+    border-radius: 10px;
+}
+
+.employee-table-container::-webkit-scrollbar-thumb:hover {
+    background: #063b73;
+}
+
+
+/* =========================================
+   EMPLOYEE TABLE
+========================================= */
+
+.employee-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 850px;
+}
+
+
+/* =========================================
+   TABLE HEADER
+========================================= */
+
+.employee-table thead {
+    background: #063b73;
+}
+
+
+/* Sticky Header */
+
+.employee-table th {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 5;
+
+    padding: 17px 20px;
+
+    text-align: left;
+
+    color: #ffffff;
+
+    background: #063b73;
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.3px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   TABLE BODY
+========================================= */
+
+.employee-table td {
+    padding: 16px 20px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    color: #444444;
+
+    font-size: 20px;
+
+    line-height: 1.4;
+
+    font-weight: 900;
+
+}
+
+
+/* =========================================
+   ROW HOVER
+========================================= */
+
+.employee-table tbody tr {
+    transition: 0.15s ease;
+}
+
+.employee-table tbody tr:hover {
+    background: #f5f8fc;
+}
+
+
+/* =========================================
+   EMPLOYEE ID
+========================================= */
+
+.employee-table td:first-child {
+    color: #063b73;
+
+    font-weight: 900;
+}
+
+
+/* =========================================
+   CLICKABLE EMPLOYEE NAME
+========================================= */
+
+.employee-name {
+    color: #075ca8;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: 0.2s ease;
+}
+
+.employee-name:hover {
+    color: #c92127;
+
+    text-decoration: underline;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   LAST ROW
+========================================= */
+
+.employee-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media screen and (max-width: 900px) {
+
+    .dashboard-header {
+        align-items: stretch;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .employee-search {
+        width: 100%;
+
+        margin: 0;
+    }
+
+    .add-employee-btn {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+
+    .admin-dashboard {
+        margin-top: 110px;
+
+        min-height: calc(100vh - 110px);
+
+        padding: 20px 15px;
+
+        background-attachment: scroll;
+    }
+
+    .dashboard-title h1 {
+        font-size: 23px;
+    }
+
+    .dashboard-title p {
+        font-size: 13px;
+    }
+
+    .employee-table-container {
+        max-height: calc(100vh - 260px);
+    }
+
+    .employee-table th {
+        padding: 15px 16px;
+
+        font-size: 12px;
+    }
+
+    .employee-table td {
+        padding: 14px 16px;
+
+        font-size: 12px;
+    }
+
+    .employee-name {
+        font-size: 12px;
+    }
+
+}
+
+/* =========================================
+   FLOATING ACTION BUTTON
+========================================= */
+
+.floating-actions {
+    position: fixed;
+
+    right: 30px;
+
+    bottom: 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    z-index: 1000;
+}
+
+
+/* =========================================
+   FLOATING MENU
+========================================= */
+
+.floating-menu {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(15px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+}
+
+
+/* =========================================
+   SHOW MENU
+========================================= */
+
+.floating-actions.active .floating-menu {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+
+}
+
+
+/* =========================================
+   MAIN FLOATING BUTTON
+========================================= */
+
+.floating-main {
+
+    width: 58px;
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #F2B705;
+
+    color: #ffffff;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.30);
+
+    transition:
+        transform 0.25s ease,
+        background 0.2s ease;
+}
+
+
+/* MAIN BUTTON HOVER */
+
+.floating-main:hover {
+
+    background: #c49405;
+
+    transform: scale(1.05);
+
+}
+
+
+/* ROTATE PLUS INTO X */
+
+.floating-actions.active .floating-main {
+
+    transform: rotate(45deg);
+
+}
+
+
+/* =========================================
+   FLOATING ACTION BUTTONS
+========================================= */
+
+.floating-action {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 16px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.20);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* ICON */
+
+.floating-action i {
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================
+   ADD EMPLOYEE
+========================================= */
+
+.add-action {
+
+    background: #075ca8;
+
+}
+
+
+.add-action:hover {
+
+    background: #063b73;
+
+    transform: translateX(-3px);
+
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.25);
+
+}
+
+
+/* =========================================
+   UPLOAD DTR
+========================================= */
+
+.upload-action {
+
+    background: #c92127;
+
+}
+
+
+.upload-action:hover {
+
+    background: #a91f1f;
+
+    transform: translateX(-3px);
+
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.25);
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media screen and (max-width: 700px) {
+
+    .floating-actions {
+
+        right: 20px;
+
+        bottom: 20px;
+
+    }
+
+
+    .floating-main {
+
+        width: 54px;
+
+        height: 54px;
+
+        font-size: 20px;
+
+    }
+
+
+    .floating-action {
+
+        padding: 10px 14px;
+
+        font-size: 12px;
+
+    }
+
+}
+
+/* =========================================
+   ACTION COLUMN
+========================================= */
+
+.action-column {
+    width: 70px;
+
+    text-align: center !important;
+}
+
+
+/* =========================================
+   ACTION BUTTON
+========================================= */
+
+.action-btn {
+    width: 34px;
+
+    height: 34px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: #063b73;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+/* HOVER */
+
+.action-btn:hover {
+    background: #e8f1fa;
+
+    color: #c92127;
+
+    transform: scale(1.05);
+}
+
+
+/* CLICK */
+
+.action-btn:active {
+    transform: scale(0.95);
+}
+
+/* =========================================
+   ACTION COLUMN
+========================================= */
+
+.action-column {
+    text-align: center;
+    position: relative;
+}
+
+.action-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+/* =========================================
+   THREE DOT ACTION BUTTON
+========================================= */
+
+.action-btn {
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #0b4f8a;
+    color: white;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 16px;
+
+    transition: all 0.2s ease;
+
+}
+
+.action-btn:hover {
+
+    background: #083b68;
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =========================================
+   DROPDOWN MENU
+========================================= */
+
+.action-menu {
+
+    display: none;
+
+    position: absolute;
+
+    right: 0;
+    top: 45px;
+
+    width: 175px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    padding: 6px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.15);
+
+    border: 1px solid #e5e7eb;
+
+    z-index: 1000;
+
+}
+
+
+/* SHOW DROPDOWN */
+
+.action-dropdown.active .action-menu {
+
+    display: block;
+
+}
+
+
+/* =========================================
+   DROPDOWN BUTTONS
+========================================= */
+
+.action-menu button {
+
+    width: 100%;
+
+    border: none;
+
+    background: transparent;
+
+    padding: 11px 12px;
+
+    border-radius: 7px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    color: #333;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition: background 0.2s ease;
+
+}
+
+
+/* HOVER */
+
+.action-menu button:hover {
+
+    background: #f1f5f9;
+
+}
+
+
+/* ICON */
+
+.action-menu button i {
+
+    width: 18px;
+
+    text-align: center;
+
+}
+
+
+/* =========================================
+   DELETE BUTTON
+========================================= */
+
+.action-menu .delete-action {
+
+    color: #d62828;
+
+}
+
+.action-menu .delete-action:hover {
+
+    background: #fff0f0;
+
+}
+
+/* =========================================
+   DELETE EMPLOYEE MODAL
+========================================= */
+
+.delete-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    backdrop-filter: blur(3px);
+
+    z-index: 9999;
+
+}
+
+
+/* =========================================
+   DELETE MODAL BOX
+========================================= */
+
+.delete-modal-box {
+
+    width: 400px;
+
+    max-width: 90%;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.25);
+
+    animation: deleteModalShow 0.2s ease;
+
+}
+
+
+/* =========================================
+   DELETE MODAL ANIMATION
+========================================= */
+
+@keyframes deleteModalShow {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(0.92);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+}
+
+
+/* =========================================
+   DELETE ICON
+========================================= */
+
+.delete-modal-icon {
+
+    width: 65px;
+
+    height: 65px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(201, 33, 39, 0.12);
+
+    color: #c92127;
+
+    font-size: 25px;
+
+}
+
+
+/* =========================================
+   DELETE TITLE
+========================================= */
+
+.delete-modal-box h3 {
+
+    margin: 5px 0 10px;
+
+    color: #123b6d;
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================
+   DELETE MESSAGE
+========================================= */
+
+.delete-modal-box p {
+
+    margin: 0 0 8px;
+
+    color: #555;
+
+    font-size: 14px;
+
+    line-height: 22px;
+
+}
+
+
+/* EMPLOYEE ID */
+
+#deleteEmployeeID {
+
+    color: #123b6d;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================
+   DELETE WARNING
+========================================= */
+
+.delete-modal-box small {
+
+    display: block;
+
+    margin-bottom: 25px;
+
+    color: #999;
+
+    font-size: 11px;
+
+}
+
+
+/* =========================================
+   DELETE MODAL ACTIONS
+========================================= */
+
+.delete-modal-actions {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+}
+
+
+/* =========================================
+   CANCEL BUTTON
+========================================= */
+
+.delete-cancel {
+
+    border: 1px solid #d5d5d5;
+
+    background: #ffffff;
+
+    color: #555;
+
+    border-radius: 7px;
+
+    padding: 11px 22px;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    margin: 0;
+
+    text-transform: none;
+
+    letter-spacing: 0;
+
+}
+
+
+.delete-cancel:hover {
+
+    background: #f3f3f3;
+
+    color: #333;
+
+    box-shadow: none;
+
+    transform: none;
+
+}
+
+
+/* =========================================
+   CONFIRM DELETE BUTTON
+========================================= */
+
+.delete-confirm {
+
+    border: none;
+
+    background: #c92127;
+
+    color: #ffffff;
+
+    border-radius: 7px;
+
+    padding: 11px 22px;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    margin: 0;
+
+    text-transform: none;
+
+    letter-spacing: 0;
+
+}
+
+
+.delete-confirm:hover {
+
+    background: #a91c21;
+
+    box-shadow:
+        0 5px 15px rgba(201, 33, 39, 0.25);
+
+    transform: translateY(-1px);
+
+}
+
+
+.delete-confirm i {
+
+    margin-right: 6px;
+
+}
+
+/* =========================================================
+   FLOATING LOGO
+========================================================= */
+
+.floating-logo {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 35px;
+    z-index: 1500;
+}
+
+.floating-logo img {
+    width: 100%;
+    height: 100%;   
+    object-fit: contain;
+    display: block;
+}
+
+/* =========================================
+   DIVISION / SECTION FILTER
+========================================= */
+
+.division-filter-header {
+    position: relative;
+}
+
+.division-filter {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.division-filter-btn {
+    border: none;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    transition: transform 0.2s ease;
+}
+
+.division-filter-btn i {
+    font-size: 11px;
+}
+
+
+/* Rotate arrow when opened */
+
+.division-filter-header.active
+.division-filter-btn {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================
+   DROPDOWN MENU
+========================================= */
+
+.division-filter-menu {
+    position: absolute;
+
+    top: calc(100% + 8px);
+    left: 0;
+
+    min-width: 220px;
+
+    background: #ffffff;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.15);
+
+    border: 1px solid #e5e7eb;
+
+    padding: 6px;
+
+    display: none;
+
+    z-index: 1000;
+}
+
+
+/* Show dropdown */
+
+.division-filter-header.active
+.division-filter-menu {
+    display: block;
+}
+
+
+/* Dropdown options */
+
+.division-filter-menu button {
+    width: 100%;
+
+    display: block;
+
+    border: none;
+    background: transparent;
+
+    padding: 10px 12px;
+
+    text-align: left;
+
+    font-size: 13px;
+
+    color: #333;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+/* Hover */
+
+.division-filter-menu button:hover {
+    background: #f1f5f9;
+}
