@@ -18,108 +18,196 @@
 
 <div class="container" id="container">
 
-    <!-- =========================
+
+    <!-- =====================================================
          SIGN UP
-    ========================== -->
+    ====================================================== -->
+
     <div class="form-container sign-up-container">
 
         <form action="#" method="POST">
 
             {% csrf_token %}
 
+
+            <!-- LOGO -->
             <div class="logo">
-                <img src="{% static 'image/osspboomlogo.png' %}"
-                     alt="OSSP Logo"
-                     class="logo-img">
+
+                <img
+                    src="{% static 'image/osspboomlogo.png' %}"
+                    alt="OSSP Logo"
+                    class="logo-img">
+
             </div>
 
+
+            <!-- TITLE -->
             <h1>Create Account</h1>
 
+
+            <!-- SYSTEM NAME -->
             <p class="system-title">
                 OSSP-B.O.O.M
             </p>
 
-            <span>Register your account</span>
 
+            <span>
+                Register your account
+            </span>
+
+
+            <!-- FIRST NAME -->
             <div class="input-wrapper">
+
                 <i class="fa-solid fa-user"></i>
+
                 <input
                     type="text"
                     name="firstname"
                     placeholder="Enter First Name"
                     required>
+
             </div>
 
-             <div class="input-wrapper">
+
+            <!-- MIDDLE NAME -->
+            <div class="input-wrapper">
+
                 <i class="fa-solid fa-user"></i>
+
                 <input
                     type="text"
                     name="middlename"
                     placeholder="Enter Middle Name"
                     required>
+
             </div>
 
+
+            <!-- LAST NAME -->
             <div class="input-wrapper">
+
                 <i class="fa-solid fa-user"></i>
+
                 <input
                     type="text"
                     name="lasttname"
                     placeholder="Enter Last Name"
                     required>
+
             </div>
 
+
+            <!-- EMAIL -->
             <div class="input-wrapper">
+
                 <i class="fa-solid fa-envelope"></i>
+
                 <input
                     type="email"
                     name="email"
                     placeholder="Email"
                     required>
+
             </div>
 
+
+            <!-- PASSWORD -->
             <div class="input-wrapper">
+
                 <i class="fa-solid fa-lock"></i>
+
                 <input
                     type="password"
                     name="password"
                     placeholder="Password"
                     required>
+
             </div>
 
+
+            <!-- SIGN UP BUTTON -->
             <button type="submit">
+
                 <i class="fa-solid fa-user-plus"></i>
+
                 Sign Up
+
             </button>
+
+
+            <!-- =================================================
+                 MOBILE: GO TO SIGN IN
+            ================================================== -->
+
+            <div class="mobile-signin">
+
+                <span>
+                    Already have an account?
+                </span>
+
+                <button
+                    type="button"
+                    class="mobile-signin-button"
+                    id="mobileSignIn">
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                    Sign In
+
+                </button>
+
+            </div>
 
         </form>
 
     </div>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          SIGN IN
-    ========================== -->
+    ====================================================== -->
+
     <div class="form-container sign-in-container">
 
         <form action="#" method="POST">
 
             {% csrf_token %}
 
+
+            <!-- LOGO -->
             <div class="logo">
-                <img src="{% static 'image/osspboomlogo.png' %}"
-                     alt="OSSP Logo"
-                     class="logo-img">
+
+                <img
+                    src="{% static 'image/osspboomlogo.png' %}"
+                    alt="OSSP Logo"
+                    class="logo-img">
+
             </div>
 
-            <h1>Sign In</h1>
 
+            <!-- TITLE -->
+            <h1>
+                Sign In
+            </h1>
+
+
+            <!-- SYSTEM NAME -->
             <p class="system-title">
                 OSSP-B.O.O.M
             </p>
 
-            <span>Biometric Office Operations and Monitoring</span>
 
-            <!-- Username -->
+            <span>
+                Biometric Office Operations and Monitoring
+            </span>
+
+
+            <!-- =================================================
+                 USERNAME / EMAIL
+            ================================================== -->
+
             <div class="input-wrapper">
 
                 <i class="fa-solid fa-user"></i>
@@ -133,7 +221,10 @@
             </div>
 
 
-            <!-- Password -->
+            <!-- =================================================
+                 PASSWORD
+            ================================================== -->
+
             <div class="input-wrapper">
 
                 <i class="fa-solid fa-lock"></i>
@@ -145,6 +236,9 @@
                     placeholder="Enter Your Password"
                     required>
 
+
+                <!-- PASSWORD TOGGLE -->
+
                 <i
                     class="fa-solid fa-eye password-toggle"
                     id="togglePassword">
@@ -153,33 +247,72 @@
             </div>
 
 
-            <a href="#" class="forgot-password">
+            <!-- FORGOT PASSWORD -->
+
+            <a
+                href="#"
+                class="forgot-password">
+
                 Forgot your password?
+
             </a>
 
 
-            <button type="button" onclick="window.location.href='{% url 'admin_dashboard' %}'">
+            <!-- SIGN IN BUTTON -->
 
-               <i class="fa-solid fa-right-to-bracket"></i>
+            <button
+                type="button"
+                onclick="window.location.href='{% url 'admin_dashboard' %}'">
 
-               Sign In
+                <i class="fa-solid fa-right-to-bracket"></i>
+
+                Sign In
 
             </button>
+
+
+            <!-- =================================================
+                 MOBILE: GO TO SIGN UP
+            ================================================== -->
+
+            <div class="mobile-signup">
+
+                <span>
+                    Don't have an account?
+                </span>
+
+                <button
+                    type="button"
+                    class="mobile-signup-button"
+                    id="mobileSignUp">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    Sign Up
+
+                </button>
+
+            </div>
 
         </form>
 
     </div>
 
 
-    <!-- =========================
-         OVERLAY
-    ========================== -->
+
+    <!-- =====================================================
+         DESKTOP OVERLAY
+    ====================================================== -->
+
     <div class="overlay-container">
 
         <div class="overlay">
 
 
-            <!-- LEFT PANEL -->
+            <!-- =================================================
+                 LEFT OVERLAY
+            ================================================== -->
+
             <div class="overlay-panel overlay-left">
 
                 <img
@@ -187,20 +320,31 @@
                     alt="OSSP Logo"
                     class="overlay-logo">
 
-                <h1>Welcome Back!</h1>
+
+                <h1>
+                    Welcome Back!
+                </h1>
+
 
                 <p>
+
                     Sign in to access the
                     <strong>OSSP-B.O.O.M</strong>
                     system and continue managing
                     office operations.
+
                 </p>
+
+
+                <!-- SIGN IN -->
 
                 <button
                     class="ghost"
-                    id="signIn">
+                    id="signIn"
+                    type="button">
 
                     <i class="fa-solid fa-right-to-bracket"></i>
+
                     Sign In
 
                 </button>
@@ -208,7 +352,11 @@
             </div>
 
 
-            <!-- RIGHT PANEL -->
+
+            <!-- =================================================
+                 RIGHT OVERLAY
+            ================================================== -->
+
             <div class="overlay-panel overlay-right">
 
                 <img
@@ -216,19 +364,30 @@
                     alt="OSSP Logo"
                     class="overlay-logo">
 
-                <h1>Hello, User!</h1>
+
+                <h1>
+                    Hello, User!
+                </h1>
+
 
                 <p>
+
                     Don't have an account yet?
                     Create your account and start using
                     <strong>OSSP-B.O.O.M</strong>.
+
                 </p>
+
+
+                <!-- SIGN UP -->
 
                 <button
                     class="ghost"
-                    id="signUp">
+                    id="signUp"
+                    type="button">
 
                     <i class="fa-solid fa-user-plus"></i>
+
                     Sign Up
 
                 </button>
@@ -239,97 +398,210 @@
 
     </div>
 
-    {% load static %}
 
-<footer class="login-footer">
 
-    <div class="footer-content">
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
 
-        <span class="footer-brand">
-            Developed by. 
-            <img src="{% static 'image/footer5.png' %}" alt="OSSP" class="footer-icon">
-            IT.26
-        </span>
+    <footer class="login-footer">
 
-        <span class="footer-divider">|</span>
+        <div class="footer-content">
 
-        <span>
-            ALWAYS AH<em>EA</em>D OF TIME
-        </span>
 
-        <span class="footer-divider">|</span>
+            <!-- DEVELOPED BY -->
 
-        <span>
-           B.O.O.M ver 1.0
-        </span>
+            <span class="footer-brand">
 
-    </div>
+                Developed by.
 
-</footer>
+                <img
+                    src="{% static 'image/footer5.png' %}"
+                    alt="OSSP"
+                    class="footer-icon">
+
+                IT.26
+
+            </span>
+
+
+            <!-- DIVIDER -->
+
+            <span class="footer-divider">
+                |
+            </span>
+
+
+            <!-- TAGLINE -->
+
+            <span>
+
+                ALWAYS AH<em>EA</em>D OF TIME
+
+            </span>
+
+
+            <!-- DIVIDER -->
+
+            <span class="footer-divider">
+                |
+            </span>
+
+
+            <!-- VERSION -->
+
+            <span>
+
+                B.O.O.M ver 1.0
+
+            </span>
+
+
+        </div>
+
+    </footer>
 
 </div>
 
 
-<!-- =========================
+
+<!-- =========================================================
      JAVASCRIPT
-========================== -->
+========================================================== -->
 
 <script>
 
-const container = document.getElementById("container");
+    /* =====================================================
+       MAIN CONTAINER
+    ====================================================== */
 
-const signUpButton = document.getElementById("signUp");
-const signInButton = document.getElementById("signIn");
-
-const togglePassword =
-    document.getElementById("togglePassword");
-
-const password =
-    document.getElementById("password");
+    const container =
+        document.getElementById("container");
 
 
-// SIGN UP
-signUpButton.addEventListener("click", () => {
+    /* =====================================================
+       DESKTOP BUTTONS
+    ====================================================== */
 
-    container.classList.add("right-panel-active");
+    const signUpButton =
+        document.getElementById("signUp");
 
-});
-
-
-// SIGN IN
-signInButton.addEventListener("click", () => {
-
-    container.classList.remove("right-panel-active");
-
-});
+    const signInButton =
+        document.getElementById("signIn");
 
 
-// PASSWORD TOGGLE
-togglePassword.addEventListener("click", () => {
+    /* =====================================================
+       MOBILE BUTTONS
+    ====================================================== */
 
-    if (password.type === "password") {
+    const mobileSignUp =
+        document.getElementById("mobileSignUp");
 
-        password.type = "text";
+    const mobileSignIn =
+        document.getElementById("mobileSignIn");
 
-        togglePassword.classList.replace(
-            "fa-eye",
-            "fa-eye-slash"
+
+    /* =====================================================
+       PASSWORD TOGGLE
+    ====================================================== */
+
+    const togglePassword =
+        document.getElementById("togglePassword");
+
+    const password =
+        document.getElementById("password");
+
+
+
+    /* =====================================================
+       DESKTOP SIGN UP
+    ====================================================== */
+
+    signUpButton.addEventListener("click", () => {
+
+        container.classList.add(
+            "right-panel-active"
         );
 
-    } else {
+    });
 
-        password.type = "password";
 
-        togglePassword.classList.replace(
-            "fa-eye-slash",
-            "fa-eye"
+
+    /* =====================================================
+       DESKTOP SIGN IN
+    ====================================================== */
+
+    signInButton.addEventListener("click", () => {
+
+        container.classList.remove(
+            "right-panel-active"
         );
 
-    }
+    });
 
-});
+
+
+    /* =====================================================
+       MOBILE SIGN UP
+    ====================================================== */
+
+    mobileSignUp.addEventListener("click", () => {
+
+        container.classList.add(
+            "right-panel-active"
+        );
+
+    });
+
+
+
+    /* =====================================================
+       MOBILE SIGN IN
+    ====================================================== */
+
+    mobileSignIn.addEventListener("click", () => {
+
+        container.classList.remove(
+            "right-panel-active"
+        );
+
+    });
+
+
+
+    /* =====================================================
+       PASSWORD SHOW / HIDE
+    ====================================================== */
+
+    togglePassword.addEventListener("click", () => {
+
+
+        if (password.type === "password") {
+
+            password.type = "text";
+
+            togglePassword.classList.replace(
+                "fa-eye",
+                "fa-eye-slash"
+            );
+
+        }
+
+        else {
+
+            password.type = "password";
+
+            togglePassword.classList.replace(
+                "fa-eye-slash",
+                "fa-eye"
+            );
+
+        }
+
+    });
 
 </script>
+
 
 </body>
 </html>
