@@ -139,22 +139,65 @@
                 All
             </button>
 
-            <button type="button" onclick="filterDivision('OSSP')">
-                OSSP
-            </button>
-
-            <button type="button" onclick="filterDivision('LEGISLATIVE DIVISION')">
-                Legislative Division
-            </button>
-
             <button type="button" onclick="filterDivision('ADMINISTRATIVE DIVISION')">
                 Administrative Division
             </button>
 
-            <button type="button" onclick="filterDivision('JOURNAL & MINUTES DIVISION')">
-                Journal &amp; Minutes Division
+            <button type="button" onclick="filterDivision('RECORD AND CORRESPONDENCE SECTION')">
+                Record and Corresposndence Section
             </button>
 
+            <button type="button" onclick="filterDivision('PERSONNEL SECTION')">
+                Personnel Section
+            </button>
+
+            <button type="button" onclick="filterDivision('GENERAL SERVICES SECTION')">
+                General Services Section
+            </button>
+
+            <button type="button" onclick="filterDivision('FINANCE AND ACCOUNTING SECTION')">
+                Finance and Accounting Section
+            </button>
+            
+            <button type="button" onclick="filterDivision('IT SECTION')">
+                IT Section
+            </button>
+            
+            <button type="button" onclick="filterDivision('JOURNAL AND MINUTES DIVISION')">
+                Journal and Minutes Division
+            </button>
+
+            <button type="button" onclick="filterDivision('JOURNAL TRANSCRIPTION SECTION')">
+                Journal Transcription Section
+            </button>
+
+            <button type="button" onclick="filterDivision('MINUTES SECTION')">
+                Minutes Section
+            </button>
+            
+            <button type="button" onclick="filterDivision('COMMITTEE AFFAIRS SECTION')">
+                Committee Affairs Section
+            </button>
+
+            <button type="button" onclick="filterDivision('SPECIAL COMMITEE SECTION')">
+                Special Committee Section
+            </button>
+
+            <button type="button" onclick="filterDivision('LEGISLATIVE SERVICES DIVISION')">
+                Legislative Services Division
+            </button>
+
+            <button type="button" onclick="filterDivision('ORDINANCE AND RESOLUTION SECTION')">
+                Ordinance and Resolution Section
+            </button>
+
+            <button type="button" onclick="filterDivision('AGENDA AND BRIEFING SECTION')">
+                Agenda and Briefing Section
+            </button>
+
+            <button type="button" onclick="filterDivision('REFERENCE AND ARCHIVES SECTION')">
+                Reference and Archives Section
+            </button>
         </div>
 
     </div>
@@ -1490,6 +1533,197 @@ function confirmDeleteEmployee() {
         </div>
 
     </div>
+
+<!-- =========================================================
+     EDIT EMPLOYEE MODAL
+========================================================= -->
+
+<div class="edit-modal-overlay" id="editModal">
+
+    <div class="edit-modal">
+
+        <!-- HEADER -->
+        <div class="edit-modal-header">
+
+            <div class="edit-modal-title">
+
+                <div class="edit-modal-icon">
+                    <i class="fa-solid fa-user-pen"></i>
+                </div>
+
+                <div>
+                    <h2>Edit Employee</h2>
+                    <p id="editEmployeeID">OSSP-001</p>
+                </div>
+
+            </div>
+
+            <button
+                type="button"
+                class="edit-modal-close"
+                onclick="closeEditModal()">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- BODY -->
+        <div class="edit-modal-body">
+
+            <!-- CONTACT -->
+            <div class="edit-form-group">
+
+                <label for="editContact">
+                    <i class="fa-solid fa-phone"></i>
+                    Contact
+                </label>
+
+                <input
+                    type="text"
+                    id="editContact"
+                    placeholder="Enter contact number">
+
+            </div>
+
+
+            <!-- BIRTHDATE -->
+            <div class="edit-form-group">
+
+                <label for="editBirthdate">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    Birthdate
+                </label>
+
+                <input
+                    type="date"
+                    id="editBirthdate">
+
+            </div>
+
+
+            <!-- ADDRESS -->
+            <div class="edit-form-group edit-full-width">
+
+                <label for="editAddress">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Address
+                </label>
+
+                <textarea
+                    id="editAddress"
+                    rows="3"
+                    placeholder="Enter complete address"></textarea>
+
+            </div>
+
+
+            <!-- SECTION -->
+            <div class="edit-form-group">
+
+                <label for="editSection">
+                    <i class="fa-solid fa-building"></i>
+                    Section
+                </label>
+
+                <select id="editSection">
+
+                    <option value="">Select Section</option>
+
+                    <option value="Administrative Division">
+                        Administrative Division
+                    </option>
+
+                    <option value="Legislative Division">
+                        Legislative Division
+                    </option>
+
+                    <option value="Journal & Minutes Division">
+                        Journal & Minutes Division
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- POSITION -->
+            <div class="edit-form-group">
+
+                <label for="editPosition">
+                    <i class="fa-solid fa-briefcase"></i>
+                    Position
+                </label>
+
+                <select id="editPosition">
+
+                    <option value="">Select Position</option>
+
+                    <option value="Secretary">
+                        Secretary
+                    </option>
+
+                    <option value="Division Head">
+                        Division Head
+                    </option>
+
+                    <option value="Administrative Assistant">
+                        Administrative Assistant
+                    </option>
+
+                    <option value="Legislative Staff">
+                        Legislative Staff
+                    </option>
+
+                    <option value="Records Officer">
+                        Records Officer
+                    </option>
+
+                    <option value="Staff">
+                        Staff
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER -->
+        <div class="edit-modal-footer">
+
+            <button
+                type="button"
+                class="edit-cancel-btn"
+                onclick="closeEditModal()">
+
+                <i class="fa-solid fa-xmark"></i>
+
+                Cancel
+
+            </button>
+
+
+            <button
+                type="button"
+                class="edit-save-btn"
+                onclick="saveEditEmployee()">
+
+                <i class="fa-solid fa-check"></i>
+
+                Save Changes
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
 <script>
 
 
@@ -1651,7 +1885,43 @@ function filterDivision(division) {
         .querySelector(".division-filter-header")
         .classList.remove("active");
 
+    
 }
+
+function editEmployee(employeeId) {
+
+    // Show employee ID in modal
+    document.getElementById("editEmployeeID").textContent = employeeId;
+
+
+    // =====================================================
+    // SAMPLE UI DATA
+    // These are only for UI testing for now.
+    // They are NOT saved to the database.
+    // =====================================================
+
+    document.getElementById("editContact").value =
+        "0917 123 4567";
+
+    document.getElementById("editBirthdate").value =
+        "1995-05-15";
+
+    document.getElementById("editAddress").value =
+        "Quezon City, Metro Manila";
+
+    document.getElementById("editSection").value =
+        "Administrative Division";
+
+    document.getElementById("editPosition").value =
+        "Administrative Assistant";
+
+
+    // Open modal
+    document
+        .getElementById("editModal")
+        .classList.add("active");
+
+} 
 
 </script>
 </div>
