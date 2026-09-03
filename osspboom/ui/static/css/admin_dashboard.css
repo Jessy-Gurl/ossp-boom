@@ -8,7 +8,9 @@ body {
     padding: 0;
     width: 100%;
     min-height: 100%;
+    overflow-x: hidden;
 }
+
 
 /* =========================================
    ADMIN NAVBAR
@@ -345,7 +347,7 @@ body {
 
 
 /* =========================================
-   MOBILE
+   TABLET NAVBAR
 ========================================= */
 
 @media screen and (max-width: 900px) {
@@ -388,7 +390,7 @@ body {
 
 
 /* =========================================
-   SMALL MOBILE
+   SMALL MOBILE NAVBAR
 ========================================= */
 
 @media screen and (max-width: 600px) {
@@ -419,6 +421,7 @@ body {
 
 }
 
+
 /* =========================================
    ADMIN DASHBOARD BODY
 ========================================= */
@@ -436,7 +439,6 @@ body {
 
     overflow: hidden;
 
-    /* Base Gradient */
     background: linear-gradient(
         135deg,
         #063b73 0%,
@@ -465,12 +467,10 @@ body {
 
     background-repeat: no-repeat;
 
-    /* VERY SLIGHT BLUR */
     filter: blur(1px);
 
     transform: scale(1.01);
 
-    /* Photo visibility */
     opacity: 0.50;
 
     z-index: 0;
@@ -551,6 +551,16 @@ body {
     color: rgba(255, 255, 255, 0.85);
 
     font-size: 15px;
+}
+
+
+/* =========================================
+   MOBILE LOGO
+   Hidden on desktop
+========================================= */
+
+.mobile-logo {
+    display: none;
 }
 
 
@@ -648,10 +658,8 @@ body {
 .employee-table-container {
     width: 100%;
 
-    /* Vertical scrolling */
     max-height: calc(100vh - 210px);
 
-    /* Horizontal + vertical scrolling */
     overflow-x: auto;
 
     overflow-y: auto;
@@ -662,7 +670,6 @@ body {
 
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.18);
 
-    /* Firefox scrollbar */
     scrollbar-width: thin;
 
     scrollbar-color:
@@ -719,9 +726,6 @@ body {
     background: #063b73;
 }
 
-
-/* Sticky Header */
-
 .employee-table th {
     position: sticky;
 
@@ -763,7 +767,6 @@ body {
     line-height: 1.4;
 
     font-weight: 900;
-
 }
 
 
@@ -826,7 +829,7 @@ body {
 
 
 /* =========================================
-   MOBILE
+   TABLET DASHBOARD
 ========================================= */
 
 @media screen and (max-width: 900px) {
@@ -839,8 +842,18 @@ body {
         gap: 15px;
     }
 
+    .dashboard-title h1 {
+        font-size: 26px;
+    }
+
+    .dashboard-title p {
+        font-size: 13px;
+    }
+
     .employee-search {
         width: 100%;
+
+        max-width: none;
 
         margin: 0;
     }
@@ -848,50 +861,20 @@ body {
     .add-employee-btn {
         width: 100%;
     }
-}
-
-
-@media screen and (max-width: 700px) {
-
-    .admin-dashboard {
-        margin-top: 110px;
-
-        min-height: calc(100vh - 110px);
-
-        padding: 20px 15px;
-
-        background-attachment: scroll;
-    }
-
-    .dashboard-title h1 {
-        font-size: 23px;
-    }
-
-    .dashboard-title p {
-        font-size: 13px;
-    }
 
     .employee-table-container {
-        max-height: calc(100vh - 260px);
+        max-width: 100%;
+
+        max-height: calc(100vh - 245px);
+
+        -webkit-overflow-scrolling: touch;
     }
 
-    .employee-table th {
-        padding: 15px 16px;
-
-        font-size: 12px;
+    .employee-table {
+        min-width: 850px;
     }
-
-    .employee-table td {
-        padding: 14px 16px;
-
-        font-size: 12px;
-    }
-
-    .employee-name {
-        font-size: 12px;
-    }
-
 }
+
 
 /* =========================================
    FLOATING ACTION BUTTON
@@ -994,8 +977,6 @@ body {
 }
 
 
-/* MAIN BUTTON HOVER */
-
 .floating-main:hover {
 
     background: #c49405;
@@ -1004,8 +985,6 @@ body {
 
 }
 
-
-/* ROTATE PLUS INTO X */
 
 .floating-actions.active .floating-main {
 
@@ -1050,8 +1029,6 @@ body {
         box-shadow 0.2s ease;
 }
 
-
-/* ICON */
 
 .floating-action i {
 
@@ -1107,42 +1084,6 @@ body {
 
 
 /* =========================================
-   MOBILE
-========================================= */
-
-@media screen and (max-width: 700px) {
-
-    .floating-actions {
-
-        right: 20px;
-
-        bottom: 20px;
-
-    }
-
-
-    .floating-main {
-
-        width: 54px;
-
-        height: 54px;
-
-        font-size: 20px;
-
-    }
-
-
-    .floating-action {
-
-        padding: 10px 14px;
-
-        font-size: 12px;
-
-    }
-
-}
-
-/* =========================================
    ACTION COLUMN
 ========================================= */
 
@@ -1150,68 +1091,18 @@ body {
     width: 70px;
 
     text-align: center !important;
-}
 
-
-/* =========================================
-   ACTION BUTTON
-========================================= */
-
-.action-btn {
-    width: 34px;
-
-    height: 34px;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border: none;
-
-    border-radius: 6px;
-
-    background: transparent;
-
-    color: #063b73;
-
-    font-size: 17px;
-
-    cursor: pointer;
-
-    transition: 0.2s ease;
-}
-
-
-/* HOVER */
-
-.action-btn:hover {
-    background: #e8f1fa;
-
-    color: #c92127;
-
-    transform: scale(1.05);
-}
-
-
-/* CLICK */
-
-.action-btn:active {
-    transform: scale(0.95);
-}
-
-/* =========================================
-   ACTION COLUMN
-========================================= */
-
-.action-column {
-    text-align: center;
     position: relative;
 }
+
+
+/* =========================================
+   ACTION DROPDOWN
+========================================= */
 
 .action-dropdown {
     position: relative;
+
     display: inline-block;
 }
 
@@ -1223,25 +1114,30 @@ body {
 .action-btn {
 
     width: 38px;
+
     height: 38px;
 
     border: none;
+
     border-radius: 8px;
 
     background: #0b4f8a;
+
     color: white;
 
     cursor: pointer;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     font-size: 16px;
 
     transition: all 0.2s ease;
-
 }
+
 
 .action-btn:hover {
 
@@ -1252,8 +1148,15 @@ body {
 }
 
 
+.action-btn:active {
+
+    transform: scale(0.95);
+
+}
+
+
 /* =========================================
-   DROPDOWN MENU
+   ACTION MENU
 ========================================= */
 
 .action-menu {
@@ -1263,6 +1166,7 @@ body {
     position: absolute;
 
     right: 0;
+
     top: 45px;
 
     width: 175px;
@@ -1279,11 +1183,8 @@ body {
     border: 1px solid #e5e7eb;
 
     z-index: 1000;
-
 }
 
-
-/* SHOW DROPDOWN */
 
 .action-dropdown.active .action-menu {
 
@@ -1293,7 +1194,7 @@ body {
 
 
 /* =========================================
-   DROPDOWN BUTTONS
+   ACTION MENU BUTTONS
 ========================================= */
 
 .action-menu button {
@@ -1325,11 +1226,8 @@ body {
     text-align: left;
 
     transition: background 0.2s ease;
-
 }
 
-
-/* HOVER */
 
 .action-menu button:hover {
 
@@ -1337,8 +1235,6 @@ body {
 
 }
 
-
-/* ICON */
 
 .action-menu button i {
 
@@ -1349,21 +1245,19 @@ body {
 }
 
 
-/* =========================================
-   DELETE BUTTON
-========================================= */
-
 .action-menu .delete-action {
 
     color: #d62828;
 
 }
 
+
 .action-menu .delete-action:hover {
 
     background: #fff0f0;
 
 }
+
 
 /* =========================================
    DELETE EMPLOYEE MODAL
@@ -1378,6 +1272,7 @@ body {
     display: none;
 
     align-items: center;
+
     justify-content: center;
 
     background: rgba(0, 0, 0, 0.55);
@@ -1385,13 +1280,8 @@ body {
     backdrop-filter: blur(3px);
 
     z-index: 9999;
-
 }
 
-
-/* =========================================
-   DELETE MODAL BOX
-========================================= */
 
 .delete-modal-box {
 
@@ -1411,13 +1301,8 @@ body {
         0 20px 50px rgba(0, 0, 0, 0.25);
 
     animation: deleteModalShow 0.2s ease;
-
 }
 
-
-/* =========================================
-   DELETE MODAL ANIMATION
-========================================= */
 
 @keyframes deleteModalShow {
 
@@ -1440,10 +1325,6 @@ body {
 }
 
 
-/* =========================================
-   DELETE ICON
-========================================= */
-
 .delete-modal-icon {
 
     width: 65px;
@@ -1465,13 +1346,8 @@ body {
     color: #c92127;
 
     font-size: 25px;
-
 }
 
-
-/* =========================================
-   DELETE TITLE
-========================================= */
 
 .delete-modal-box h3 {
 
@@ -1482,13 +1358,8 @@ body {
     font-size: 21px;
 
     font-weight: 700;
-
 }
 
-
-/* =========================================
-   DELETE MESSAGE
-========================================= */
 
 .delete-modal-box p {
 
@@ -1499,24 +1370,16 @@ body {
     font-size: 14px;
 
     line-height: 22px;
-
 }
 
-
-/* EMPLOYEE ID */
 
 #deleteEmployeeID {
 
     color: #123b6d;
 
     font-weight: 700;
-
 }
 
-
-/* =========================================
-   DELETE WARNING
-========================================= */
 
 .delete-modal-box small {
 
@@ -1527,13 +1390,8 @@ body {
     color: #999;
 
     font-size: 11px;
-
 }
 
-
-/* =========================================
-   DELETE MODAL ACTIONS
-========================================= */
 
 .delete-modal-actions {
 
@@ -1542,13 +1400,8 @@ body {
     justify-content: center;
 
     gap: 10px;
-
 }
 
-
-/* =========================================
-   CANCEL BUTTON
-========================================= */
 
 .delete-cancel {
 
@@ -1575,7 +1428,6 @@ body {
     text-transform: none;
 
     letter-spacing: 0;
-
 }
 
 
@@ -1591,10 +1443,6 @@ body {
 
 }
 
-
-/* =========================================
-   CONFIRM DELETE BUTTON
-========================================= */
 
 .delete-confirm {
 
@@ -1621,7 +1469,6 @@ body {
     text-transform: none;
 
     letter-spacing: 0;
-
 }
 
 
@@ -1643,59 +1490,94 @@ body {
 
 }
 
-/* =========================================================
+
+/* =========================================
    FLOATING LOGO
-========================================================= */
+   DESKTOP ONLY
+========================================= */
 
 .floating-logo {
+
     position: absolute;
+
     top: 45px;
+
     left: 50%;
+
     transform: translateX(-50%);
+
     width: 100px;
+
     height: 100px;
+
     border-radius: 50%;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     gap: 10px;
+
     padding: 35px;
+
     z-index: 1500;
 }
 
+
 .floating-logo img {
+
     width: 100%;
-    height: 100%;   
+
+    height: 100%;
+
     object-fit: contain;
+
     display: block;
 }
+
 
 /* =========================================
    DIVISION / SECTION FILTER
 ========================================= */
 
 .division-filter-header {
+
     position: relative;
 }
 
+
 .division-filter {
+
     position: relative;
+
     display: inline-flex;
+
     align-items: center;
+
     gap: 8px;
 }
 
+
 .division-filter-btn {
+
     border: none;
+
     background: transparent;
+
     color: inherit;
+
     cursor: pointer;
 
     width: 24px;
+
     height: 24px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     padding: 0;
@@ -1703,30 +1585,41 @@ body {
     transition: transform 0.2s ease;
 }
 
+
 .division-filter-btn i {
+
     font-size: 11px;
+
 }
 
 
-/* Rotate arrow when opened */
-
 .division-filter-header.active
 .division-filter-btn {
+
     transform: rotate(180deg);
+
 }
 
 
 /* =========================================
-   DROPDOWN MENU
+   DIVISION FILTER MENU
 ========================================= */
 
 .division-filter-menu {
+
     position: absolute;
 
     top: calc(100% + 8px);
+
     left: 0;
 
     min-width: 220px;
+
+    max-height: 280px;
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
 
     background: #ffffff;
 
@@ -1741,26 +1634,72 @@ body {
 
     display: none;
 
-    z-index: 1000;
+    z-index: 999999;
 }
 
-
-/* Show dropdown */
 
 .division-filter-header.active
 .division-filter-menu {
+
     display: block;
+
 }
 
 
-/* Dropdown options */
+/* FILTER SCROLLBAR */
+
+.division-filter-menu {
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #075ca8
+        #eef2f6;
+}
+
+
+.division-filter-menu::-webkit-scrollbar {
+
+    width: 7px;
+
+}
+
+
+.division-filter-menu::-webkit-scrollbar-track {
+
+    background: #eef2f6;
+
+    border-radius: 10px;
+
+}
+
+
+.division-filter-menu::-webkit-scrollbar-thumb {
+
+    background: #075ca8;
+
+    border-radius: 10px;
+
+}
+
+
+.division-filter-menu::-webkit-scrollbar-thumb:hover {
+
+    background: #063b73;
+
+}
+
+
+/* FILTER OPTIONS */
 
 .division-filter-menu button {
+
     width: 100%;
 
     display: block;
 
     border: none;
+
     background: transparent;
 
     padding: 10px 12px;
@@ -1781,15 +1720,16 @@ body {
 }
 
 
-/* Hover */
-
 .division-filter-menu button:hover {
+
     background: #f1f5f9;
+
 }
 
-/* =========================================================
+
+/* =========================================
    EDIT EMPLOYEE MODAL
-========================================================= */
+========================================= */
 
 .edit-modal-overlay {
 
@@ -1798,6 +1738,7 @@ body {
     inset: 0;
 
     width: 100%;
+
     height: 100%;
 
     background: rgba(0, 0, 0, 0.55);
@@ -1805,6 +1746,7 @@ body {
     display: none;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 20px;
@@ -1815,16 +1757,16 @@ body {
 }
 
 
-/* SHOW MODAL */
-
 .edit-modal-overlay.active {
+
     display: flex;
+
 }
 
 
-/* =========================================================
-   MODAL BOX
-========================================================= */
+/* =========================================
+   EDIT MODAL BOX
+========================================= */
 
 .edit-modal {
 
@@ -1844,7 +1786,6 @@ body {
         0 20px 50px rgba(0, 0, 0, 0.25);
 
     animation: editModalShow 0.25s ease;
-
 }
 
 
@@ -1869,15 +1810,16 @@ body {
 }
 
 
-/* =========================================================
-   MODAL HEADER
-========================================================= */
+/* =========================================
+   EDIT MODAL HEADER
+========================================= */
 
 .edit-modal-header {
 
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
     padding: 20px 24px;
@@ -1907,6 +1849,7 @@ body {
 .edit-modal-icon {
 
     width: 42px;
+
     height: 42px;
 
     border-radius: 10px;
@@ -1916,6 +1859,7 @@ body {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     font-size: 18px;
@@ -1941,15 +1885,13 @@ body {
     color: rgba(255, 255, 255, 0.8);
 
     font-size: 11px;
-
 }
 
-
-/* CLOSE BUTTON */
 
 .edit-modal-close {
 
     width: 36px;
+
     height: 36px;
 
     padding: 0;
@@ -1967,6 +1909,7 @@ body {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     cursor: pointer;
@@ -1987,9 +1930,9 @@ body {
 }
 
 
-/* =========================================================
-   MODAL BODY
-========================================================= */
+/* =========================================
+   EDIT MODAL BODY
+========================================= */
 
 .edit-modal-body {
 
@@ -2023,8 +1966,6 @@ body {
 }
 
 
-/* LABEL */
-
 .edit-form-group label {
 
     display: flex;
@@ -2051,7 +1992,9 @@ body {
 }
 
 
-/* INPUTS */
+/* =========================================
+   EDIT INPUTS
+========================================= */
 
 .edit-form-group input,
 .edit-form-group textarea,
@@ -2076,6 +2019,8 @@ body {
     outline: none;
 
     transition: 0.2s ease;
+
+    box-sizing: border-box;
 }
 
 
@@ -2100,15 +2045,226 @@ body {
 }
 
 
-/* =========================================================
-   MODAL FOOTER
-========================================================= */
+/* =========================================
+   CUSTOM EDIT SECTION DROPDOWN
+========================================= */
+
+.edit-section-dropdown {
+
+    position: relative;
+
+    width: 100%;
+}
+
+
+.edit-section-select {
+
+    width: 100%;
+
+    min-height: 46px;
+
+    padding: 12px 14px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #dce2e8;
+
+    border-radius: 7px;
+
+    background: #f7f9fb;
+
+    color: #333333;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+
+.edit-section-select:hover,
+.edit-section-dropdown.active .edit-section-select {
+
+    background: #ffffff;
+
+    border-color: #075ca8;
+
+    box-shadow:
+        0 0 0 3px rgba(7, 92, 168, 0.10);
+}
+
+
+.edit-section-select i {
+
+    flex-shrink: 0;
+
+    transition: transform 0.2s ease;
+
+    color: #075ca8;
+}
+
+
+.edit-section-dropdown.active
+.edit-section-select i {
+
+    transform: rotate(180deg);
+}
+
+
+.edit-section-menu {
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    top: calc(100% + 5px);
+
+    display: none;
+
+    max-height: 210px;
+
+    overflow-y: auto;
+
+    overscroll-behavior: contain;
+
+    background: #ffffff;
+
+    border: 1px solid #dce2e8;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.16);
+
+    z-index: 10001;
+
+    padding: 5px;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #075ca8
+        #f1f3f5;
+}
+
+
+.edit-section-dropdown.active
+.edit-section-menu {
+
+    display: block;
+}
+
+
+.edit-section-menu::-webkit-scrollbar {
+
+    width: 7px;
+
+}
+
+
+.edit-section-menu::-webkit-scrollbar-track {
+
+    background: #f1f3f5;
+
+    border-radius: 10px;
+
+}
+
+
+.edit-section-menu::-webkit-scrollbar-thumb {
+
+    background: #075ca8;
+
+    border-radius: 10px;
+
+}
+
+
+.edit-section-menu::-webkit-scrollbar-thumb:hover {
+
+    background: #063b73;
+
+}
+
+
+.edit-section-menu button {
+
+    width: 100%;
+
+    display: block;
+
+    padding: 10px 12px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: #333333;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.35;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: 0.15s ease;
+}
+
+
+.edit-section-menu button:hover,
+.edit-section-menu button:focus {
+
+    background: #f1f5f9;
+
+    color: #063b73;
+
+    outline: none;
+}
+
+
+.edit-section-menu button.active {
+
+    background: #e8f1fa;
+
+    color: #075ca8;
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   EDIT MODAL FOOTER
+========================================= */
 
 .edit-modal-footer {
 
     display: flex;
 
     align-items: center;
+
     justify-content: flex-end;
 
     gap: 10px;
@@ -2120,8 +2276,6 @@ body {
     background: #fafbfc;
 }
 
-
-/* CANCEL */
 
 .edit-cancel-btn {
 
@@ -2157,8 +2311,6 @@ body {
 }
 
 
-/* SAVE */
-
 .edit-save-btn {
 
     background: #c92127;
@@ -2190,19 +2342,503 @@ body {
 }
 
 
-/* =========================================================
-   MOBILE MODAL
-========================================================= */
+/* =========================================
+   MOBILE — 700PX AND BELOW
+========================================= */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
+
+    /* -------------------------------------
+       NAVBAR
+    ------------------------------------- */
+
+    .admin-navbar {
+
+        position: fixed;
+
+        top: 0;
+
+        left: 0;
+
+        right: 0;
+
+        min-height: 0;
+
+        height: auto;
+
+        padding: 10px 12px;
+
+        gap: 8px;
+
+        flex-wrap: wrap;
+    }
+
+
+    .navbar-brand {
+
+        width: 100%;
+
+        font-size: 14px;
+
+        text-align: center;
+
+        line-height: 1.3;
+
+        white-space: normal;
+    }
+
+
+    .navbar-right {
+
+        width: 100%;
+
+        height: auto;
+
+        gap: 8px;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+    }
+
+
+    .navbar-welcome {
+
+        font-size: 11px;
+    }
+
+
+    .navbar-datetime {
+
+        display: none;
+    }
+
+
+    .navbar-logout {
+
+        padding: 8px 11px;
+
+        font-size: 10px;
+
+        border-radius: 6px;
+    }
+
+
+    /* -------------------------------------
+       DASHBOARD
+    ------------------------------------- */
+
+    .admin-dashboard {
+
+        margin-top: 100px;
+
+        min-height: calc(100vh - 100px);
+
+        padding: 18px 12px 90px;
+
+        overflow: visible;
+    }
+
+
+    .dashboard-header {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 13px;
+
+        margin-bottom: 16px;
+    }
+
+
+    /* =====================================
+       EMPLOYEE MANAGEMENT + LOGOS
+       LOGOS ARE ON THE RIGHT
+    ===================================== */
+
+    .dashboard-title {
+
+        position: relative !important;
+
+        width: 100% !important;
+
+        min-height: 58px !important;
+
+        padding-right: 105px !important;
+
+        box-sizing: border-box !important;
+
+        flex-shrink: 0 !important;
+    }
+
+
+    .dashboard-title h1 {
+
+        margin: 0 !important;
+
+        font-size: 21px !important;
+
+        line-height: 1.2 !important;
+
+        white-space: nowrap !important;
+
+        overflow: visible !important;
+    }
+
+
+    .dashboard-title p {
+
+        margin: 5px 0 0 !important;
+
+        font-size: 10px !important;
+
+        line-height: 1.4 !important;
+    }
+
+
+    /* -------------------------------------
+       MOBILE LOGOS
+       RIGHT SIDE OF EMPLOYEE MANAGEMENT
+    ------------------------------------- */
+
+    .floating-logo {
+
+        display: none !important;
+    }
+
+
+    .mobile-logo {
+
+        display: flex !important;
+
+        position: absolute !important;
+
+        top: 0 !important;
+
+        right: 0 !important;
+
+        width: 95px !important;
+
+        height: 52px !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+        align-items: center !important;
+
+        justify-content: flex-end !important;
+
+        gap: 4px !important;
+
+        box-sizing: border-box !important;
+
+        z-index: 30 !important;
+    }
+
+
+    .mobile-logo img {
+
+        display: block !important;
+
+        width: auto !important;
+
+        height: 38px !important;
+
+        max-width: 44px !important;
+
+        object-fit: contain !important;
+
+        flex-shrink: 0 !important;
+    }
+
+
+    /* -------------------------------------
+       SEARCH
+    ------------------------------------- */
+
+    .employee-search {
+
+        width: 100%;
+
+        height: 42px;
+
+        margin: 0;
+    }
+
+
+    .employee-search input {
+
+        font-size: 12px;
+
+        padding-left: 39px;
+    }
+
+
+    .employee-search input::placeholder {
+
+        font-size: 12px;
+    }
+
+
+    .employee-search i {
+
+        left: 13px;
+
+        font-size: 13px;
+    }
+
+
+    /* -------------------------------------
+       EMPLOYEE TABLE
+    ------------------------------------- */
+
+    .employee-table-container {
+
+        width: 100%;
+
+        max-height: calc(100vh - 245px);
+
+        overflow-x: auto;
+
+        overflow-y: auto;
+
+        border-radius: 9px;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+
+    .employee-table {
+
+        min-width: 850px;
+    }
+
+
+    .employee-table th {
+
+        padding: 13px 12px;
+
+        font-size: 12px;
+    }
+
+
+    .employee-table td {
+
+        padding: 12px;
+
+        font-size: 12px;
+
+        font-weight: 700;
+    }
+
+
+    .employee-table td:first-child {
+
+        font-weight: 800;
+    }
+
+
+    .employee-name {
+
+        font-size: 12px;
+    }
+
+
+    .action-column {
+
+        width: 65px;
+    }
+
+
+    .action-btn {
+
+        width: 34px;
+
+        height: 34px;
+    }
+
+
+    /* -------------------------------------
+       TABLE DIVISION FILTER
+    ------------------------------------- */
+
+    .division-filter-menu {
+
+        left: auto;
+
+        right: 0;
+
+        min-width: 210px;
+
+        width: 210px;
+
+        max-width: calc(100vw - 35px);
+
+        max-height: 220px;
+
+        overflow-y: auto;
+
+        overflow-x: hidden;
+    }
+
+
+    .division-filter-menu button {
+
+        padding: 10px 11px;
+
+        font-size: 11px;
+    }
+
+
+    /* -------------------------------------
+       ACTION DROPDOWN
+    ------------------------------------- */
+
+    .action-menu {
+
+        right: 0;
+
+        width: 155px;
+
+        max-width: calc(100vw - 30px);
+    }
+
+
+    .action-menu button {
+
+        padding: 10px;
+
+        font-size: 12px;
+    }
+
+
+    /* -------------------------------------
+       FLOATING ACTIONS
+    ------------------------------------- */
+
+    .floating-actions {
+
+        right: 14px;
+
+        bottom: 14px;
+    }
+
+
+    .floating-main {
+
+        width: 52px;
+
+        height: 52px;
+
+        font-size: 19px;
+    }
+
+
+    .floating-action {
+
+        padding: 10px 13px;
+
+        font-size: 11px;
+    }
+
+
+    /* -------------------------------------
+       LOGOUT MODAL
+    ------------------------------------- */
+
+    .logout-modal {
+
+        padding: 12px;
+
+        box-sizing: border-box;
+    }
+
+
+    .logout-modal-box {
+
+        width: 100%;
+
+        max-width: 360px;
+
+        padding: 24px 18px;
+
+        border-radius: 12px;
+    }
+
+
+    .logout-modal-actions {
+
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+
+    .logout-cancel,
+    .logout-confirm {
+
+        width: 100%;
+    }
+
+
+    /* -------------------------------------
+       DELETE MODAL
+    ------------------------------------- */
+
+    .delete-modal {
+
+        padding: 12px;
+
+        box-sizing: border-box;
+    }
+
+
+    .delete-modal-box {
+
+        width: 100%;
+
+        max-width: 360px;
+
+        padding: 25px 18px;
+
+        border-radius: 13px;
+    }
+
+
+    .delete-modal-actions {
+
+        flex-direction: column-reverse;
+
+        width: 100%;
+    }
+
+
+    .delete-cancel,
+    .delete-confirm {
+
+        width: 100%;
+    }
+
+
+    /* -------------------------------------
+       EDIT MODAL
+    ------------------------------------- */
 
     .edit-modal-overlay {
 
-        padding: 12px;
+        padding: 10px;
+
+        align-items: center;
     }
 
 
     .edit-modal {
+
+        width: 100%;
+
+        max-width: 100%;
 
         max-height: 94vh;
 
@@ -2212,22 +2848,47 @@ body {
 
     .edit-modal-header {
 
-        padding: 16px 18px;
+        padding: 14px 16px;
     }
 
 
-    .edit-modal-title h2 {
+    .edit-modal-title {
 
-        font-size: 17px;
+        gap: 9px;
     }
 
 
     .edit-modal-icon {
 
-        width: 38px;
-        height: 38px;
+        width: 36px;
 
-        font-size: 15px;
+        height: 36px;
+
+        border-radius: 8px;
+
+        font-size: 14px;
+    }
+
+
+    .edit-modal-title h2 {
+
+        font-size: 30px;
+    }
+
+
+    .edit-modal-title p {
+
+        font-size: 18px;
+    }
+
+
+    .edit-modal-close {
+
+        width: 32px;
+
+        height: 32px;
+
+        font-size: 14px;
     }
 
 
@@ -2235,11 +2896,15 @@ body {
 
         grid-template-columns: 1fr;
 
-        gap: 14px;
+        gap: 13px;
 
-        padding: 18px;
+        padding: 16px;
 
-        max-height: 65vh;
+        max-height: 64vh;
+
+        overflow-y: auto;
+
+        -webkit-overflow-scrolling: touch;
     }
 
 
@@ -2249,11 +2914,66 @@ body {
     }
 
 
+    .edit-form-group {
+
+        gap: 6px;
+    }
+
+
+    .edit-form-group label {
+
+        font-size: 25px;
+    }
+
+
+    .edit-form-group input,
+    .edit-form-group textarea,
+    .edit-form-group select,
+    .edit-section-select {
+
+        min-height: 43px;
+
+        padding: 11px 12px;
+
+        font-size: 18px;
+    }
+
+
+    .edit-form-group textarea {
+
+        min-height: 75px;
+    }
+
+
+    /* EDIT SECTION SCROLL */
+
+    .edit-section-menu {
+
+        max-height: 180px;
+
+        overflow-y: auto;
+
+        overflow-x: hidden;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+
+    .edit-section-menu button {
+
+        padding: 10px;
+
+        font-size: 11px;
+    }
+
+
     .edit-modal-footer {
 
-        padding: 13px 18px;
+        padding: 12px 16px;
 
         flex-direction: column-reverse;
+
+        gap: 8px;
     }
 
 
@@ -2261,6 +2981,209 @@ body {
     .edit-save-btn {
 
         width: 100%;
+
+        padding: 11px 16px;
+    }
+
+
+    /* -------------------------------------
+       DTR MODALS
+    ------------------------------------- */
+
+    .dtr-modal-overlay {
+
+        padding: 10px;
+    }
+
+
+    .dtr-modal,
+    .dtr-result-modal {
+
+        width: 100%;
+
+        max-width: 390px;
+
+        border-radius: 13px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES — 400PX AND BELOW
+========================================================= */
+
+@media screen and (max-width: 400px) {
+
+    .admin-dashboard {
+
+        margin-top: 96px;
+
+        padding-left: 9px;
+
+        padding-right: 9px;
+    }
+
+
+    .navbar-brand {
+
+        font-size: 12px;
+    }
+
+
+    .navbar-welcome {
+
+        font-size: 10px;
+    }
+
+
+    .navbar-logout {
+
+        font-size: 9px;
+
+        padding: 7px 9px;
+    }
+
+
+    /* -------------------------------------
+       EMPLOYEE MANAGEMENT
+    ------------------------------------- */
+
+    .dashboard-title {
+
+        min-height: 53px !important;
+
+        padding-right: 88px !important;
+    }
+
+
+    .dashboard-title h1 {
+
+        font-size: 18px !important;
+
+        line-height: 1.15 !important;
+    }
+
+
+    .dashboard-title p {
+
+        font-size: 9px !important;
+
+        line-height: 1.3 !important;
+    }
+
+
+    /* -------------------------------------
+       SMALL MOBILE LOGOS
+    ------------------------------------- */
+
+    .mobile-logo {
+
+        width: 80px !important;
+
+        height: 44px !important;
+
+        gap: 3px !important;
+
+        right: 0 !important;
+
+        top: 0 !important;
+    }
+
+
+    .mobile-logo img {
+
+        height: 32px !important;
+
+        max-width: 38px !important;
+    }
+
+
+    .employee-table-container {
+
+        max-height: calc(100vh - 225px);
+    }
+
+
+    .employee-table th,
+    .employee-table td {
+
+        padding: 11px 10px;
+    }
+
+
+    .floating-actions {
+
+        right: 10px;
+
+        bottom: 10px;
+    }
+
+
+    .floating-main {
+
+        width: 49px;
+
+        height: 49px;
+
+        font-size: 18px;
+    }
+
+
+    .floating-action {
+
+        padding: 9px 11px;
+
+        font-size: 10px;
+    }
+
+
+    .edit-modal-body {
+
+        padding: 13px;
+    }
+
+
+    .edit-modal-header {
+
+        padding: 13px;
+    }
+
+
+    .edit-modal-footer {
+
+        padding: 11px 13px;
+    }
+
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .navbar-logout:hover,
+    .floating-main:hover,
+    .floating-action:hover,
+    .action-btn:hover,
+    .action-menu button:hover,
+    .delete-confirm:hover,
+    .delete-cancel:hover,
+    .edit-cancel-btn:hover,
+    .edit-save-btn:hover {
+
+        transform: none;
+    }
+
+
+    button,
+    input,
+    textarea,
+    select {
+
+        -webkit-tap-highlight-color: transparent;
     }
 
 }

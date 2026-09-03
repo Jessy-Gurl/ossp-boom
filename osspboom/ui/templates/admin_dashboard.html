@@ -4,41 +4,427 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/admin_dashboard.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/admin_dashboard.css' %}?v=20260902">
+
     <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <title>DASHBOARD</title>
+
+
+<style id="dashboard-mobile-fix">
+
+/* =========================================================
+   MOBILE / DESKTOP LOGO + DASHBOARD BACKGROUND FIXES
+========================================================= */
+
+.dashboard-bg-image {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(6, 59, 115, 0.70) 0%,
+            rgba(7, 92, 168, 0.58) 50%,
+            rgba(201, 33, 39, 0.65) 100%
+        ),
+        url("{% static 'image/bg.jpg' %}") !important;
+
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+
+    pointer-events: none !important;
+}
+
+
+/* MOBILE LOGO HIDDEN BY DEFAULT */
+.mobile-logo {
+    display: none !important;
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media screen and (min-width: 701px) {
+
+    .floating-logo {
+        top: 72px !important;
+        width: 210px !important;
+        height: 68px !important;
+        padding: 0 !important;
+        gap: 12px !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        z-index: 1500 !important;
+    }
+
+    .floating-logo img {
+        width: auto !important;
+        height: 62px !important;
+        max-width: 100px !important;
+        object-fit: contain !important;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 700px) {
+
+    .admin-navbar {
+        position: fixed !important;
+
+        top: 0 !important;
+        left: 0 !important;
+
+        width: 100% !important;
+
+        height: 76px !important;
+        min-height: 76px !important;
+
+        padding: 8px 10px !important;
+
+        display: flex !important;
+        flex-direction: row !important;
+
+        align-items: center !important;
+        justify-content: space-between !important;
+
+        flex-wrap: nowrap !important;
+
+        gap: 8px !important;
+
+        box-sizing: border-box !important;
+
+        z-index: 1000 !important;
+    }
+
+
+    /* SYSTEM NAME */
+
+    .navbar-brand {
+        width: 112px !important;
+        max-width: 112px !important;
+
+        flex: 0 0 112px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        font-size: 10px !important;
+        line-height: 1.15 !important;
+
+        text-align: left !important;
+
+        white-space: normal !important;
+    }
+
+
+    /* RIGHT SIDE */
+
+    .navbar-right {
+        flex: 1 1 auto !important;
+
+        width: auto !important;
+        min-width: 0 !important;
+
+        height: 100% !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: flex-end !important;
+
+        gap: 6px !important;
+
+        flex-wrap: nowrap !important;
+    }
+
+
+    /* WELCOME */
+
+    .navbar-welcome {
+        font-size: 10px !important;
+        white-space: nowrap !important;
+        line-height: 1.1 !important;
+    }
+
+
+    /* HIDE DATE/TIME ON MOBILE */
+
+    .navbar-datetime {
+        display: none !important;
+    }
+
+
+    /* LOGOUT */
+
+    .navbar-logout {
+        min-width: 64px !important;
+        width: 64px !important;
+
+        height: 36px !important;
+
+        padding: 7px 8px !important;
+
+        font-size: 10px !important;
+
+        white-space: nowrap !important;
+
+        justify-content: center !important;
+    }
+
+
+    /* DESKTOP LOGO HIDDEN ON MOBILE */
+
+    .floating-logo {
+        display: none !important;
+    }
+
+
+    /* DASHBOARD */
+
+    .admin-dashboard {
+        margin-top: 76px !important;
+
+        padding: 10px 10px 90px !important;
+
+        min-height: calc(100vh - 76px) !important;
+
+        box-sizing: border-box !important;
+    }
+
+
+    /* HEADER */
+
+    .dashboard-header {
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        gap: 10px !important;
+
+        margin: 0 0 14px !important;
+    }
+
+
+    /* TITLE */
+
+    .dashboard-title {
+        position: relative !important;
+
+        width: 100% !important;
+
+        min-height: 66px !important;
+
+        padding: 0 88px 0 3px !important;
+
+        box-sizing: border-box !important;
+    }
+
+
+    .dashboard-title h1 {
+        margin: 0 !important;
+
+        font-size: 22px !important;
+
+        line-height: 1.1 !important;
+    }
+
+
+    .dashboard-title p {
+        margin: 5px 0 0 !important;
+
+        font-size: 11px !important;
+
+        line-height: 1.3 !important;
+    }
+
+
+    /* =====================================================
+       MOBILE LOGO
+       NOW INSIDE .dashboard-title
+    ===================================================== */
+
+    .mobile-logo {
+        display: flex !important;
+
+        position: absolute !important;
+
+        top: 0 !important;
+        right: 0 !important;
+
+        width: 82px !important;
+        height: 58px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        gap: 3px !important;
+
+        z-index: 20 !important;
+    }
+
+
+    .mobile-logo img {
+        display: block !important;
+
+        width: auto !important;
+        height: 34px !important;
+
+        max-width: 39px !important;
+
+        object-fit: contain !important;
+    }
+
+
+    /* SEARCH */
+
+    .employee-search {
+        width: 100% !important;
+
+        max-width: none !important;
+
+        min-height: 42px !important;
+
+        margin: 0 !important;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media screen and (max-width: 400px) {
+
+    .navbar-brand {
+        width: 100px !important;
+        max-width: 100px !important;
+
+        flex-basis: 100px !important;
+
+        font-size: 9px !important;
+    }
+
+
+    .navbar-welcome {
+        font-size: 9px !important;
+    }
+
+
+    .navbar-logout {
+        min-width: 58px !important;
+        width: 58px !important;
+
+        font-size: 9px !important;
+    }
+
+
+    .dashboard-title {
+        padding-right: 78px !important;
+
+        min-height: 60px !important;
+    }
+
+
+    .dashboard-title h1 {
+        font-size: 20px !important;
+    }
+
+
+    .dashboard-title p {
+        font-size: 10px !important;
+    }
+
+
+    .mobile-logo {
+        width: 72px !important;
+        height: 52px !important;
+    }
+
+
+    .mobile-logo img {
+        height: 30px !important;
+        max-width: 34px !important;
+    }
+
+}
+
+</style>
+
 </head>
+
+
 <body>
-    <nav class="admin-navbar">
+
+
+<!-- =========================================================
+     ADMIN NAVBAR
+========================================================= -->
+
+<nav class="admin-navbar">
+
 
     <!-- SYSTEM NAME -->
+
     <div class="navbar-brand">
         OSSP BIOMETRICS MANAGEMENT SYSTEM
     </div>
 
+
     <!-- RIGHT SIDE -->
+
     <div class="navbar-right">
 
+
         <!-- WELCOME USER -->
+
         <div class="navbar-welcome">
             Welcome, Admin <strong>Jessica</strong>
         </div>
 
+
         <!-- DATE & TIME -->
+
         <div class="navbar-datetime">
-            <div id="current-day">Tuesday</div>
+
+            <div id="current-day">
+                Tuesday
+            </div>
+
             <div id="current-date-time">
                 August 25, 2026 | 10:03 AM
             </div>
+
         </div>
 
-        <!-- LOGOUT BUTTON -->
-        <button type="button"
-                class="navbar-logout"
-                onclick="openLogoutModal()">
+
+        <!-- LOGOUT -->
+
+        <button
+            type="button"
+            class="navbar-logout"
+            onclick="openLogoutModal()">
 
             <i class="fa-solid fa-right-from-bracket"></i>
+
             Logout
 
         </button>
@@ -47,39 +433,89 @@
 
 </nav>
 
-<!-- FLOATING LOGO -->
+
+
+<!-- =========================================================
+     DESKTOP FLOATING LOGO
+========================================================= -->
+
 <div class="floating-logo">
-    <img src="{% static 'image/osspboomlogo.png' %}" alt="OSSP Logo">
-    <img src="{% static 'image/footer5.png' %}" alt="OSSP Logo">
+
+    <img
+        src="{% static 'image/osspboomlogo.png' %}"
+        alt="OSSP Logo">
+
+    <img
+        src="{% static 'image/footer5.png' %}"
+        alt="OSSP Logo">
+
 </div>
 
-<!-- =========================================
+
+
+<!-- =========================================================
      ADMIN DASHBOARD BODY
-========================================= -->
+========================================================= -->
 
 <main class="admin-dashboard">
 
-    <!-- =========================================
+
+    <!-- BACKGROUND IMAGE -->
+
+    <div
+        class="dashboard-bg-image"
+        aria-hidden="true">
+    </div>
+
+
+
+    <!-- =====================================================
          PAGE HEADER
-    ========================================= -->
+    ====================================================== -->
 
     <div class="dashboard-header">
 
+
         <!-- PAGE TITLE -->
+
         <div class="dashboard-title">
 
-            <h1>Employee Management</h1>
+            <h1>
+                Employee Management
+            </h1>
+
 
             <p>
                 Manage OSSP biometric employee records.
             </p>
 
+
+            <!-- =================================================
+                 MOBILE LOGO
+                 IMPORTANT: INSIDE .dashboard-title
+            ================================================== -->
+
+            <div
+                class="mobile-logo"
+                aria-label="OSSP logos">
+
+                <img
+                    src="{% static 'image/osspboomlogo.png' %}"
+                    alt="OSSP Logo">
+
+                <img
+                    src="{% static 'image/footer5.png' %}"
+                    alt="OSSP Logo">
+
+            </div>
+
         </div>
 
 
-        <!-- =========================================
+
+        <!-- =================================================
              SEARCH BAR
-        ========================================= -->
+        ================================================== -->
 
         <div class="employee-search">
 
@@ -89,138 +525,250 @@
                 type="text"
                 id="employeeSearch"
                 placeholder="Search employee..."
-                onkeyup="searchEmployees()"
-            >
+                onkeyup="searchEmployees()">
 
         </div>
 
     </div>
 
 
-    <!-- =========================================
+
+    <!-- =========================================================
          EMPLOYEE TABLE
-    ========================================= -->
+    ========================================================= -->
 
     <div class="employee-table-container">
 
-        <table class="employee-table" id="employeeTable">
+        <table
+            class="employee-table"
+            id="employeeTable">
 
-            <!-- =====================================
+
+            <!-- =================================================
                  TABLE HEADER
-            ====================================== -->
+            ================================================== -->
 
             <thead>
 
                 <tr>
 
-                    <th>Employee No.</th>
-                    <th>First Name</th>
-                    <th>Middle Name</th>
-                    <th>Last Name</th>
+                    <th>
+                        Employee No.
+                    </th>
+
+                    <th>
+                        First Name
+                    </th>
+
+                    <th>
+                        Middle Name
+                    </th>
+
+                    <th>
+                        Last Name
+                    </th>
+
+
+                    <!-- DIVISION / SECTION -->
+
                     <th class="division-filter-header">
 
-    <div class="division-filter">
+                        <div class="division-filter">
 
-        <span>Division / Section</span>
+                            <span>
+                                Division / Section
+                            </span>
 
-        <button
-            type="button"
-            class="division-filter-btn"
-            onclick="toggleDivisionFilter(event)"
-            title="Filter by Division / Section">
 
-            <i class="fa-solid fa-chevron-down"></i>
+                            <button
+                                type="button"
+                                class="division-filter-btn"
+                                onclick="toggleDivisionFilter(event)"
+                                title="Filter by Division / Section">
 
-        </button>
+                                <i class="fa-solid fa-chevron-down"></i>
 
-        <div class="division-filter-menu">
+                            </button>
 
-            <button type="button" onclick="filterDivision('ALL')">
-                All
-            </button>
 
-            <button type="button" onclick="filterDivision('ADMINISTRATIVE DIVISION')">
-                Administrative Division
-            </button>
+                            <!-- FILTER MENU -->
 
-            <button type="button" onclick="filterDivision('RECORD AND CORRESPONDENCE SECTION')">
-                Record and Corresposndence Section
-            </button>
+                            <div class="division-filter-menu">
 
-            <button type="button" onclick="filterDivision('PERSONNEL SECTION')">
-                Personnel Section
-            </button>
 
-            <button type="button" onclick="filterDivision('GENERAL SERVICES SECTION')">
-                General Services Section
-            </button>
+                                <button
+                                    type="button"
+                                    onclick="filterDivision('ALL')">
 
-            <button type="button" onclick="filterDivision('FINANCE AND ACCOUNTING SECTION')">
-                Finance and Accounting Section
-            </button>
-            
-            <button type="button" onclick="filterDivision('IT SECTION')">
-                IT Section
-            </button>
-            
-            <button type="button" onclick="filterDivision('JOURNAL AND MINUTES DIVISION')">
-                Journal and Minutes Division
-            </button>
+                                    All
 
-            <button type="button" onclick="filterDivision('JOURNAL TRANSCRIPTION SECTION')">
-                Journal Transcription Section
-            </button>
+                                </button>
 
-            <button type="button" onclick="filterDivision('MINUTES SECTION')">
-                Minutes Section
-            </button>
-            
-            <button type="button" onclick="filterDivision('COMMITTEE AFFAIRS SECTION')">
-                Committee Affairs Section
-            </button>
 
-            <button type="button" onclick="filterDivision('SPECIAL COMMITEE SECTION')">
-                Special Committee Section
-            </button>
+                                <button
+                                    type="button"
+                                    onclick="filterDivision('ADMINISTRATIVE DIVISION')">
 
-            <button type="button" onclick="filterDivision('LEGISLATIVE SERVICES DIVISION')">
-                Legislative Services Division
-            </button>
+                                    Administrative Division
 
-            <button type="button" onclick="filterDivision('ORDINANCE AND RESOLUTION SECTION')">
-                Ordinance and Resolution Section
-            </button>
+                                </button>
 
-            <button type="button" onclick="filterDivision('AGENDA AND BRIEFING SECTION')">
-                Agenda and Briefing Section
-            </button>
 
-            <button type="button" onclick="filterDivision('REFERENCE AND ARCHIVES SECTION')">
-                Reference and Archives Section
-            </button>
-        </div>
+                                <button
+                                    type="button"
+                                    onclick="filterDivision('RECORD AND CORRESPONDENCE SECTION')">
 
-    </div>
+                                    Record and Corresposndence Section
 
-</th>
-                    <th>Position</th>
-                    <th class="action-column">Action</th>
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    onclick="filterDivision('PERSONNEL SECTION')">
+
+                                    Personnel Section
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    onclick="filterDivision('GENERAL SERVICES SECTION')">
+
+                                    General Services Section
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    onclick="filterDivision('FINANCE AND ACCOUNTING SECTION')">
+
+                                    Finance and Accounting Section
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    onclick="filterDivision('IT SECTION')">
+
+                                    IT Section
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    onclick="filterDivision('JOURNAL AND MINUTES DIVISION')">
+
+                                    Journal and Minutes Division
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    onclick="filterDivision('JOURNAL TRANSCRIPTION SECTION')">
+
+                                    Journal Transcription Section
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    onclick="filterDivision('MINUTES SECTION')">
+
+                                    Minutes Section
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    onclick="filterDivision('COMMITTEE AFFAIRS SECTION')">
+
+                                    Committee Affairs Section
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    onclick="filterDivision('SPECIAL COMMITEE SECTION')">
+
+                                    Special Committee Section
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    onclick="filterDivision('LEGISLATIVE SERVICES DIVISION')">
+
+                                    Legislative Services Division
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    onclick="filterDivision('ORDINANCE AND RESOLUTION SECTION')">
+
+                                    Ordinance and Resolution Section
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    onclick="filterDivision('AGENDA AND BRIEFING SECTION')">
+
+                                    Agenda and Briefing Section
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    onclick="filterDivision('REFERENCE AND ARCHIVES SECTION')">
+
+                                    Reference and Archives Section
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </th>
+
+
+                    <th>
+                        Position
+                    </th>
+
+
+                    <th class="action-column">
+                        Action
+                    </th>
 
                 </tr>
 
             </thead>
 
 
-            <!-- =====================================
+
+            <!-- =================================================
                  TABLE BODY
-            ====================================== -->
+            ================================================== -->
 
             <tbody>
 
 
-                <!-- =====================================
-                     EMPLOYEE 001
-                ====================================== -->
+                <!-- EMPLOYEE 001 -->
 
                 <tr>
 
@@ -245,6 +793,7 @@
 
                             </button>
 
+
                             <div class="action-menu">
 
                                 <button
@@ -252,18 +801,26 @@
                                     onclick="window.location.href='{% url 'view_details' %}'">
 
                                     <i class="fa-solid fa-eye"></i>
-                                    <span>View Details</span>
+
+                                    <span>
+                                        View Details
+                                    </span>
 
                                 </button>
+
 
                                 <button
                                     type="button"
                                     onclick="editEmployee('OSSP-001')">
 
                                     <i class="fa-solid fa-pen"></i>
-                                    <span>Edit</span>
+
+                                    <span>
+                                        Edit
+                                    </span>
 
                                 </button>
+
 
                                 <button
                                     type="button"
@@ -271,7 +828,10 @@
                                     onclick="deleteEmployee('OSSP-001')">
 
                                     <i class="fa-solid fa-trash"></i>
-                                    <span>Delete</span>
+
+                                    <span>
+                                        Delete
+                                    </span>
 
                                 </button>
 
@@ -284,9 +844,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 002
-                ====================================== -->
+
+                <!-- EMPLOYEE 002 -->
 
                 <tr>
 
@@ -304,12 +863,12 @@
                             <button
                                 type="button"
                                 class="action-btn"
-                                onclick="toggleActionMenu(this)"
-                                title="Employee Actions">
+                                onclick="toggleActionMenu(this)">
 
                                 <i class="fa-solid fa-ellipsis"></i>
 
                             </button>
+
 
                             <div class="action-menu">
 
@@ -322,6 +881,7 @@
 
                                 </button>
 
+
                                 <button
                                     type="button"
                                     onclick="editEmployee('OSSP-002')">
@@ -330,6 +890,7 @@
                                     <span>Edit</span>
 
                                 </button>
+
 
                                 <button
                                     type="button"
@@ -350,9 +911,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 003
-                ====================================== -->
+
+                <!-- EMPLOYEE 003 -->
 
                 <tr>
 
@@ -370,12 +930,12 @@
                             <button
                                 type="button"
                                 class="action-btn"
-                                onclick="toggleActionMenu(this)"
-                                title="Employee Actions">
+                                onclick="toggleActionMenu(this)">
 
                                 <i class="fa-solid fa-ellipsis"></i>
 
                             </button>
+
 
                             <div class="action-menu">
 
@@ -388,6 +948,7 @@
 
                                 </button>
 
+
                                 <button
                                     type="button"
                                     onclick="editEmployee('OSSP-003')">
@@ -396,6 +957,7 @@
                                     <span>Edit</span>
 
                                 </button>
+
 
                                 <button
                                     type="button"
@@ -416,9 +978,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 004
-                ====================================== -->
+
+                <!-- EMPLOYEE 004 -->
 
                 <tr>
 
@@ -436,12 +997,12 @@
                             <button
                                 type="button"
                                 class="action-btn"
-                                onclick="toggleActionMenu(this)"
-                                title="Employee Actions">
+                                onclick="toggleActionMenu(this)">
 
                                 <i class="fa-solid fa-ellipsis"></i>
 
                             </button>
+
 
                             <div class="action-menu">
 
@@ -454,6 +1015,7 @@
 
                                 </button>
 
+
                                 <button
                                     type="button"
                                     onclick="editEmployee('OSSP-004')">
@@ -462,6 +1024,7 @@
                                     <span>Edit</span>
 
                                 </button>
+
 
                                 <button
                                     type="button"
@@ -482,9 +1045,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 005
-                ====================================== -->
+
+                <!-- EMPLOYEE 005 -->
 
                 <tr>
 
@@ -502,12 +1064,12 @@
                             <button
                                 type="button"
                                 class="action-btn"
-                                onclick="toggleActionMenu(this)"
-                                title="Employee Actions">
+                                onclick="toggleActionMenu(this)">
 
                                 <i class="fa-solid fa-ellipsis"></i>
 
                             </button>
+
 
                             <div class="action-menu">
 
@@ -520,6 +1082,7 @@
 
                                 </button>
 
+
                                 <button
                                     type="button"
                                     onclick="editEmployee('OSSP-005')">
@@ -528,6 +1091,7 @@
                                     <span>Edit</span>
 
                                 </button>
+
 
                                 <button
                                     type="button"
@@ -548,9 +1112,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 006
-                ====================================== -->
+
+                <!-- EMPLOYEE 006 -->
 
                 <tr>
 
@@ -568,31 +1131,23 @@
                             <button
                                 type="button"
                                 class="action-btn"
-                                onclick="toggleActionMenu(this)"
-                                title="Employee Actions">
+                                onclick="toggleActionMenu(this)">
 
                                 <i class="fa-solid fa-ellipsis"></i>
 
                             </button>
 
+
                             <div class="action-menu">
 
-                                <button
-                                    type="button"
-                                    onclick="viewEmployee('OSSP-006')">
-
+                                <button type="button" onclick="viewEmployee('OSSP-006')">
                                     <i class="fa-solid fa-eye"></i>
                                     <span>View Details</span>
-
                                 </button>
 
-                                <button
-                                    type="button"
-                                    onclick="editEmployee('OSSP-006')">
-
+                                <button type="button" onclick="editEmployee('OSSP-006')">
                                     <i class="fa-solid fa-pen"></i>
                                     <span>Edit</span>
-
                                 </button>
 
                                 <button
@@ -614,9 +1169,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 007
-                ====================================== -->
+
+                <!-- EMPLOYEE 007 -->
 
                 <tr>
 
@@ -631,31 +1185,42 @@
 
                         <div class="action-dropdown">
 
-                            <button
-                                type="button"
-                                class="action-btn"
-                                onclick="toggleActionMenu(this)"
-                                title="Employee Actions">
+                            <button type="button"
+                                    class="action-btn"
+                                    onclick="toggleActionMenu(this)">
 
                                 <i class="fa-solid fa-ellipsis"></i>
 
                             </button>
 
+
                             <div class="action-menu">
 
-                                <button type="button" onclick="viewEmployee('OSSP-007')">
+                                <button type="button"
+                                        onclick="viewEmployee('OSSP-007')">
+
                                     <i class="fa-solid fa-eye"></i>
                                     <span>View Details</span>
+
                                 </button>
 
-                                <button type="button" onclick="editEmployee('OSSP-007')">
+
+                                <button type="button"
+                                        onclick="editEmployee('OSSP-007')">
+
                                     <i class="fa-solid fa-pen"></i>
                                     <span>Edit</span>
+
                                 </button>
 
-                                <button type="button" class="delete-action" onclick="deleteEmployee('OSSP-007')">
+
+                                <button type="button"
+                                        class="delete-action"
+                                        onclick="deleteEmployee('OSSP-007')">
+
                                     <i class="fa-solid fa-trash"></i>
                                     <span>Delete</span>
+
                                 </button>
 
                             </div>
@@ -667,9 +1232,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 008
-                ====================================== -->
+
+                <!-- EMPLOYEE 008 -->
 
                 <tr>
 
@@ -684,27 +1248,42 @@
 
                         <div class="action-dropdown">
 
-                            <button type="button" class="action-btn"
-                                onclick="toggleActionMenu(this)">
+                            <button type="button"
+                                    class="action-btn"
+                                    onclick="toggleActionMenu(this)">
+
                                 <i class="fa-solid fa-ellipsis"></i>
+
                             </button>
+
 
                             <div class="action-menu">
 
-                                <button type="button" onclick="viewEmployee('OSSP-008')">
+                                <button type="button"
+                                        onclick="viewEmployee('OSSP-008')">
+
                                     <i class="fa-solid fa-eye"></i>
                                     <span>View Details</span>
+
                                 </button>
 
-                                <button type="button" onclick="editEmployee('OSSP-008')">
+
+                                <button type="button"
+                                        onclick="editEmployee('OSSP-008')">
+
                                     <i class="fa-solid fa-pen"></i>
                                     <span>Edit</span>
+
                                 </button>
 
-                                <button type="button" class="delete-action"
-                                    onclick="deleteEmployee('OSSP-008')">
+
+                                <button type="button"
+                                        class="delete-action"
+                                        onclick="deleteEmployee('OSSP-008')">
+
                                     <i class="fa-solid fa-trash"></i>
                                     <span>Delete</span>
+
                                 </button>
 
                             </div>
@@ -716,9 +1295,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 009
-                ====================================== -->
+
+                <!-- EMPLOYEE 009 -->
 
                 <tr>
 
@@ -733,27 +1311,42 @@
 
                         <div class="action-dropdown">
 
-                            <button type="button" class="action-btn"
-                                onclick="toggleActionMenu(this)">
+                            <button type="button"
+                                    class="action-btn"
+                                    onclick="toggleActionMenu(this)">
+
                                 <i class="fa-solid fa-ellipsis"></i>
+
                             </button>
+
 
                             <div class="action-menu">
 
-                                <button type="button" onclick="viewEmployee('OSSP-009')">
+                                <button type="button"
+                                        onclick="viewEmployee('OSSP-009')">
+
                                     <i class="fa-solid fa-eye"></i>
                                     <span>View Details</span>
+
                                 </button>
 
-                                <button type="button" onclick="editEmployee('OSSP-009')">
+
+                                <button type="button"
+                                        onclick="editEmployee('OSSP-009')">
+
                                     <i class="fa-solid fa-pen"></i>
                                     <span>Edit</span>
+
                                 </button>
 
-                                <button type="button" class="delete-action"
-                                    onclick="deleteEmployee('OSSP-009')">
+
+                                <button type="button"
+                                        class="delete-action"
+                                        onclick="deleteEmployee('OSSP-009')">
+
                                     <i class="fa-solid fa-trash"></i>
                                     <span>Delete</span>
+
                                 </button>
 
                             </div>
@@ -765,9 +1358,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 010
-                ====================================== -->
+
+                <!-- EMPLOYEE 010 -->
 
                 <tr>
 
@@ -782,27 +1374,42 @@
 
                         <div class="action-dropdown">
 
-                            <button type="button" class="action-btn"
-                                onclick="toggleActionMenu(this)">
+                            <button type="button"
+                                    class="action-btn"
+                                    onclick="toggleActionMenu(this)">
+
                                 <i class="fa-solid fa-ellipsis"></i>
+
                             </button>
+
 
                             <div class="action-menu">
 
-                                <button type="button" onclick="viewEmployee('OSSP-010')">
+                                <button type="button"
+                                        onclick="viewEmployee('OSSP-010')">
+
                                     <i class="fa-solid fa-eye"></i>
                                     <span>View Details</span>
+
                                 </button>
 
-                                <button type="button" onclick="editEmployee('OSSP-010')">
+
+                                <button type="button"
+                                        onclick="editEmployee('OSSP-010')">
+
                                     <i class="fa-solid fa-pen"></i>
                                     <span>Edit</span>
+
                                 </button>
 
-                                <button type="button" class="delete-action"
-                                    onclick="deleteEmployee('OSSP-010')">
+
+                                <button type="button"
+                                        class="delete-action"
+                                        onclick="deleteEmployee('OSSP-010')">
+
                                     <i class="fa-solid fa-trash"></i>
                                     <span>Delete</span>
+
                                 </button>
 
                             </div>
@@ -814,9 +1421,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 011
-                ====================================== -->
+
+                <!-- EMPLOYEE 011 -->
 
                 <tr>
 
@@ -831,27 +1437,42 @@
 
                         <div class="action-dropdown">
 
-                            <button type="button" class="action-btn"
-                                onclick="toggleActionMenu(this)">
+                            <button type="button"
+                                    class="action-btn"
+                                    onclick="toggleActionMenu(this)">
+
                                 <i class="fa-solid fa-ellipsis"></i>
+
                             </button>
+
 
                             <div class="action-menu">
 
-                                <button type="button" onclick="viewEmployee('OSSP-011')">
+                                <button type="button"
+                                        onclick="viewEmployee('OSSP-011')">
+
                                     <i class="fa-solid fa-eye"></i>
                                     <span>View Details</span>
+
                                 </button>
 
-                                <button type="button" onclick="editEmployee('OSSP-011')">
+
+                                <button type="button"
+                                        onclick="editEmployee('OSSP-011')">
+
                                     <i class="fa-solid fa-pen"></i>
                                     <span>Edit</span>
+
                                 </button>
 
-                                <button type="button" class="delete-action"
-                                    onclick="deleteEmployee('OSSP-011')">
+
+                                <button type="button"
+                                        class="delete-action"
+                                        onclick="deleteEmployee('OSSP-011')">
+
                                     <i class="fa-solid fa-trash"></i>
                                     <span>Delete</span>
+
                                 </button>
 
                             </div>
@@ -863,9 +1484,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 012
-                ====================================== -->
+
+                <!-- EMPLOYEE 012 -->
 
                 <tr>
 
@@ -880,27 +1500,42 @@
 
                         <div class="action-dropdown">
 
-                            <button type="button" class="action-btn"
-                                onclick="toggleActionMenu(this)">
+                            <button type="button"
+                                    class="action-btn"
+                                    onclick="toggleActionMenu(this)">
+
                                 <i class="fa-solid fa-ellipsis"></i>
+
                             </button>
+
 
                             <div class="action-menu">
 
-                                <button type="button" onclick="viewEmployee('OSSP-012')">
+                                <button type="button"
+                                        onclick="viewEmployee('OSSP-012')">
+
                                     <i class="fa-solid fa-eye"></i>
                                     <span>View Details</span>
+
                                 </button>
 
-                                <button type="button" onclick="editEmployee('OSSP-012')">
+
+                                <button type="button"
+                                        onclick="editEmployee('OSSP-012')">
+
                                     <i class="fa-solid fa-pen"></i>
                                     <span>Edit</span>
+
                                 </button>
 
-                                <button type="button" class="delete-action"
-                                    onclick="deleteEmployee('OSSP-012')">
+
+                                <button type="button"
+                                        class="delete-action"
+                                        onclick="deleteEmployee('OSSP-012')">
+
                                     <i class="fa-solid fa-trash"></i>
                                     <span>Delete</span>
+
                                 </button>
 
                             </div>
@@ -912,9 +1547,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 013
-                ====================================== -->
+
+                <!-- EMPLOYEE 013 -->
 
                 <tr>
 
@@ -929,27 +1563,42 @@
 
                         <div class="action-dropdown">
 
-                            <button type="button" class="action-btn"
-                                onclick="toggleActionMenu(this)">
+                            <button type="button"
+                                    class="action-btn"
+                                    onclick="toggleActionMenu(this)">
+
                                 <i class="fa-solid fa-ellipsis"></i>
+
                             </button>
+
 
                             <div class="action-menu">
 
-                                <button type="button" onclick="viewEmployee('OSSP-013')">
+                                <button type="button"
+                                        onclick="viewEmployee('OSSP-013')">
+
                                     <i class="fa-solid fa-eye"></i>
                                     <span>View Details</span>
+
                                 </button>
 
-                                <button type="button" onclick="editEmployee('OSSP-013')">
+
+                                <button type="button"
+                                        onclick="editEmployee('OSSP-013')">
+
                                     <i class="fa-solid fa-pen"></i>
                                     <span>Edit</span>
+
                                 </button>
 
-                                <button type="button" class="delete-action"
-                                    onclick="deleteEmployee('OSSP-013')">
+
+                                <button type="button"
+                                        class="delete-action"
+                                        onclick="deleteEmployee('OSSP-013')">
+
                                     <i class="fa-solid fa-trash"></i>
                                     <span>Delete</span>
+
                                 </button>
 
                             </div>
@@ -961,9 +1610,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 014
-                ====================================== -->
+
+                <!-- EMPLOYEE 014 -->
 
                 <tr>
 
@@ -978,27 +1626,42 @@
 
                         <div class="action-dropdown">
 
-                            <button type="button" class="action-btn"
-                                onclick="toggleActionMenu(this)">
+                            <button type="button"
+                                    class="action-btn"
+                                    onclick="toggleActionMenu(this)">
+
                                 <i class="fa-solid fa-ellipsis"></i>
+
                             </button>
+
 
                             <div class="action-menu">
 
-                                <button type="button" onclick="viewEmployee('OSSP-014')">
+                                <button type="button"
+                                        onclick="viewEmployee('OSSP-014')">
+
                                     <i class="fa-solid fa-eye"></i>
                                     <span>View Details</span>
+
                                 </button>
 
-                                <button type="button" onclick="editEmployee('OSSP-014')">
+
+                                <button type="button"
+                                        onclick="editEmployee('OSSP-014')">
+
                                     <i class="fa-solid fa-pen"></i>
                                     <span>Edit</span>
+
                                 </button>
 
-                                <button type="button" class="delete-action"
-                                    onclick="deleteEmployee('OSSP-014')">
+
+                                <button type="button"
+                                        class="delete-action"
+                                        onclick="deleteEmployee('OSSP-014')">
+
                                     <i class="fa-solid fa-trash"></i>
                                     <span>Delete</span>
+
                                 </button>
 
                             </div>
@@ -1010,9 +1673,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 015
-                ====================================== -->
+
+                <!-- EMPLOYEE 015 -->
 
                 <tr>
 
@@ -1027,27 +1689,42 @@
 
                         <div class="action-dropdown">
 
-                            <button type="button" class="action-btn"
-                                onclick="toggleActionMenu(this)">
+                            <button type="button"
+                                    class="action-btn"
+                                    onclick="toggleActionMenu(this)">
+
                                 <i class="fa-solid fa-ellipsis"></i>
+
                             </button>
+
 
                             <div class="action-menu">
 
-                                <button type="button" onclick="viewEmployee('OSSP-015')">
+                                <button type="button"
+                                        onclick="viewEmployee('OSSP-015')">
+
                                     <i class="fa-solid fa-eye"></i>
                                     <span>View Details</span>
+
                                 </button>
 
-                                <button type="button" onclick="editEmployee('OSSP-015')">
+
+                                <button type="button"
+                                        onclick="editEmployee('OSSP-015')">
+
                                     <i class="fa-solid fa-pen"></i>
                                     <span>Edit</span>
+
                                 </button>
 
-                                <button type="button" class="delete-action"
-                                    onclick="deleteEmployee('OSSP-015')">
+
+                                <button type="button"
+                                        class="delete-action"
+                                        onclick="deleteEmployee('OSSP-015')">
+
                                     <i class="fa-solid fa-trash"></i>
                                     <span>Delete</span>
+
                                 </button>
 
                             </div>
@@ -1059,9 +1736,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 016
-                ====================================== -->
+
+                <!-- EMPLOYEE 016 -->
 
                 <tr>
 
@@ -1076,27 +1752,42 @@
 
                         <div class="action-dropdown">
 
-                            <button type="button" class="action-btn"
-                                onclick="toggleActionMenu(this)">
+                            <button type="button"
+                                    class="action-btn"
+                                    onclick="toggleActionMenu(this)">
+
                                 <i class="fa-solid fa-ellipsis"></i>
+
                             </button>
+
 
                             <div class="action-menu">
 
-                                <button type="button" onclick="viewEmployee('OSSP-016')">
+                                <button type="button"
+                                        onclick="viewEmployee('OSSP-016')">
+
                                     <i class="fa-solid fa-eye"></i>
                                     <span>View Details</span>
+
                                 </button>
 
-                                <button type="button" onclick="editEmployee('OSSP-016')">
+
+                                <button type="button"
+                                        onclick="editEmployee('OSSP-016')">
+
                                     <i class="fa-solid fa-pen"></i>
                                     <span>Edit</span>
+
                                 </button>
 
-                                <button type="button" class="delete-action"
-                                    onclick="deleteEmployee('OSSP-016')">
+
+                                <button type="button"
+                                        class="delete-action"
+                                        onclick="deleteEmployee('OSSP-016')">
+
                                     <i class="fa-solid fa-trash"></i>
                                     <span>Delete</span>
+
                                 </button>
 
                             </div>
@@ -1108,9 +1799,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 017
-                ====================================== -->
+
+                <!-- EMPLOYEE 017 -->
 
                 <tr>
 
@@ -1125,27 +1815,42 @@
 
                         <div class="action-dropdown">
 
-                            <button type="button" class="action-btn"
-                                onclick="toggleActionMenu(this)">
+                            <button type="button"
+                                    class="action-btn"
+                                    onclick="toggleActionMenu(this)">
+
                                 <i class="fa-solid fa-ellipsis"></i>
+
                             </button>
+
 
                             <div class="action-menu">
 
-                                <button type="button" onclick="viewEmployee('OSSP-017')">
+                                <button type="button"
+                                        onclick="viewEmployee('OSSP-017')">
+
                                     <i class="fa-solid fa-eye"></i>
                                     <span>View Details</span>
+
                                 </button>
 
-                                <button type="button" onclick="editEmployee('OSSP-017')">
+
+                                <button type="button"
+                                        onclick="editEmployee('OSSP-017')">
+
                                     <i class="fa-solid fa-pen"></i>
                                     <span>Edit</span>
+
                                 </button>
 
-                                <button type="button" class="delete-action"
-                                    onclick="deleteEmployee('OSSP-017')">
+
+                                <button type="button"
+                                        class="delete-action"
+                                        onclick="deleteEmployee('OSSP-017')">
+
                                     <i class="fa-solid fa-trash"></i>
                                     <span>Delete</span>
+
                                 </button>
 
                             </div>
@@ -1157,9 +1862,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 018
-                ====================================== -->
+
+                <!-- EMPLOYEE 018 -->
 
                 <tr>
 
@@ -1174,27 +1878,42 @@
 
                         <div class="action-dropdown">
 
-                            <button type="button" class="action-btn"
-                                onclick="toggleActionMenu(this)">
+                            <button type="button"
+                                    class="action-btn"
+                                    onclick="toggleActionMenu(this)">
+
                                 <i class="fa-solid fa-ellipsis"></i>
+
                             </button>
+
 
                             <div class="action-menu">
 
-                                <button type="button" onclick="viewEmployee('OSSP-018')">
+                                <button type="button"
+                                        onclick="viewEmployee('OSSP-018')">
+
                                     <i class="fa-solid fa-eye"></i>
                                     <span>View Details</span>
+
                                 </button>
 
-                                <button type="button" onclick="editEmployee('OSSP-018')">
+
+                                <button type="button"
+                                        onclick="editEmployee('OSSP-018')">
+
                                     <i class="fa-solid fa-pen"></i>
                                     <span>Edit</span>
+
                                 </button>
 
-                                <button type="button" class="delete-action"
-                                    onclick="deleteEmployee('OSSP-018')">
+
+                                <button type="button"
+                                        class="delete-action"
+                                        onclick="deleteEmployee('OSSP-018')">
+
                                     <i class="fa-solid fa-trash"></i>
                                     <span>Delete</span>
+
                                 </button>
 
                             </div>
@@ -1206,9 +1925,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 019
-                ====================================== -->
+
+                <!-- EMPLOYEE 019 -->
 
                 <tr>
 
@@ -1223,27 +1941,42 @@
 
                         <div class="action-dropdown">
 
-                            <button type="button" class="action-btn"
-                                onclick="toggleActionMenu(this)">
+                            <button type="button"
+                                    class="action-btn"
+                                    onclick="toggleActionMenu(this)">
+
                                 <i class="fa-solid fa-ellipsis"></i>
+
                             </button>
+
 
                             <div class="action-menu">
 
-                                <button type="button" onclick="viewEmployee('OSSP-019')">
+                                <button type="button"
+                                        onclick="viewEmployee('OSSP-019')">
+
                                     <i class="fa-solid fa-eye"></i>
                                     <span>View Details</span>
+
                                 </button>
 
-                                <button type="button" onclick="editEmployee('OSSP-019')">
+
+                                <button type="button"
+                                        onclick="editEmployee('OSSP-019')">
+
                                     <i class="fa-solid fa-pen"></i>
                                     <span>Edit</span>
+
                                 </button>
 
-                                <button type="button" class="delete-action"
-                                    onclick="deleteEmployee('OSSP-019')">
+
+                                <button type="button"
+                                        class="delete-action"
+                                        onclick="deleteEmployee('OSSP-019')">
+
                                     <i class="fa-solid fa-trash"></i>
                                     <span>Delete</span>
+
                                 </button>
 
                             </div>
@@ -1255,9 +1988,8 @@
                 </tr>
 
 
-                <!-- =====================================
-                     EMPLOYEE 020
-                ====================================== -->
+
+                <!-- EMPLOYEE 020 -->
 
                 <tr>
 
@@ -1272,27 +2004,42 @@
 
                         <div class="action-dropdown">
 
-                            <button type="button" class="action-btn"
-                                onclick="toggleActionMenu(this)">
+                            <button type="button"
+                                    class="action-btn"
+                                    onclick="toggleActionMenu(this)">
+
                                 <i class="fa-solid fa-ellipsis"></i>
+
                             </button>
+
 
                             <div class="action-menu">
 
-                                <button type="button" onclick="viewEmployee('OSSP-020')">
+                                <button type="button"
+                                        onclick="viewEmployee('OSSP-020')">
+
                                     <i class="fa-solid fa-eye"></i>
                                     <span>View Details</span>
+
                                 </button>
 
-                                <button type="button" onclick="editEmployee('OSSP-020')">
+
+                                <button type="button"
+                                        onclick="editEmployee('OSSP-020')">
+
                                     <i class="fa-solid fa-pen"></i>
                                     <span>Edit</span>
+
                                 </button>
 
-                                <button type="button" class="delete-action"
-                                    onclick="deleteEmployee('OSSP-020')">
+
+                                <button type="button"
+                                        class="delete-action"
+                                        onclick="deleteEmployee('OSSP-020')">
+
                                     <i class="fa-solid fa-trash"></i>
                                     <span>Delete</span>
+
                                 </button>
 
                             </div>
@@ -1313,9 +2060,139 @@
 </main>
 
 
-<!-- =========================================
+
+<!-- =========================================================
+     EDIT SECTION DROPDOWN CSS
+========================================================= -->
+
+<style>
+
+.edit-section-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+
+.edit-section-select {
+    width: 100%;
+
+    min-height: 46px;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d9dfe8;
+
+    border-radius: 8px;
+
+    background: #fff;
+
+    color: #333;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    cursor: pointer;
+
+    font: inherit;
+
+    text-align: left;
+}
+
+
+.edit-section-select i {
+    transition: transform .2s ease;
+
+    flex-shrink: 0;
+}
+
+
+.edit-section-dropdown.active .edit-section-select i {
+    transform: rotate(180deg);
+}
+
+
+.edit-section-menu {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: calc(100% + 5px);
+
+    display: none;
+
+    max-height: 210px;
+
+    overflow-y: auto;
+
+    background: #fff;
+
+    border: 1px solid #d9dfe8;
+
+    border-radius: 8px;
+
+    box-shadow: 0 8px 22px rgba(0,0,0,.15);
+
+    z-index: 10001;
+
+    padding: 5px;
+}
+
+
+.edit-section-dropdown.active .edit-section-menu {
+    display: block;
+}
+
+
+.edit-section-menu button {
+    width: 100%;
+
+    border: 0;
+
+    background: transparent;
+
+    padding: 11px 12px;
+
+    border-radius: 6px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    font: inherit;
+
+    color: #333;
+}
+
+
+.edit-section-menu button:hover {
+    background: #f0f4f9;
+}
+
+
+.edit-section-menu::-webkit-scrollbar {
+    width: 7px;
+}
+
+
+.edit-section-menu::-webkit-scrollbar-thumb {
+    background: #aeb8c5;
+
+    border-radius: 10px;
+}
+
+</style>
+
+
+
+<!-- =========================================================
      EMPLOYEE ACTION FUNCTIONS
-========================================= -->
+========================================================= -->
 
 <script>
 
@@ -1324,7 +2201,7 @@ function toggleActionMenu(button) {
     const currentDropdown =
         button.closest(".action-dropdown");
 
-    // Close every other employee menu
+
     document.querySelectorAll(".action-dropdown").forEach(function(dropdown) {
 
         if (dropdown !== currentDropdown) {
@@ -1335,15 +2212,15 @@ function toggleActionMenu(button) {
 
     });
 
-    // Open / close the selected employee menu
+
     currentDropdown.classList.toggle("active");
 
 }
 
 
-/* =========================================
+/* =========================================================
    CLOSE ACTION MENU WHEN CLICKING OUTSIDE
-========================================= */
+========================================================= */
 
 document.addEventListener("click", function(event) {
 
@@ -1361,9 +2238,9 @@ document.addEventListener("click", function(event) {
 });
 
 
-/* =========================================
+/* =========================================================
    VIEW EMPLOYEE
-========================================= */
+========================================================= */
 
 function viewEmployee(employeeID) {
 
@@ -1372,71 +2249,97 @@ function viewEmployee(employeeID) {
 }
 
 
-/* =========================================
-   EDIT EMPLOYEE
-========================================= */
-
-function editEmployee(employeeID) {
-
-    alert("Edit employee: " + employeeID);
-
-}
-
-
-/* =========================================
+/* =========================================================
    DELETE EMPLOYEE
-========================================= */
+========================================================= */
 
 let employeeToDelete = null;
+
 
 function deleteEmployee(employeeID) {
 
     employeeToDelete = employeeID;
 
-    // Put employee ID inside the modal
-    document.getElementById("deleteEmployeeID").textContent = employeeID;
 
-    // Close the action menu
-    document.querySelectorAll(".action-dropdown").forEach(function(dropdown) {
+    document.getElementById("deleteEmployeeID").textContent =
+        employeeID;
 
-        dropdown.classList.remove("active");
 
-    });
+    document.querySelectorAll(".action-dropdown")
+        .forEach(function(dropdown) {
 
-    // Open delete confirmation modal
-    document.getElementById("deleteEmployeeModal").style.display = "flex";
+            dropdown.classList.remove("active");
+
+        });
+
+
+    document.getElementById("deleteEmployeeModal").style.display =
+        "flex";
 
 }
 
 
-/* =========================================
+/* =========================================================
    CLOSE DELETE MODAL
-========================================= */
+========================================================= */
 
 function closeDeleteEmployeeModal() {
 
-    document.getElementById("deleteEmployeeModal").style.display = "none";
+    document.getElementById("deleteEmployeeModal").style.display =
+        "none";
 
     employeeToDelete = null;
 
 }
 
 
-/* =========================================
+/* =========================================================
    CONFIRM DELETE
-========================================= */
+========================================================= */
 
 function confirmDeleteEmployee() {
 
-    if (employeeToDelete) {
+    if (!employeeToDelete) return;
 
-        alert(employeeToDelete + " has been deleted.");
 
-        // Reset selected employee
-        employeeToDelete = null;
+    const deletedEmployee =
+        employeeToDelete;
 
-        // Close modal
-        closeDeleteEmployeeModal();
+
+    const rows =
+        document.querySelectorAll(
+            "#employeeTable tbody tr"
+        );
+
+
+    rows.forEach(function(row) {
+
+        if (
+            row.cells[0] &&
+            row.cells[0].textContent.trim() === deletedEmployee
+        ) {
+
+            row.remove();
+
+        }
+
+    });
+
+
+    closeDeleteEmployeeModal();
+
+
+    alert(
+        deletedEmployee +
+        " has been deleted."
+    );
+
+
+    if (
+        typeof applyEmployeeFilters === "function"
+    ) {
+
+        applyEmployeeFilters();
 
     }
 
@@ -1445,26 +2348,29 @@ function confirmDeleteEmployee() {
 </script>
 
 
-<!-- =========================================
+
+<!-- =========================================================
      FLOATING ACTION BUTTON
-========================================= -->
+========================================================= -->
 
 <div class="floating-actions">
 
-    <!-- ACTION BUTTONS -->
 
     <div class="floating-menu">
 
-        <!-- ADD EMPLOYEE -->
+
+        <!-- MY DTR -->
 
         <button
             type="button"
             class="floating-action add-action"
             onclick="openAddEmployeeModal()">
 
-            <i class="fa-solid fa-user-plus"></i>
+            <i class="fa-solid fa-calendar-days"></i>
 
-            <span>Add Employee</span>
+            <span>
+                My DTR
+            </span>
 
         </button>
 
@@ -1478,14 +2384,16 @@ function confirmDeleteEmployee() {
 
             <i class="fa-solid fa-file-arrow-up"></i>
 
-            <span>Upload DTR</span>
+            <span>
+                Upload DTR
+            </span>
 
         </button>
 
     </div>
 
 
-    <!-- MAIN FLOATING BUTTON -->
+    <!-- MAIN BUTTON -->
 
     <button
         type="button"
@@ -1499,64 +2407,810 @@ function confirmDeleteEmployee() {
 
 </div>
 
-<!-- =========================================
-     LOGOUT CONFIRMATION MODAL
-========================================= -->
 
-<div class="logout-modal" id="logoutModal">
+
+<!-- =========================================================
+     LOGOUT CONFIRMATION MODAL
+========================================================= -->
+
+<div
+    class="logout-modal"
+    id="logoutModal">
+
 
     <div class="logout-modal-box">
 
+
         <div class="logout-modal-icon">
+
             <i class="fa-solid fa-right-from-bracket"></i>
+
         </div>
 
-        <h3>Logout</h3>
+
+        <h3>
+            Logout
+        </h3>
+
 
         <p>
             Are you sure you want to logout?
         </p>
 
+
         <div class="logout-modal-actions">
 
-            <button type="button"
-                    class="logout-cancel"
-                    onclick="closeLogoutModal()">
+
+            <button
+                type="button"
+                class="logout-cancel"
+                onclick="closeLogoutModal()">
+
                 Cancel
+
             </button>
 
-            <a href="#"
-               class="logout-confirm">
+
+            <a
+                href="#"
+                class="logout-confirm">
+
                 Yes, Logout
+
             </a>
 
         </div>
 
     </div>
 
+</div>
+
+
+
+<!-- =========================================================
+     UPLOAD DTR MODAL
+========================================================= -->
+
+<div
+    class="dtr-modal-overlay"
+    id="uploadDTRModal">
+
+
+    <div class="dtr-modal">
+
+
+        <div class="dtr-modal-header">
+
+
+            <div class="dtr-modal-title">
+
+
+                <div class="dtr-modal-icon">
+
+                    <i class="fa-solid fa-file-arrow-up"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Upload DTR
+                    </h2>
+
+                    <p>
+                        Upload an employee Daily Time Record.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="dtr-modal-close"
+                onclick="closeUploadDTR()">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <form
+            id="uploadDTRForm"
+            onsubmit="submitDTRUpload(event)">
+
+
+            <div class="dtr-modal-body">
+
+
+                <label
+                    class="dtr-upload-area"
+                    for="dtrFile">
+
+
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+
+                    <strong>
+                        Select DTR File
+                    </strong>
+
+
+                    <span>
+                        Click here to choose a file
+                    </span>
+
+
+                    <small>
+                        PDF, Excel, CSV, JPG or PNG • Maximum 10 MB
+                    </small>
+
+
+                    <span
+                        class="dtr-selected-file"
+                        id="selectedDTRFileName">
+
+                        No file selected
+
+                    </span>
+
+                </label>
+
+
+                <input
+                    type="file"
+                    id="dtrFile"
+                    name="dtr_file"
+                    accept=".pdf,.xlsx,.xls,.csv,.jpg,.jpeg,.png"
+                    onchange="handleDTRFileChange(this)"
+                    hidden>
+
+            </div>
+
+
+
+            <div class="dtr-modal-footer">
+
+
+                <button
+                    type="button"
+                    class="dtr-cancel-btn"
+                    onclick="closeUploadDTR()">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="dtr-submit-btn">
+
+                    <i class="fa-solid fa-upload"></i>
+
+                    Upload File
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     DTR RESULT MODAL
+========================================================= -->
+
+<div
+    class="dtr-modal-overlay"
+    id="dtrResultModal">
+
+
+    <div class="dtr-result-modal">
+
+
+        <div
+            class="dtr-result-icon success"
+            id="dtrResultIconWrapper">
+
+            <i
+                class="fa-solid fa-circle-check"
+                id="dtrResultIcon">
+            </i>
+
+        </div>
+
+
+        <h2 id="dtrResultTitle">
+            Upload Successful
+        </h2>
+
+
+        <p id="dtrResultMessage">
+            Your DTR file has been uploaded successfully.
+        </p>
+
+
+        <button
+            type="button"
+            class="dtr-result-btn"
+            onclick="closeDTRResult()">
+
+            OK
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     DTR MODAL CSS
+========================================================= -->
+
+<style>
+
+.dtr-modal-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0,0,0,.55);
+
+    backdrop-filter: blur(3px);
+
+    z-index: 9999;
+}
+
+
+.dtr-modal,
+.dtr-result-modal {
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+
+    animation: dtrModalIn .2s ease-out;
+}
+
+
+.dtr-modal {
+
+    width: min(520px, 100%);
+
+    overflow: hidden;
+}
+
+
+@keyframes dtrModalIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+.dtr-modal-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 22px 24px;
+
+    border-bottom: 1px solid #e9edf2;
+}
+
+
+.dtr-modal-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.dtr-modal-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #075ca8;
+
+    color: #fff;
+
+    font-size: 19px;
+}
+
+
+.dtr-modal-title h2 {
+
+    margin: 0;
+
+    font-size: 20px;
+
+    color: #063b73;
+}
+
+
+.dtr-modal-title p {
+
+    margin: 4px 0 0;
+
+    color: #718096;
+
+    font-size: 13px;
+}
+
+
+.dtr-modal-close {
+
+    border: 0;
+
+    background: transparent;
+
+    color: #718096;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    width: 36px;
+
+    height: 36px;
+
+    border-radius: 8px;
+}
+
+
+.dtr-modal-close:hover {
+
+    background: #f1f4f8;
+
+    color: #c92127;
+}
+
+
+.dtr-modal-body {
+
+    padding: 25px 24px;
+}
+
+
+.dtr-upload-area {
+
+    min-height: 230px;
+
+    border: 2px dashed #b9c7d8;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 25px;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+
+.dtr-upload-area:hover {
+
+    border-color: #075ca8;
+
+    background: #f6faff;
+}
+
+
+.dtr-upload-area > i {
+
+    font-size: 42px;
+
+    color: #075ca8;
+
+    margin-bottom: 12px;
+}
+
+
+.dtr-upload-area strong {
+
+    color: #063b73;
+
+    font-size: 17px;
+}
+
+
+.dtr-upload-area span {
+
+    margin-top: 5px;
+
+    color: #5f6b7a;
+
+    font-size: 14px;
+}
+
+
+.dtr-upload-area small {
+
+    margin-top: 10px;
+
+    color: #8a96a3;
+
+    font-size: 12px;
+}
+
+
+.dtr-selected-file {
+
+    max-width: 100%;
+
+    margin-top: 14px !important;
+
+    padding: 7px 12px;
+
+    border-radius: 7px;
+
+    background: #eef4fa;
+
+    color: #075ca8 !important;
+
+    font-weight: 600;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+.dtr-modal-footer {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 18px 24px;
+
+    border-top: 1px solid #e9edf2;
+}
+
+
+.dtr-cancel-btn,
+.dtr-submit-btn,
+.dtr-result-btn {
+
+    border: 0;
+
+    border-radius: 8px;
+
+    padding: 11px 18px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+
+.dtr-cancel-btn {
+
+    background: #edf0f4;
+
+    color: #4a5568;
+}
+
+
+.dtr-submit-btn {
+
+    background: #c92127;
+
+    color: #fff;
+}
+
+
+.dtr-submit-btn:hover {
+
+    background: #a91c21;
+}
+
+
+.dtr-result-modal {
+
+    width: min(390px, 100%);
+
+    padding: 32px 28px 28px;
+
+    text-align: center;
+}
+
+
+.dtr-result-icon {
+
+    width: 68px;
+
+    height: 68px;
+
+    margin: 0 auto 16px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 34px;
+}
+
+
+.dtr-result-icon.success {
+
+    background: #e8f7ee;
+
+    color: #1c9b54;
+}
+
+
+.dtr-result-icon.error {
+
+    background: #fdebec;
+
+    color: #c92127;
+}
+
+
+.dtr-result-modal h2 {
+
+    margin: 0;
+
+    color: #063b73;
+
+    font-size: 21px;
+}
+
+
+.dtr-result-modal p {
+
+    margin: 10px 0 22px;
+
+    color: #687586;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+.dtr-result-btn {
+
+    min-width: 100px;
+
+    background: #075ca8;
+
+    color: #fff;
+}
+
+
+.dtr-result-btn:hover {
+
+    background: #063b73;
+}
+
+
+@media (max-width: 600px) {
+
+    .dtr-modal-overlay {
+
+        padding: 12px;
+    }
+
+
+    .dtr-modal-header,
+    .dtr-modal-body {
+
+        padding: 18px;
+    }
+
+
+    .dtr-modal-footer {
+
+        padding: 15px 18px;
+
+        flex-direction: column-reverse;
+    }
+
+
+    .dtr-upload-area {
+
+        min-height: 200px;
+    }
+
+
+    .dtr-cancel-btn,
+    .dtr-submit-btn {
+
+        width: 100%;
+    }
+
+}
+
+</style>
+
+
+
+<!-- =========================================================
+     DELETE EMPLOYEE MODAL
+========================================================= -->
+
+<div
+    class="delete-modal"
+    id="deleteEmployeeModal">
+
+
+    <div class="delete-modal-box">
+
+
+        <div class="delete-modal-icon">
+
+            <i class="fa-solid fa-trash"></i>
+
+        </div>
+
+
+        <h3>
+            Delete Employee?
+        </h3>
+
+
+        <p>
+
+            Are you sure you want to delete
+
+            <strong id="deleteEmployeeID">
+                OSSP-001
+            </strong>?
+
+        </p>
+
+
+        <small>
+            This action cannot be undone.
+        </small>
+
+
+        <div class="delete-modal-actions">
+
+
+            <button
+                type="button"
+                class="delete-cancel"
+                onclick="closeDeleteEmployeeModal()">
+
+                Cancel
+
+            </button>
+
+
+            <button
+                type="button"
+                class="delete-confirm"
+                onclick="confirmDeleteEmployee()">
+
+                <i class="fa-solid fa-trash"></i>
+
+                Yes, Delete
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
 <!-- =========================================================
      EDIT EMPLOYEE MODAL
 ========================================================= -->
 
-<div class="edit-modal-overlay" id="editModal">
+<div
+    class="edit-modal-overlay"
+    id="editModal">
+
 
     <div class="edit-modal">
 
+
         <!-- HEADER -->
+
         <div class="edit-modal-header">
+
 
             <div class="edit-modal-title">
 
+
                 <div class="edit-modal-icon">
+
                     <i class="fa-solid fa-user-pen"></i>
+
                 </div>
 
+
                 <div>
-                    <h2>Edit Employee</h2>
-                    <p id="editEmployeeID">OSSP-001</p>
+
+                    <h2>
+                        Edit Employee
+                    </h2>
+
+
+                    <p id="editEmployeeID">
+                        OSSP-001
+                    </p>
+
                 </div>
 
             </div>
+
 
             <button
                 type="button"
@@ -1570,16 +3224,24 @@ function confirmDeleteEmployee() {
         </div>
 
 
+
         <!-- BODY -->
+
         <div class="edit-modal-body">
 
+
             <!-- CONTACT -->
+
             <div class="edit-form-group">
 
                 <label for="editContact">
+
                     <i class="fa-solid fa-phone"></i>
+
                     Contact
+
                 </label>
+
 
                 <input
                     type="text"
@@ -1589,13 +3251,19 @@ function confirmDeleteEmployee() {
             </div>
 
 
+
             <!-- BIRTHDATE -->
+
             <div class="edit-form-group">
 
                 <label for="editBirthdate">
+
                     <i class="fa-solid fa-calendar-days"></i>
+
                     Birthdate
+
                 </label>
+
 
                 <input
                     type="date"
@@ -1604,13 +3272,19 @@ function confirmDeleteEmployee() {
             </div>
 
 
+
             <!-- ADDRESS -->
+
             <div class="edit-form-group edit-full-width">
 
                 <label for="editAddress">
+
                     <i class="fa-solid fa-location-dot"></i>
+
                     Address
+
                 </label>
+
 
                 <textarea
                     id="editAddress"
@@ -1620,80 +3294,233 @@ function confirmDeleteEmployee() {
             </div>
 
 
+
             <!-- SECTION -->
+
             <div class="edit-form-group">
 
+
                 <label for="editSection">
+
                     <i class="fa-solid fa-building"></i>
+
                     Section
+
                 </label>
 
-                <select id="editSection">
 
-                    <option value="">Select Section</option>
+                <div
+                    class="edit-section-dropdown"
+                    id="editSectionDropdown">
 
-                    <option value="Administrative Division">
-                        Administrative Division
-                    </option>
 
-                    <option value="Legislative Division">
-                        Legislative Division
-                    </option>
+                    <button
+                        type="button"
+                        class="edit-section-select"
+                        onclick="toggleEditSectionDropdown(event)">
 
-                    <option value="Journal & Minutes Division">
-                        Journal & Minutes Division
-                    </option>
+                        <span id="editSectionText">
+                            Select Division / Section
+                        </span>
 
-                </select>
+
+                        <i class="fa-solid fa-chevron-down"></i>
+
+                    </button>
+
+
+
+                    <div
+                        class="edit-section-menu"
+                        id="editSectionMenu">
+
+
+                        <button
+                            type="button"
+                            data-value="">
+
+                            Select Division / Section
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-value="Administrative Division">
+
+                            Administrative Division
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-value="Record and Correspondence Section">
+
+                            Record and Correspondence Section
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-value="Personnel Section">
+
+                            Personnel Section
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-value="General Services Section">
+
+                            General Services Section
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-value="Finance and Accounting Section">
+
+                            Finance and Accounting Section
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-value="IT Section">
+
+                            IT Section
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-value="Journal and Minutes Division">
+
+                            Journal and Minutes Division
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-value="Journal Transcription Section">
+
+                            Journal Transcription Section
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-value="Minutes Section">
+
+                            Minutes Section
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-value="Committee Affairs Section">
+
+                            Committee Affairs Section
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-value="Special Committee Section">
+
+                            Special Committee Section
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-value="Legislative Services Division">
+
+                            Legislative Services Division
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-value="Ordinance and Resolution Section">
+
+                            Ordinance and Resolution Section
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-value="Agenda and Briefing Section">
+
+                            Agenda and Briefing Section
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-value="Reference and Archives Section">
+
+                            Reference and Archives Section
+
+                        </button>
+
+                    </div>
+
+
+                    <input
+                        type="hidden"
+                        id="editSection"
+                        value="">
+
+                </div>
 
             </div>
 
 
+
             <!-- POSITION -->
+
             <div class="edit-form-group">
 
+
                 <label for="editPosition">
+
                     <i class="fa-solid fa-briefcase"></i>
+
                     Position
+
                 </label>
 
-                <select id="editPosition">
 
-                    <option value="">Select Position</option>
-
-                    <option value="Secretary">
-                        Secretary
-                    </option>
-
-                    <option value="Division Head">
-                        Division Head
-                    </option>
-
-                    <option value="Administrative Assistant">
-                        Administrative Assistant
-                    </option>
-
-                    <option value="Legislative Staff">
-                        Legislative Staff
-                    </option>
-
-                    <option value="Records Officer">
-                        Records Officer
-                    </option>
-
-                    <option value="Staff">
-                        Staff
-                    </option>
-
-                </select>
+                <input
+                    type="text"
+                    id="editPosition"
+                    placeholder="Enter position">
 
             </div>
 
         </div>
 
 
+
         <!-- FOOTER -->
+
         <div class="edit-modal-footer">
+
 
             <button
                 type="button"
@@ -1724,206 +3551,1424 @@ function confirmDeleteEmployee() {
 
 </div>
 
+
+
+<!-- =========================================================
+     DIVISION FILTER CSS
+========================================================= -->
+
+<style>
+
+.division-filter-menu.floating-filter-open {
+
+    display: block !important;
+
+    position: fixed !important;
+
+    max-height: 280px !important;
+
+    overflow-y: auto !important;
+
+    overflow-x: hidden !important;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.15);
+
+    padding: 6px;
+
+    z-index: 999999 !important;
+
+    box-sizing: border-box;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #075ca8
+        #eef2f6;
+}
+
+
+.division-filter-menu.floating-filter-open::-webkit-scrollbar {
+
+    width: 7px;
+}
+
+
+.division-filter-menu.floating-filter-open::-webkit-scrollbar-track {
+
+    background: #eef2f6;
+
+    border-radius: 10px;
+}
+
+
+.division-filter-menu.floating-filter-open::-webkit-scrollbar-thumb {
+
+    background: #075ca8;
+
+    border-radius: 10px;
+}
+
+
+.division-filter-menu.floating-filter-open::-webkit-scrollbar-thumb:hover {
+
+    background: #063b73;
+}
+
+
+.division-filter-menu.floating-filter-open button {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    white-space: normal;
+}
+
+
+@media screen and (max-width: 700px) {
+
+    .division-filter-menu.floating-filter-open {
+
+        width: min(280px, calc(100vw - 20px)) !important;
+
+        max-height: 240px !important;
+
+        font-size: 12px;
+    }
+
+
+    .division-filter-menu.floating-filter-open button {
+
+        padding: 11px 12px;
+
+        font-size: 12px;
+
+        min-height: 40px;
+    }
+
+}
+
+
+@media screen and (max-width: 400px) {
+
+    .division-filter-menu.floating-filter-open {
+
+        width: calc(100vw - 20px) !important;
+
+        max-height: 220px !important;
+    }
+
+}
+
+</style>
+
+
+
+<!-- =========================================================
+     MAIN JAVASCRIPT
+========================================================= -->
+
 <script>
 
 
-/* =========================================
+/* =========================================================
    LIVE DATE & TIME
-========================================= */
+========================================================= */
 
 function updateDateTime() {
 
     const now = new Date();
 
-    const day = now.toLocaleDateString('en-US', {
-        weekday: 'long'
-    });
 
-    const date = now.toLocaleDateString('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric'
-    });
+    const day =
+        now.toLocaleDateString(
+            'en-US',
+            {
+                weekday: 'long'
+            }
+        );
 
-    const time = now.toLocaleTimeString('en-US', {
-        hour: 'numeric',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: true
-    });
 
-    document.getElementById('current-day').textContent = day;
+    const date =
+        now.toLocaleDateString(
+            'en-US',
+            {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric'
+            }
+        );
 
-    document.getElementById('current-date-time').textContent =
+
+    const time =
+        now.toLocaleTimeString(
+            'en-US',
+            {
+                hour: 'numeric',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            }
+        );
+
+
+    document.getElementById(
+        'current-day'
+    ).textContent = day;
+
+
+    document.getElementById(
+        'current-date-time'
+    ).textContent =
         `${date} | ${time}`;
+
 }
+
 
 updateDateTime();
 
-setInterval(updateDateTime, 1000);
+
+setInterval(
+    updateDateTime,
+    1000
+);
 
 
-/* =========================================
+
+/* =========================================================
    LOGOUT MODAL
-========================================= */
+========================================================= */
 
 function openLogoutModal() {
 
-    document.getElementById('logoutModal').style.display = 'flex';
+    document.getElementById(
+        'logoutModal'
+    ).style.display = 'flex';
 
 }
+
 
 function closeLogoutModal() {
 
-    document.getElementById('logoutModal').style.display = 'none';
+    document.getElementById(
+        'logoutModal'
+    ).style.display = 'none';
 
 }
 
 
-/* Close modal when clicking outside */
+document.getElementById(
+    'logoutModal'
+).addEventListener(
+    'click',
+    function(event) {
 
-document.getElementById('logoutModal').addEventListener('click', function(event) {
+        if (event.target === this) {
 
-    if (event.target === this) {
+            closeLogoutModal();
 
-        closeLogoutModal();
-
-    }
-
-});
-
-
-/* Close modal with ESC */
-
-document.addEventListener('keydown', function(event) {
-
-    if (event.key === 'Escape') {
-
-        closeLogoutModal();
+        }
 
     }
+);
 
-});
 
-/* =========================================
+document.addEventListener(
+    'keydown',
+    function(event) {
+
+        if (event.key === 'Escape') {
+
+            closeLogoutModal();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
    FLOATING ACTION MENU
-========================================= */
+========================================================= */
 
 function toggleFloatingMenu() {
 
     const floatingActions =
-        document.querySelector(".floating-actions");
+        document.querySelector(
+            ".floating-actions"
+        );
 
-    floatingActions.classList.toggle("active");
+
+    floatingActions.classList.toggle(
+        "active"
+    );
 
 }
 
 
-/* =========================================
+
+/* =========================================================
    UPLOAD DTR
-========================================= */
+========================================================= */
 
 function openUploadDTR() {
 
-    // Temporary function
-    alert("Upload DTR feature coming soon.");
+    document
+        .querySelector(".floating-actions")
+        .classList.remove("active");
+
+
+    document
+        .getElementById("uploadDTRForm")
+        .reset();
+
+
+    document
+        .getElementById("selectedDTRFileName")
+        .textContent =
+        "No file selected";
+
+
+    document
+        .getElementById("uploadDTRModal")
+        .style.display =
+        "flex";
 
 }
 
-/* =========================================
+
+function closeUploadDTR() {
+
+    document
+        .getElementById("uploadDTRModal")
+        .style.display =
+        "none";
+
+}
+
+
+function showDTRResult(
+    type,
+    title,
+    message
+) {
+
+    const modal =
+        document.getElementById(
+            "dtrResultModal"
+        );
+
+
+    const iconWrap =
+        document.getElementById(
+            "dtrResultIconWrapper"
+        );
+
+
+    const icon =
+        document.getElementById(
+            "dtrResultIcon"
+        );
+
+
+    icon.className =
+        type === "success"
+            ? "fa-solid fa-circle-check"
+            : "fa-solid fa-circle-xmark";
+
+
+    iconWrap.className =
+        "dtr-result-icon " + type;
+
+
+    document.getElementById(
+        "dtrResultTitle"
+    ).textContent = title;
+
+
+    document.getElementById(
+        "dtrResultMessage"
+    ).textContent = message;
+
+
+    modal.style.display = "flex";
+
+}
+
+
+function closeDTRResult() {
+
+    document.getElementById(
+        "dtrResultModal"
+    ).style.display =
+        "none";
+
+}
+
+
+function handleDTRFileChange(input) {
+
+    document.getElementById(
+        "selectedDTRFileName"
+    ).textContent =
+
+        input.files.length
+            ? input.files[0].name
+            : "No file selected";
+
+}
+
+
+function submitDTRUpload(event) {
+
+    event.preventDefault();
+
+
+    const input =
+        document.getElementById(
+            "dtrFile"
+        );
+
+
+    if (!input.files.length) {
+
+        closeUploadDTR();
+
+
+        showDTRResult(
+            "error",
+            "Upload Failed",
+            "Please select a DTR file before submitting."
+        );
+
+        return;
+    }
+
+
+    const file =
+        input.files[0];
+
+
+    const allowed = [
+        ".pdf",
+        ".xlsx",
+        ".xls",
+        ".csv",
+        ".jpg",
+        ".jpeg",
+        ".png"
+    ];
+
+
+    const validType =
+        allowed.some(
+            ext =>
+                file.name
+                    .toLowerCase()
+                    .endsWith(ext)
+        );
+
+
+    if (!validType) {
+
+        closeUploadDTR();
+
+
+        showDTRResult(
+            "error",
+            "Upload Failed",
+            "Invalid file type. Please upload a PDF, Excel, CSV, JPG, or PNG file."
+        );
+
+        return;
+    }
+
+
+    if (
+        file.size >
+        10 * 1024 * 1024
+    ) {
+
+        closeUploadDTR();
+
+
+        showDTRResult(
+            "error",
+            "Upload Failed",
+            "The selected file is too large. The maximum file size is 10 MB."
+        );
+
+        return;
+    }
+
+
+    /* UI ONLY FOR NOW */
+
+    closeUploadDTR();
+
+
+    showDTRResult(
+        "success",
+        "Upload Successful",
+        file.name +
+        " has been uploaded successfully."
+    );
+
+}
+
+
+
+/* =========================================================
+   SEARCH EMPLOYEES
+========================================================= */
+
+let selectedDivision = "ALL";
+
+
+function searchEmployees() {
+
+    applyEmployeeFilters();
+
+}
+
+
+function applyEmployeeFilters() {
+
+    const input =
+        document.getElementById(
+            "employeeSearch"
+        );
+
+
+    const terms =
+        input.value
+            .trim()
+            .toLowerCase()
+            .split(/\s+/)
+            .filter(Boolean);
+
+
+    const rows =
+        document.querySelectorAll(
+            "#employeeTable tbody tr"
+        );
+
+
+    rows.forEach(function(row) {
+
+        const rowText =
+            row.textContent.toLowerCase();
+
+
+        const divisionCell =
+            row.cells[4];
+
+
+        const employeeDivision =
+            divisionCell
+                ? divisionCell.textContent
+                    .trim()
+                    .toUpperCase()
+                : "";
+
+
+        const matchesSearch =
+            terms.length === 0 ||
+            terms.every(
+                term =>
+                    rowText.includes(term)
+            );
+
+
+        const matchesDivision =
+            selectedDivision === "ALL" ||
+            employeeDivision === selectedDivision;
+
+
+        row.style.display =
+            matchesSearch &&
+            matchesDivision
+                ? ""
+                : "none";
+
+    });
+
+}
+
+
+
+/* =========================================================
    DIVISION / SECTION FILTER
-========================================= */
+========================================================= */
 
 function toggleDivisionFilter(event) {
 
     event.stopPropagation();
 
-    const filterHeader =
-        document.querySelector(".division-filter-header");
 
-    filterHeader.classList.toggle("active");
+    const filterHeader =
+        document.querySelector(
+            ".division-filter-header"
+        );
+
+
+    const menu =
+        document.querySelector(
+            ".division-filter-menu"
+        );
+
+
+    if (!filterHeader || !menu)
+        return;
+
+
+    if (
+        menu.classList.contains(
+            "floating-filter-open"
+        )
+    ) {
+
+        menu.classList.remove(
+            "floating-filter-open"
+        );
+
+
+        filterHeader.classList.remove(
+            "active"
+        );
+
+
+        const divisionFilter =
+            filterHeader.querySelector(
+                ".division-filter"
+            );
+
+
+        if (divisionFilter) {
+
+            divisionFilter.appendChild(
+                menu
+            );
+
+        }
+
+
+        return;
+    }
+
+
+    document.body.appendChild(menu);
+
+
+    menu.classList.add(
+        "floating-filter-open"
+    );
+
+
+    filterHeader.classList.add(
+        "active"
+    );
+
+
+    positionDivisionFilter();
 
 }
 
 
-/* =========================================
+
+/* =========================================================
+   POSITION FILTER MENU
+========================================================= */
+
+function positionDivisionFilter() {
+
+    const filterHeader =
+        document.querySelector(
+            ".division-filter-header"
+        );
+
+
+    const menu =
+        document.querySelector(
+            ".division-filter-menu"
+        );
+
+
+    if (
+        !filterHeader ||
+        !menu ||
+        !menu.classList.contains(
+            "floating-filter-open"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const button =
+        filterHeader.querySelector(
+            ".division-filter-btn"
+        );
+
+
+    const target =
+        button ||
+        filterHeader;
+
+
+    const rect =
+        target.getBoundingClientRect();
+
+
+    const menuWidth =
+        Math.min(
+            260,
+            window.innerWidth - 20
+        );
+
+
+    const left =
+        Math.max(
+            10,
+            Math.min(
+                rect.left,
+                window.innerWidth -
+                menuWidth -
+                10
+            )
+        );
+
+
+    const maxHeight =
+        Math.min(
+            280,
+            window.innerHeight -
+            rect.bottom -
+            20
+        );
+
+
+    menu.style.width =
+        menuWidth + "px";
+
+
+    menu.style.left =
+        left + "px";
+
+
+    if (maxHeight > 150) {
+
+        menu.style.maxHeight =
+            maxHeight + "px";
+
+
+        menu.style.top =
+            rect.bottom + 8 + "px";
+
+    } else {
+
+        const estimatedHeight =
+            Math.min(
+                280,
+                window.innerHeight - 20
+            );
+
+
+        menu.style.maxHeight =
+            estimatedHeight + "px";
+
+
+        menu.style.top =
+            Math.max(
+                10,
+                rect.top -
+                estimatedHeight -
+                8
+            ) + "px";
+
+    }
+
+}
+
+
+
+/* =========================================================
    FILTER EMPLOYEES BY DIVISION
-========================================= */
+========================================================= */
 
 function filterDivision(division) {
 
+    selectedDivision =
+        division;
+
+
+    applyEmployeeFilters();
+
+
+    const filterHeader =
+        document.querySelector(
+            ".division-filter-header"
+        );
+
+
+    const menu =
+        document.querySelector(
+            ".division-filter-menu"
+        );
+
+
+    if (filterHeader) {
+
+        filterHeader.classList.remove(
+            "active"
+        );
+
+    }
+
+
+    if (menu) {
+
+        menu.classList.remove(
+            "floating-filter-open"
+        );
+
+
+        if (filterHeader) {
+
+            const divisionFilter =
+                filterHeader.querySelector(
+                    ".division-filter"
+                );
+
+
+            if (divisionFilter) {
+
+                divisionFilter.appendChild(
+                    menu
+                );
+
+            }
+
+        }
+
+
+        menu.style.width = "";
+        menu.style.left = "";
+        menu.style.top = "";
+        menu.style.maxHeight = "";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   CLOSE FILTER OUTSIDE
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const filterHeader =
+            document.querySelector(
+                ".division-filter-header"
+            );
+
+
+        const menu =
+            document.querySelector(
+                ".division-filter-menu"
+            );
+
+
+        if (!filterHeader || !menu)
+            return;
+
+
+        if (
+            !filterHeader.contains(
+                event.target
+            ) &&
+            !menu.contains(
+                event.target
+            )
+        ) {
+
+            filterHeader.classList.remove(
+                "active"
+            );
+
+
+            menu.classList.remove(
+                "floating-filter-open"
+            );
+
+
+            const divisionFilter =
+                filterHeader.querySelector(
+                    ".division-filter"
+                );
+
+
+            if (divisionFilter) {
+
+                divisionFilter.appendChild(
+                    menu
+                );
+
+            }
+
+
+            menu.style.width = "";
+            menu.style.left = "";
+            menu.style.top = "";
+            menu.style.maxHeight = "";
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   KEEP FILTER MENU POSITIONED
+========================================================= */
+
+window.addEventListener(
+    "resize",
+    positionDivisionFilter
+);
+
+
+window.addEventListener(
+    "scroll",
+    positionDivisionFilter,
+    true
+);
+
+
+
+/* =========================================================
+   EDIT SECTION DROPDOWN
+========================================================= */
+
+function toggleEditSectionDropdown(event) {
+
+    event.stopPropagation();
+
+
+    document
+        .getElementById(
+            "editSectionDropdown"
+        )
+        .classList.toggle(
+            "active"
+        );
+
+}
+
+
+function selectEditSection(
+    value,
+    text
+) {
+
+    document.getElementById(
+        "editSection"
+    ).value = value;
+
+
+    document.getElementById(
+        "editSectionText"
+    ).textContent =
+        text ||
+        "Select Division / Section";
+
+
+    document.getElementById(
+        "editSectionDropdown"
+    ).classList.remove(
+        "active"
+    );
+
+}
+
+
+document
+    .querySelectorAll(
+        "#editSectionMenu button"
+    )
+    .forEach(function(button) {
+
+        button.addEventListener(
+            "click",
+            function(event) {
+
+                event.stopPropagation();
+
+
+                selectEditSection(
+                    this.dataset.value,
+                    this.textContent.trim()
+                );
+
+            }
+        );
+
+    });
+
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const dropdown =
+            document.getElementById(
+                "editSectionDropdown"
+            );
+
+
+        if (
+            dropdown &&
+            !dropdown.contains(
+                event.target
+            )
+        ) {
+
+            dropdown.classList.remove(
+                "active"
+            );
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   EDIT EMPLOYEE
+========================================================= */
+
+let editingEmployeeId = null;
+
+
+function editEmployee(employeeId) {
+
+    editingEmployeeId =
+        employeeId;
+
+
+    document.getElementById(
+        "editEmployeeID"
+    ).textContent =
+        employeeId;
+
+
     const rows =
-        document.querySelectorAll("#employeeTable tbody tr");
+        document.querySelectorAll(
+            "#employeeTable tbody tr"
+        );
+
+
+    let employeeRow = null;
+
 
     rows.forEach(function(row) {
 
-        const divisionCell = row.cells[4];
-
-        if (!divisionCell) return;
-
-        const employeeDivision =
-            divisionCell.textContent.trim().toUpperCase();
-
         if (
-            division === "ALL" ||
-            employeeDivision === division
+            row.cells[0] &&
+            row.cells[0]
+                .textContent
+                .trim() === employeeId
         ) {
 
-            row.style.display = "";
-
-        } else {
-
-            row.style.display = "none";
+            employeeRow = row;
 
         }
 
     });
 
 
-    // Close dropdown
-    document
-        .querySelector(".division-filter-header")
-        .classList.remove("active");
+    /* UI ONLY SAMPLE DATA */
 
-    
-}
-
-function editEmployee(employeeId) {
-
-    // Show employee ID in modal
-    document.getElementById("editEmployeeID").textContent = employeeId;
-
-
-    // =====================================================
-    // SAMPLE UI DATA
-    // These are only for UI testing for now.
-    // They are NOT saved to the database.
-    // =====================================================
-
-    document.getElementById("editContact").value =
+    document.getElementById(
+        "editContact"
+    ).value =
         "0917 123 4567";
 
-    document.getElementById("editBirthdate").value =
+
+    document.getElementById(
+        "editBirthdate"
+    ).value =
         "1995-05-15";
 
-    document.getElementById("editAddress").value =
+
+    document.getElementById(
+        "editAddress"
+    ).value =
         "Quezon City, Metro Manila";
 
-    document.getElementById("editSection").value =
-        "Administrative Division";
 
-    document.getElementById("editPosition").value =
-        "Administrative Assistant";
+    if (employeeRow) {
+
+        const currentSection =
+            employeeRow.cells[4]
+                ? employeeRow.cells[4]
+                    .textContent
+                    .trim()
+                : "";
 
 
-    // Open modal
+        const currentPosition =
+            employeeRow.cells[5]
+                ? employeeRow.cells[5]
+                    .textContent
+                    .trim()
+                : "";
+
+
+        const sectionMap = {
+
+            "Journal & Minutes Division":
+                "Journal and Minutes Division",
+
+            "Record and Corresposndence Section":
+                "Record and Correspondence Section",
+
+            "SPECIAL COMMITEE SECTION":
+                "Special Committee Section"
+
+        };
+
+
+        const selectedSection =
+            sectionMap[currentSection] ||
+            currentSection;
+
+
+        selectEditSection(
+            selectedSection,
+            selectedSection
+        );
+
+
+        document.getElementById(
+            "editPosition"
+        ).value =
+            currentPosition;
+
+    } else {
+
+        selectEditSection(
+            "",
+            "Select Division / Section"
+        );
+
+
+        document.getElementById(
+            "editPosition"
+        ).value =
+            "";
+
+    }
+
+
+    document.getElementById(
+        "editModal"
+    ).classList.add(
+        "active"
+    );
+
+
     document
-        .getElementById("editModal")
-        .classList.add("active");
+        .querySelectorAll(
+            ".action-dropdown"
+        )
+        .forEach(function(dropdown) {
 
-} 
+            dropdown.classList.remove(
+                "active"
+            );
+
+        });
+
+}
+
+
+
+/* =========================================================
+   CLOSE EDIT MODAL
+========================================================= */
+
+function closeEditModal() {
+
+    const modal =
+        document.getElementById(
+            "editModal"
+        );
+
+
+    if (modal) {
+
+        modal.classList.remove(
+            "active"
+        );
+
+    }
+
+
+    editingEmployeeId =
+        null;
+
+}
+
+
+
+/* =========================================================
+   SAVE EDIT EMPLOYEE
+========================================================= */
+
+function saveEditEmployee() {
+
+    if (!editingEmployeeId)
+        return;
+
+
+    const section =
+        document.getElementById(
+            "editSection"
+        ).value;
+
+
+    const position =
+        document.getElementById(
+            "editPosition"
+        ).value.trim();
+
+
+    if (!section) {
+
+        alert(
+            "Please select a Division / Section."
+        );
+
+        return;
+
+    }
+
+
+    if (!position) {
+
+        alert(
+            "Please enter a Position."
+        );
+
+        return;
+
+    }
+
+
+    const rows =
+        document.querySelectorAll(
+            "#employeeTable tbody tr"
+        );
+
+
+    let employeeRow = null;
+
+
+    rows.forEach(function(row) {
+
+        if (
+            row.cells[0] &&
+            row.cells[0]
+                .textContent
+                .trim() === editingEmployeeId
+        ) {
+
+            employeeRow = row;
+
+        }
+
+    });
+
+
+    if (employeeRow) {
+
+        employeeRow.cells[4].textContent =
+            section;
+
+
+        employeeRow.cells[5].textContent =
+            position;
+
+    }
+
+
+    const savedEmployee =
+        editingEmployeeId;
+
+
+    closeEditModal();
+
+
+    alert(
+        savedEmployee +
+        " updated successfully."
+    );
+
+
+    if (
+        typeof applyEmployeeFilters === "function"
+    ) {
+
+        applyEmployeeFilters();
+
+    }
+
+}
+
+
+
+/* =========================================================
+   CLOSE EDIT MODAL BY OVERLAY
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const modal =
+            document.getElementById(
+                "editModal"
+            );
+
+
+        if (
+            modal &&
+            event.target === modal
+        ) {
+
+            closeEditModal();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   CLOSE EDIT WITH ESC
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            const modal =
+                document.getElementById(
+                    "editModal"
+                );
+
+
+            if (
+                modal &&
+                modal.classList.contains(
+                    "active"
+                )
+            ) {
+
+                closeEditModal();
+
+            }
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   CLOSE UPLOAD DTR WITH OVERLAY
+========================================================= */
+
+document.getElementById(
+    "uploadDTRModal"
+).addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === this) {
+
+            closeUploadDTR();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   CLOSE RESULT MODAL WITH OVERLAY
+========================================================= */
+
+document.getElementById(
+    "dtrResultModal"
+).addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === this) {
+
+            closeDTRResult();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   CLOSE DTR MODALS WITH ESC
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            closeUploadDTR();
+
+            closeDTRResult();
+
+        }
+
+    }
+);
 
 </script>
-</div>
+
+
 </body>
 </html>
