@@ -16,6 +16,114 @@
     />
 
     <title>ADMIN DASHBOARD</title>
+
+    <style>
+      /* =========================================================
+         LEAVE MODAL LOGOS
+      ========================================================== */
+      .plantilla-modal-header {
+        position: relative;
+      }
+
+
+      .plantilla-leave-modal {
+        position: relative;
+        background-color: #ffffff;
+      }
+
+      /* Large, faint OSSP-B.O.O.M watermark placed below the progress bar */
+      .plantilla-form-watermark {
+        position: absolute;
+        top: 220px;
+        left: 50%;
+        width: 500px;
+        height: 500px;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .plantilla-form-watermark img {
+        width: 400px;
+        max-width: none;
+        height: auto;
+        opacity: 0.08;
+        object-fit: contain;
+        display: block;
+      }
+
+      .plantilla-progress,
+      .plantilla-form-step {
+        position: relative;
+        z-index: 1;
+      }
+
+      .plantilla-modal-logos,
+      .plantilla-success-logos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+
+      .plantilla-modal-logos {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+      }
+
+      .plantilla-modal-logos img {
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+        display: block;
+      }
+
+      .plantilla-success-logos {
+        margin-bottom: 14px;
+      }
+
+      .plantilla-success-logos img {
+        width: 55px;
+        height: 55px;
+        object-fit: contain;
+        display: block;
+      }
+
+      @media (max-width: 600px) {
+        .plantilla-modal-logos {
+          gap: 5px;
+          margin: 0;
+        }
+
+        .plantilla-modal-logos img {
+          width: 34px;
+          height: 34px;
+        }
+
+        .plantilla-success-logos img {
+          width: 48px;
+          height: 48px;
+        }
+
+        .plantilla-form-watermark {
+          top: 205px;
+          width: 500px;
+          height: 500px;
+        }
+
+        .plantilla-form-watermark img {
+          width: 500px;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -86,6 +194,8 @@
             <img src="{% static 'image/osspboomlogo.png' %}" alt="OSSP Logo" />
 
             <img src="{% static 'image/footer5.png' %}" alt="OSSP Logo" />
+
+            <img src="{% static 'image/ossp_logo.png' %}" alt="OSSP Logo" />
           </div>
 
           <!-- =================================================
@@ -97,6 +207,8 @@
             <img src="{% static 'image/osspboomlogo.png' %}" alt="OSSP Logo" />
 
             <img src="{% static 'image/footer5.png' %}" alt="OSSP Logo" />
+
+            <img src="{% static 'image/ossp_logo.png' %}" alt="OSSP Logo" />
           </div>
         </div>
 
@@ -1676,6 +1788,17 @@
               </div>
             </div>
 
+            <div class="plantilla-modal-logos" aria-label="OSSP logos">
+              <img
+                src="{% static 'image/footer5.png' %}"
+                alt="OSSP Logo"
+              />
+              <img
+                src="{% static 'image/ossp_logo.png' %}"
+                alt="OSSP B.O.O.M Logo"
+              />
+            </div>
+
             <button
               type="button"
               class="plantilla-close-btn"
@@ -1722,6 +1845,13 @@
               <span>4</span>
               <small>Review</small>
             </div>
+          </div>
+
+          <div class="plantilla-form-watermark" aria-hidden="true">
+            <img
+              src="{% static 'image/osspboomlogo.png' %}"
+              alt=""
+            />
           </div>
 
           <!-- =================================================
@@ -1816,8 +1946,9 @@
                 <input
                   type="text"
                   id="plantillaPosition"
-                  placeholder="Position"
-                  readonly
+                  placeholder="Enter position"
+                  required
+                  aria-required="true"
                 />
               </div>
 
@@ -1828,8 +1959,9 @@
                 <input
                   type="text"
                   id="plantillaSalary"
-                  placeholder="Salary"
-                  readonly
+                  placeholder="Enter salary"
+                  required
+                  aria-required="true"
                 />
               </div>
             </div>
@@ -2236,6 +2368,21 @@
 
       <div id="plantillaSuccessModal" class="plantilla-success-overlay">
         <div class="plantilla-success-modal">
+          <div class="plantilla-success-logos" aria-label="OSSP logos">
+              <img
+                src="{% static 'image/osspboomlogo.png' %}"
+                alt="OSSP Logo"
+              />
+            <img
+              src="{% static 'image/footer5.png' %}"
+              alt="OSSP Logo"
+            />
+            <img
+              src="{% static 'image/ossp_logo.png' %}"
+              alt="OSSP B.O.O.M Logo"
+            />
+          </div>
+
           <div class="plantilla-success-icon">
             <i class="fa-solid fa-check"></i>
           </div>
@@ -3640,6 +3787,22 @@
     ----------------------------------------- */
 
         if (step === 2) {
+          const position = document.getElementById("plantillaPosition");
+          const salary = document.getElementById("plantillaSalary");
+
+          /* Position and Salary are required */
+          if (!position || !position.value.trim()) {
+            alert("Please enter the employee position before continuing.");
+            if (position) position.focus();
+            return;
+          }
+
+          if (!salary || !salary.value.trim()) {
+            alert("Please enter the employee salary before continuing.");
+            if (salary) salary.focus();
+            return;
+          }
+
           showPlantillaStep(2);
 
           return;
@@ -3876,7 +4039,7 @@
             Only weekdays are counted.
         */
 
-          if (day !== 0 && day !== 6) {
+          if (day >= 1 && day <= 5) {
             count++;
           }
 
