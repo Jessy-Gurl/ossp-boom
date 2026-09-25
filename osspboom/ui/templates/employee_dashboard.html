@@ -1441,6 +1441,127 @@
    VERY SMALL MOBILE
 ========================================================= */
 
+      /* =========================================================
+         COS + PLANTILLA LEAVE LOGOS / WATERMARK
+      ========================================================== */
+
+      .cos-leave-modal,
+      .plantilla-leave-modal {
+        position: relative;
+      }
+
+      .cos-modal-header,
+      .plantilla-modal-header {
+        position: relative;
+      }
+
+      .cos-modal-logos,
+      .plantilla-modal-logos {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin: 0;
+        z-index: 3;
+        pointer-events: none;
+      }
+
+      .cos-modal-logos img,
+      .plantilla-modal-logos img {
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+        display: block;
+        flex-shrink: 0;
+      }
+
+      .cos-form-watermark,
+      .plantilla-form-watermark {
+        position: absolute;
+        top: 220px;
+        left: 50%;
+        width: 500px;
+        height: 500px;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .cos-form-watermark img,
+      .plantilla-form-watermark img {
+        width: 500px;
+        max-width: none;
+        height: auto;
+        opacity: 0.08;
+        object-fit: contain;
+        display: block;
+      }
+
+      .cos-progress,
+      .plantilla-progress,
+      .cos-form-step,
+      .plantilla-form-step {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cos-success-logos,
+      .plantilla-success-logos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .cos-success-logos img,
+      .plantilla-success-logos img {
+        width: 55px;
+        height: 55px;
+        object-fit: contain;
+        display: block;
+      }
+
+      @media screen and (max-width: 700px) {
+        .cos-modal-logos,
+        .plantilla-modal-logos {
+          gap: 5px;
+        }
+
+        .cos-modal-logos img,
+        .plantilla-modal-logos img {
+          width: 34px;
+          height: 34px;
+        }
+
+        .cos-form-watermark,
+        .plantilla-form-watermark {
+          top: 205px;
+          width: 500px;
+          height: 500px;
+        }
+
+        .cos-form-watermark img,
+        .plantilla-form-watermark img {
+          width: 500px;
+        }
+
+        .cos-success-logos img,
+        .plantilla-success-logos img {
+          width: 48px;
+          height: 48px;
+        }
+      }
+
+
       @media screen and (max-width: 400px) {
         .navbar-brand {
           width: 100px !important;
@@ -1545,6 +1666,7 @@
 
       /* =========================================================
          LEAVE HISTORY
+         ;p
       ========================================================= */
 
       .leave-history-section {
@@ -2003,6 +2125,8 @@
               />
 
               <img src="{% static 'image/footer5.png' %}" alt="OSSP Logo" />
+
+              <img src="{% static 'image/ossp_logo.png' %}" alt="OSSP Logo" />
             </div>
 
             <!-- =================================================
@@ -2016,6 +2140,8 @@
               />
 
               <img src="{% static 'image/footer5.png' %}" alt="OSSP Logo" />
+
+              <img src="{% static 'image/ossp_logo.png' %}" alt="OSSP Logo" />
             </div>
           </div>
         </div>
@@ -2529,6 +2655,15 @@
             </div>
           </div>
 
+          <div class="cos-modal-logos" aria-label="OSSP logos">
+            <img
+              src="{% static 'image/footer5.png' %}"
+              alt="OSSP Logo"
+            />
+
+            <img src="{% static 'image/ossp_logo.png' %}" alt="OSSP Logo" />
+          </div>
+
           <!-- CLOSE -->
           <button
             type="button"
@@ -2570,6 +2705,13 @@
 
             <small> Review </small>
           </div>
+        </div>
+
+        <div class="cos-form-watermark" aria-hidden="true">
+          <img
+            src="{% static 'image/osspboomlogo.png' %}"
+            alt=""
+          />
         </div>
 
         <!-- =================================================
@@ -3043,6 +3185,19 @@
 
     <div id="cosSuccessModal" class="cos-success-overlay">
       <div class="cos-success-modal">
+        <div class="cos-success-logos" aria-label="OSSP logos">
+          <img
+            src="{% static 'image/osspboomlogo.png' %}"
+            alt="OSSP B.O.O.M Logo"
+          />
+          <img
+            src="{% static 'image/footer5.png' %}"
+            alt="OSSP Logo"
+          />
+
+          <img src="{% static 'image/ossp_logo.png' %}" alt="OSSP Logo" />
+        </div>
+
         <div class="cos-success-icon">
           <i class="fa-solid fa-check"></i>
         </div>
@@ -3082,6 +3237,16 @@
                 Civil Service Form No. 6
               </span>
             </div>
+          </div>
+
+          <div class="plantilla-modal-logos" aria-label="OSSP logos">
+
+            <img
+              src="{% static 'image/footer5.png' %}"
+              alt="OSSP Logo"
+            />
+
+            <img src="{% static 'image/ossp_logo.png' %}" alt="OSSP Logo" />  
           </div>
 
           <button
@@ -3130,6 +3295,13 @@
             <span>4</span>
             <small>Review</small>
           </div>
+        </div>
+
+        <div class="plantilla-form-watermark" aria-hidden="true">
+          <img
+            src="{% static 'image/osspboomlogo.png' %}"
+            alt=""
+          />
         </div>
 
         <!-- =================================================
@@ -3666,6 +3838,19 @@
 
     <div id="plantillaSuccessModal" class="plantilla-success-overlay">
       <div class="plantilla-success-modal">
+        <div class="plantilla-success-logos" aria-label="OSSP logos">
+          <img
+            src="{% static 'image/osspboomlogo.png' %}"
+            alt="OSSP B.O.O.M Logo"
+          />
+          <img
+            src="{% static 'image/footer5.png' %}"
+            alt="OSSP Logo"
+          />
+
+          <img src="{% static 'image/ossp_logo.png' %}" alt="OSSP Logo" />
+        </div>
+
         <div class="plantilla-success-icon">
           <i class="fa-solid fa-check"></i>
         </div>
@@ -3874,7 +4059,7 @@
         while (currentDate <= endDate) {
           const day = currentDate.getDay();
 
-          if (day !== 0 && day !== 6) {
+          if (day >= 1 && day <= 5) {
             count++;
           }
 
@@ -5907,7 +6092,7 @@
 
           // Monday - Friday
 
-          if (day !== 0 && day !== 6) {
+          if (day >= 1 && day <= 5) {
             count++;
           }
 
