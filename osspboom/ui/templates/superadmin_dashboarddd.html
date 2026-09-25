@@ -2144,14 +2144,12 @@
         pointer-events: auto !important;
       }
 
-      /* The leave modals must still receive clicks when they are open. */
-      .floating-actions .plantilla-modal-overlay,
-      .floating-actions .plantilla-success-overlay {
+      /* The leave modal must still receive clicks when it is open. */
+      .floating-actions .plantilla-modal-overlay {
         pointer-events: auto !important;
       }
 
-      .floating-actions .plantilla-leave-modal,
-      .floating-actions .plantilla-success-modal {
+      .floating-actions .plantilla-leave-modal {
         pointer-events: auto !important;
       }
     </style>
@@ -2220,11 +2218,13 @@
 
             <div class="plantilla-modal-logos" aria-label="OSSP logos">
               <img
+                src="{% static 'image/ossp_logo.png' %}"
+                alt="OSSP B.O.O.M Logo"
+              />
+              <img
                 src="{% static 'image/footer5.png' %}"
                 alt="OSSP Logo"
               />
-
-              <img src="{% static 'image/ossp_logo.png' %}" alt="OSSP Logo" />
             </div>
 
             <button
@@ -2822,8 +2822,10 @@
               src="{% static 'image/footer5.png' %}"
               alt="OSSP Logo"
             />
-
-            <img src="{% static 'image/ossp_logo.png' %}" alt="OSSP Logo" />
+            <img 
+              src="{% static 'image/ossp_logo.png' %}" 
+              alt="OSSP Logo" 
+            />
           </div>
 
           <div class="plantilla-success-icon">
@@ -2836,11 +2838,7 @@
             Your Plantilla leave application has been submitted successfully.
           </p>
 
-          <button
-            type="button"
-            onclick="closePlantillaSuccessModal()"
-            style="pointer-events: auto;"
-          >
+          <button type="button" onclick="closePlantillaSuccessModal()">
             Done
           </button>
         </div>
